@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>החשבון שלי | בר-אל אופיר בע"מ</title>
+  <meta name="description" content="נהל את החשבון שלך – הזמנות, כתובות, פרטים אישיים ומועדפים."/>
+  <meta name="robots" content="noindex"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","name":"החשבון שלי"}</script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#c0001a;--red-dark:#8f0013;--red-bg:#fff5f5;--black:#111;--gray-900:#222;--gray-700:#444;--gray-500:#777;--gray-100:#f4f4f4;--gray-50:#fafafa;--white:#fff;--border:#e5e5e5;--radius:8px;--radius-lg:14px;--shadow-sm:0 1px 4px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.1)}
+    body{background:var(--gray-50);color:#222;font-family:'Heebo',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    .topbar{background:var(--red);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 16px}
+    header{position:sticky;top:0;z-index:200;background:#fff;border-bottom:2px solid var(--red);box-shadow:var(--shadow-sm)}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:70px}
+    .logo-text{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:var(--red);letter-spacing:-1px}
+    .logo-sub{font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase}
+    .logo-wrap{display:flex;flex-direction:column}
+    .search-wrap{flex:1;max-width:560px}
+    .search-bar{display:flex;border:2px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .search-bar:focus-within{border-color:var(--red)}
+    .search-bar input{flex:1;border:none;outline:none;padding:10px 14px;font-family:'Heebo',sans-serif;font-size:14px}
+    .search-bar button{background:var(--red);border:none;padding:0 18px;cursor:pointer;color:#fff;font-weight:700;font-family:'Heebo',sans-serif}
+    .nav-acts{display:flex;align-items:center;gap:6px;margin-right:auto}
+    .nav-act{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:6px;font-size:11px;color:var(--gray-700);cursor:pointer;gap:3px}
+    .nav-act:hover{background:var(--gray-100);color:var(--red)}
+    .nav-act .ic{font-size:20px}
+    .cart-btn{display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:var(--radius)}
+    .cart-n{background:#fff;color:var(--red);font-size:11px;font-weight:900;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+    .breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:10px 0}
+    .breadcrumb-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-500)}
+    .breadcrumb a:hover{color:var(--red)}
+
+    /* ACCOUNT LAYOUT */
+    .account-wrap{max-width:1280px;margin:28px auto 56px;padding:0 20px;display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start}
+
+    /* SIDEBAR */
+    .account-sidebar{}
+    .user-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;margin-bottom:16px}
+    .user-avatar{width:72px;height:72px;background:var(--red-bg);border:3px solid var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px}
+    .user-name{font-family:'Rubik',sans-serif;font-weight:800;font-size:17px;color:#111;margin-bottom:2px}
+    .user-email{font-size:12px;color:var(--gray-500);margin-bottom:12px}
+    .user-since{font-size:11px;color:var(--gray-500);background:var(--gray-50);border-radius:999px;padding:3px 10px;display:inline-block}
+
+    .account-nav{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+    .account-nav-item{display:flex;align-items:center;gap:12px;padding:14px 18px;font-size:14px;font-weight:600;color:var(--gray-700);border-bottom:1px solid var(--border);cursor:pointer;transition:all .2s}
+    .account-nav-item:last-child{border-bottom:none}
+    .account-nav-item:hover{background:var(--gray-50);color:var(--red)}
+    .account-nav-item.active{background:var(--red-bg);color:var(--red);border-right:3px solid var(--red)}
+    .account-nav-item .nav-icon{font-size:18px;flex-shrink:0}
+    .account-nav-item .nav-badge{margin-right:auto;background:var(--red);color:#fff;font-size:10px;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+    /* MAIN CONTENT */
+    .account-content{}
+
+    /* DASHBOARD */
+    .dashboard-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+    .stat-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px;text-align:center;transition:border-color .2s,transform .2s}
+    .stat-card:hover{border-color:var(--red);transform:translateY(-2px)}
+    .stat-icon{font-size:32px;margin-bottom:8px}
+    .stat-num{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:#111}
+    .stat-num span{color:var(--red)}
+    .stat-label{font-size:12px;color:var(--gray-500);margin-top:2px}
+
+    /* SECTION BOX */
+    .content-box{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:visible;margin-bottom:20px}
+    .content-box-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .content-box-title{font-family:'Rubik',sans-serif;font-weight:800;font-size:16px;color:#111;display:flex;align-items:center;gap:8px}
+    .content-box-title::before{content:'';display:block;width:4px;height:18px;background:var(--red);border-radius:2px}
+    .content-box-link{font-size:13px;font-weight:700;color:var(--red)}
+    .content-box-body{padding:20px}
+
+    /* ORDERS TABLE */
+    .orders-table{width:100%;border-collapse:collapse}
+    .orders-table th{text-align:right;padding:10px 14px;font-size:11px;font-weight:800;color:var(--gray-500);text-transform:uppercase;letter-spacing:.06em;background:var(--gray-50);border-bottom:1px solid var(--border)}
+    .orders-table td{padding:14px;font-size:14px;border-bottom:1px solid var(--border);vertical-align:middle}
+    .orders-table tr:last-child td{border-bottom:none}
+    .orders-table tr:hover td{background:var(--gray-50)}
+    .order-num{font-weight:700;color:var(--red)}
+    .order-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px}
+    .status-delivered{background:#e8f5e9;color:#1a7a3a}
+    .status-processing{background:#fff8e1;color:#f57c00}
+    .status-shipped{background:#e3f2fd;color:#1565c0}
+    .status-cancelled{background:#ffebee;color:#c62828}
+    .order-action{font-size:12px;font-weight:700;color:var(--red);cursor:pointer}
+    .order-action:hover{text-decoration:underline}
+
+    /* ADDRESSES */
+    .addresses-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .address-card{border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:20px;position:relative}
+    .address-card.default{border-color:var(--red)}
+    .address-type{font-size:11px;font-weight:800;color:var(--gray-500);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+    .address-name{font-size:15px;font-weight:700;color:#111;margin-bottom:4px}
+    .address-text{font-size:13px;color:var(--gray-700);line-height:1.7}
+    .address-default-tag{position:absolute;top:12px;left:12px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px}
+    .edit-addr-btn{display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-size:12px;font-weight:700;color:var(--red);cursor:pointer}
+
+    /* DETAILS FORM */
+    .form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group.full{grid-column:1/-1}
+    .form-label{font-size:13px;font-weight:700;color:#111}
+    .form-input{border:1.5px solid var(--border);border-radius:var(--radius);padding:11px 14px;font-family:'Heebo',sans-serif;font-size:14px;color:#111;outline:none;transition:border-color .2s;width:100%}
+    .form-input:focus{border-color:var(--red)}
+    .save-btn{background:var(--red);color:#fff;border:none;border-radius:var(--radius);padding:12px 28px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px}
+    .save-btn:hover{background:var(--red-dark)}
+
+    /* WISHLIST */
+    .wishlist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .wish-card{border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s}
+    .wish-card:hover{border-color:var(--red)}
+    .wish-img{background:var(--gray-50);height:110px;display:flex;align-items:center;justify-content:center;font-size:44px;border-bottom:1px solid var(--border)}
+    .wish-body{padding:12px}
+    .wish-brand{font-size:9px;font-weight:800;color:var(--red);text-transform:uppercase;margin-bottom:2px}
+    .wish-name{font-size:12px;font-weight:600;color:#111;margin-bottom:6px;line-height:1.3}
+    .wish-price{font-family:'Rubik',sans-serif;font-weight:800;font-size:16px;color:#111;margin-bottom:8px}
+    .wish-btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:var(--radius);padding:8px;font-family:'Heebo',sans-serif;font-size:12px;font-weight:700;cursor:pointer}
+
+    /* LOGOUT */
+    .logout-btn{width:100%;background:var(--gray-100);color:var(--gray-700);border:1.5px solid var(--border);border-radius:var(--radius);padding:12px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:12px;transition:all .2s}
+    .logout-btn:hover{background:#ffebee;color:#c62828;border-color:#c62828}
+
+    footer{background:#222;color:rgba(255,255,255,.6);margin-top:0}
+    .f-bottom{border-top:1px solid rgba(255,255,255,.08)}
+    .f-bottom-inner{max-width:1280px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+
+    /* ── TABLET ── */
+    @media(max-width:900px){
+      .account-wrap{grid-template-columns:1fr;gap:16px}
+      .dashboard-stats{grid-template-columns:1fr 1fr}
+      .addresses-grid{grid-template-columns:1fr}
+      .wishlist-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    /* ── MOBILE ── */
+    @media(max-width:600px){
+      /* גוף */
+      body{overflow-x:hidden}
+      html{overflow-x:hidden}
+
+      /* Header */
+      .topbar{font-size:11px;padding:6px 8px}
+      .header-inner{padding:0 12px;height:56px;gap:8px;flex-wrap:nowrap}
+      .logo-text{font-size:20px}
+      .logo-sub{display:none}
+      .search-wrap{display:none}
+      .nav-acts{gap:2px;margin-right:auto;flex-shrink:0}
+      .nav-act{padding:4px 5px;font-size:10px;gap:2px}
+      .nav-act .ic{font-size:16px}
+      .cart-btn{padding:7px 10px;font-size:12px;gap:5px;flex-shrink:0}
+      .cart-n{width:16px;height:16px;font-size:9px}
+
+      /* Breadcrumb */
+      .breadcrumb-inner{font-size:12px}
+
+      /* Layout */
+      .account-wrap{
+        padding:0 12px;
+        margin:14px auto 36px;
+        gap:12px;
+        display:flex;
+        flex-direction:column;
+        width:100%;
+      }
+      .account-sidebar{width:100%}
+      .account-content{width:100%;min-width:0}
+
+      /* User card */
+      .user-card{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        text-align:right;
+        padding:14px 16px;
+        margin-bottom:0;
+      }
+      .user-avatar{margin:0;flex-shrink:0;width:44px;height:44px;font-size:18px}
+      .user-name{font-size:14px}
+      .user-email{font-size:11px;margin-bottom:0}
+      .user-since{display:none}
+
+      /* Nav – סרגל אופקי */
+      .account-nav{
+        display:flex;
+        flex-direction:row;
+        overflow-x:auto;
+        scrollbar-width:none;
+        border-radius:var(--radius-lg);
+        -webkit-overflow-scrolling:touch;
+        width:100%;
+      }
+      .account-nav::-webkit-scrollbar{display:none}
+      .account-nav-item{
+        flex-shrink:0;
+        white-space:nowrap;
+        padding:11px 12px;
+        font-size:12px;
+        border-bottom:none !important;
+        border-right:none !important;
+        border-left:1px solid var(--border);
+        gap:5px;
+      }
+      .account-nav-item:first-child{border-right:none}
+      .account-nav-item.active{
+        background:var(--red-bg);
+        color:var(--red);
+        border-right:none !important;
+        border-bottom:3px solid var(--red) !important;
+      }
+      .account-nav-item .nav-badge{width:15px;height:15px;font-size:9px}
+      .logout-btn{display:none}
+
+      /* Stats */
+      .dashboard-stats{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        margin-bottom:16px;
+      }
+      .stat-card{
+        padding:14px 16px;
+        display:flex;
+        align-items:center;
+        gap:16px;
+        text-align:right;
+      }
+      .stat-icon{font-size:26px;margin-bottom:0;flex-shrink:0}
+      .stat-num{font-size:22px;line-height:1}
+      .stat-label{font-size:12px;margin-top:2px}
+
+      /* Content boxes */
+      .content-box{
+        width:100%;
+        overflow:hidden;
+        border-radius:var(--radius-lg);
+        margin-bottom:12px;
+      }
+      .content-box-head{padding:13px 14px}
+      .content-box-body{padding:14px}
+      .content-box-title{font-size:14px}
+
+      /* טבלת הזמנות */
+      .table-scroll-wrap{
+        width:100%;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+      }
+      .orders-table{
+        width:100%;
+        min-width:340px;
+        border-collapse:collapse;
+      }
+      .orders-table th{padding:8px 10px;font-size:10px}
+      .orders-table td{padding:10px;font-size:12px;white-space:nowrap}
+
+      /* Wishlist */
+      .wishlist-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+      }
+      .wish-img{height:80px;font-size:30px}
+      .wish-body{padding:10px}
+      .wish-name{font-size:11px}
+      .wish-price{font-size:13px;margin-bottom:6px}
+      .wish-btn{font-size:11px;padding:7px}
+
+      /* Addresses */
+      .addresses-grid{grid-template-columns:1fr}
+      .address-card{padding:14px}
+
+      /* Forms */
+      .form-grid-2{grid-template-columns:1fr}
+      .save-btn{width:100%;padding:12px;margin-top:6px}
+
+      /* Footer */
+      .f-bottom-inner{
+        flex-direction:column;
+        gap:6px;
+        text-align:center;
+        padding:14px 12px;
+        font-size:11px;
+      }
+    }
+
+    /* ── SMALL 380px ── */
+    @media(max-width:380px){
+      .wishlist-grid{grid-template-columns:1fr}
+      .account-nav-item .nav-text{font-size:0;width:0;overflow:hidden}
+      .account-nav-item{padding:12px 14px;justify-content:center}
+      .account-nav-item .nav-icon{font-size:20px}
+    }
+
+    /* ── GLOBAL MOBILE HEADER FIX ── */
+    @media(max-width:600px){
+      .topbar{font-size:11px !important;padding:6px 10px !important;line-height:1.4 !important;white-space:normal !important}
+      .header-inner{height:auto !important;min-height:56px !important;padding:10px 12px !important;gap:10px !important;flex-wrap:nowrap !important;display:flex !important;align-items:center !important;overflow:visible !important}
+      .logo-wrap{flex-shrink:0 !important}
+      .logo-text{font-size:20px !important;letter-spacing:-.5px !important;white-space:nowrap !important}
+      .logo-sub{display:block !important;font-size:8px !important;white-space:nowrap !important}
+      .search-wrap{display:none !important}
+      .nav-acts{margin-right:auto !important;gap:4px !important;flex-shrink:0 !important;display:flex !important;align-items:center !important}
+      .nav-act{padding:4px 6px !important;font-size:10px !important;gap:2px !important;white-space:nowrap !important}
+      .nav-act .ic{font-size:16px !important}
+      .cart-btn{padding:8px 12px !important;font-size:12px !important;gap:5px !important;flex-shrink:0 !important;white-space:nowrap !important}
+      .cart-n{width:16px !important;height:16px !important;font-size:9px !important}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">🚚 משלוח חינם בהזמנות מעל ₪299 &nbsp;|&nbsp; ⏱ אספקה תוך 24–48 שעות</div>
+<header>
+  <div class="header-inner">
+    <a href="/"><div class="logo-wrap"><div class="logo-text">בר-אל</div><div class="logo-sub">אופיר בע״מ</div></div></a>
+    <div class="search-wrap"><div class="search-bar"><button>🔍 חיפוש</button><input type="search" placeholder='חפש מוצר...'/></div></div>
+    <div class="nav-acts">
+      <a href="/my-account/" class="nav-act" style="color:var(--red)"><span class="ic">👤</span><span>החשבון</span></a>
+      <a href="/wishlist/" class="nav-act"><span class="ic">❤️</span><span>מועדפים</span></a>
+      <a href="/cart/" class="cart-btn">🛒 עגלה<span class="cart-n">0</span></a>
+    </div>
+  </div>
+</header>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">בית</a><span>›</span><strong>החשבון שלי</strong></div></div>
+
+<div class="account-wrap">
+
+  <!-- SIDEBAR -->
+  <div class="account-sidebar">
+    <div class="user-card">
+      <div class="user-avatar">👤</div>
+      <div class="user-name">ישראל ישראלי</div>
+      <div class="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="79100a0b181c15391c14181015571a16571015">[email&#160;protected]</a></div>
+      <div class="user-since">לקוח מאז 2022</div>
+    </div>
+
+    <nav class="account-nav">
+      <div class="account-nav-item active" onclick="showSection('dashboard')">
+        <span class="nav-icon">🏠</span> לוח בקרה
+      </div>
+      <div class="account-nav-item" onclick="showSection('orders')">
+        <span class="nav-icon">📦</span> ההזמנות שלי
+        <span class="nav-badge">5</span>
+      </div>
+      <div class="account-nav-item" onclick="showSection('wishlist')">
+        <span class="nav-icon">❤️</span> מועדפים
+        <span class="nav-badge">8</span>
+      </div>
+      <div class="account-nav-item" onclick="showSection('addresses')">
+        <span class="nav-icon">📍</span> כתובות
+      </div>
+      <div class="account-nav-item" onclick="showSection('details')">
+        <span class="nav-icon">✏️</span> פרטים אישיים
+      </div>
+      <div class="account-nav-item" onclick="showSection('password')">
+        <span class="nav-icon">🔒</span> שינוי סיסמה
+      </div>
+      <button class="logout-btn" style="border-radius:0;margin:0;border:none;border-top:1px solid var(--border)">🚪 התנתקות</button>
+    </nav>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="account-content">
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="section-content">
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-num">12</div>
+          <div class="stat-label">הזמנות סה"כ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">❤️</div>
+          <div class="stat-num">8</div>
+          <div class="stat-label">פריטים במועדפים</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div class="stat-num">₪<span>4,820</span></div>
+          <div class="stat-label">סה"כ רכישות</div>
+        </div>
+      </div>
+
+      <!-- RECENT ORDERS -->
+      <div class="content-box">
+        <div class="content-box-head">
+          <div class="content-box-title">הזמנות אחרונות</div>
+          <a href="#" class="content-box-link" onclick="showSection('orders')">כל ההזמנות →</a>
+        </div>
+        <div class="table-scroll-wrap" style="padding:0">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>הזמנה</th>
+                <th>תאריך</th>
+                <th>סטטוס</th>
+                <th>סכום</th>
+                <th>פעולה</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="order-num">#1042</span></td>
+                <td>20/03/25</td>
+                <td><span class="order-status status-delivered">✓ נמסר</span></td>
+                <td style="font-weight:700">₪489</td>
+                <td><span class="order-action">צפה</span></td>
+              </tr>
+              <tr>
+                <td><span class="order-num">#1038</span></td>
+                <td>12/03/25</td>
+                <td><span class="order-status status-shipped">🚚 בדרך</span></td>
+                <td style="font-weight:700">₪1,240</td>
+                <td><span class="order-action">עקוב</span></td>
+              </tr>
+              <tr>
+                <td><span class="order-num">#1031</span></td>
+                <td>28/02/25</td>
+                <td><span class="order-status status-delivered">✓ נמסר</span></td>
+                <td style="font-weight:700">₪890</td>
+                <td><span class="order-action">צפה</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RECOMMENDED -->
+      <div class="content-box">
+        <div class="content-box-head">
+          <div class="content-box-title">מומלץ עבורך</div>
+          <a href="/shop/" class="content-box-link">לכל החנות →</a>
+        </div>
+        <div class="content-box-body">
+          <div class="wishlist-grid">
+            <div class="wish-card">
+              <div class="wish-img">🔌</div>
+              <div class="wish-body">
+                <div class="wish-brand">DeWalt</div>
+                <div class="wish-name">גראינדר DWE4011 125mm</div>
+                <div class="wish-price">₪340</div>
+                <button class="wish-btn">+ לעגלה</button>
+              </div>
+            </div>
+            <div class="wish-card">
+              <div class="wish-img">📐</div>
+              <div class="wish-body">
+                <div class="wish-brand">Bosch</div>
+                <div class="wish-name">פלס לייזר GLM 50-27 CG</div>
+                <div class="wish-price">₪780</div>
+                <button class="wish-btn">+ לעגלה</button>
+              </div>
+            </div>
+            <div class="wish-card">
+              <div class="wish-img">🪛</div>
+              <div class="wish-body">
+                <div class="wish-brand">Makita</div>
+                <div class="wish-name">מברגה DHP484Z 18V</div>
+                <div class="wish-price">₪420</div>
+                <button class="wish-btn">+ לעגלה</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDERS -->
+    <div id="orders" class="section-content" style="display:none">
+      <div class="content-box">
+        <div class="content-box-head"><div class="content-box-title">ההזמנות שלי</div></div>
+        <div style="padding:0">
+          <table class="orders-table" style="width:100%">
+            <thead>
+              <tr><th>הזמנה</th><th>תאריך</th><th>מוצרים</th><th>סטטוס</th><th>סכום</th><th>פעולות</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="order-num">#1042</span></td><td>20/03/2025</td><td>מקדחה DeWalt DCD776</td><td><span class="order-status status-delivered">✓ נמסר</span></td><td style="font-weight:700">₪489</td><td><span class="order-action">צפה</span> | <span class="order-action">קנה שוב</span></td></tr>
+              <tr><td><span class="order-num">#1038</span></td><td>12/03/2025</td><td>מסור Bosch + פטיש Stanley</td><td><span class="order-status status-shipped">🚚 בדרך</span></td><td style="font-weight:700">₪1,240</td><td><span class="order-action">עקוב</span></td></tr>
+              <tr><td><span class="order-num">#1031</span></td><td>28/02/2025</td><td>גראינדר DeWalt</td><td><span class="order-status status-delivered">✓ נמסר</span></td><td style="font-weight:700">₪890</td><td><span class="order-action">צפה</span> | <span class="order-action">קנה שוב</span></td></tr>
+              <tr><td><span class="order-num">#1024</span></td><td>10/02/2025</td><td>ערכת מפתחות Stanley</td><td><span class="order-status status-delivered">✓ נמסר</span></td><td style="font-weight:700">₪149</td><td><span class="order-action">צפה</span></td></tr>
+              <tr><td><span class="order-num">#1018</span></td><td>22/01/2025</td><td>מברגה Makita DF457</td><td><span class="order-status status-cancelled">✕ בוטלה</span></td><td style="font-weight:700">₪549</td><td><span class="order-action">פרטים</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- WISHLIST -->
+    <div id="wishlist" class="section-content" style="display:none">
+      <div class="content-box">
+        <div class="content-box-head"><div class="content-box-title">המועדפים שלי</div><span style="font-size:13px;color:var(--gray-500)">8 פריטים</span></div>
+        <div class="content-box-body">
+          <div class="wishlist-grid">
+            <div class="wish-card"><div class="wish-img">🔧</div><div class="wish-body"><div class="wish-brand">DeWalt</div><div class="wish-name">מקדחה DCD796 XR 18V</div><div class="wish-price">₪720</div><button class="wish-btn">+ לעגלה</button></div></div>
+            <div class="wish-card"><div class="wish-img">🪚</div><div class="wish-body"><div class="wish-brand">DeWalt</div><div class="wish-name">מסור סייבר DCS387</div><div class="wish-price">₪920</div><button class="wish-btn">+ לעגלה</button></div></div>
+            <div class="wish-card"><div class="wish-img">🔦</div><div class="wish-body"><div class="wish-brand">Milwaukee</div><div class="wish-name">פנס M18 2000 לומן</div><div class="wish-price">₪340</div><button class="wish-btn">+ לעגלה</button></div></div>
+            <div class="wish-card"><div class="wish-img">📐</div><div class="wish-body"><div class="wish-brand">Bosch</div><div class="wish-name">פלס לייזר GLM 50-27</div><div class="wish-price">₪780</div><button class="wish-btn">+ לעגלה</button></div></div>
+            <div class="wish-card"><div class="wish-img">🔩</div><div class="wish-body"><div class="wish-brand">Stanley</div><div class="wish-name">ערכת טורקס 9 חלקים</div><div class="wish-price">₪149</div><button class="wish-btn">+ לעגלה</button></div></div>
+            <div class="wish-card"><div class="wish-img">🪛</div><div class="wish-body"><div class="wish-brand">Makita</div><div class="wish-name">מברגה DHP484Z 18V</div><div class="wish-price">₪420</div><button class="wish-btn">+ לעגלה</button></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADDRESSES -->
+    <div id="addresses" class="section-content" style="display:none">
+      <div class="content-box">
+        <div class="content-box-head"><div class="content-box-title">הכתובות שלי</div><a href="#" class="content-box-link">+ הוסף כתובת</a></div>
+        <div class="content-box-body">
+          <div class="addresses-grid">
+            <div class="address-card default">
+              <div class="address-default-tag">ברירת מחדל</div>
+              <div class="address-type">כתובת משלוח</div>
+              <div class="address-name">ישראל ישראלי</div>
+              <div class="address-text">רחוב הרצל 10<br/>תל אביב, 6473817<br/>ישראל<br/>050-XXX-XXXX</div>
+              <div class="edit-addr-btn">✏️ ערוך</div>
+            </div>
+            <div class="address-card">
+              <div class="address-type">כתובת חיוב</div>
+              <div class="address-name">ישראל ישראלי</div>
+              <div class="address-text">רחוב הרצל 10<br/>תל אביב, 6473817<br/>ישראל<br/>050-XXX-XXXX</div>
+              <div class="edit-addr-btn">✏️ ערוך</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DETAILS -->
+    <div id="details" class="section-content" style="display:none">
+      <div class="content-box">
+        <div class="content-box-head"><div class="content-box-title">פרטים אישיים</div></div>
+        <div class="content-box-body">
+          <div class="form-grid-2">
+            <div class="form-group"><label class="form-label">שם פרטי</label><input class="form-input" type="text" value="ישראל"/></div>
+            <div class="form-group"><label class="form-label">שם משפחה</label><input class="form-input" type="text" value="ישראלי"/></div>
+            <div class="form-group full"><label class="form-label">כתובת אימייל</label><input class="form-input" type="email" value="israel@email.co.il"/></div>
+            <div class="form-group"><label class="form-label">טלפון</label><input class="form-input" type="tel" value="050-XXX-XXXX"/></div>
+            <div class="form-group"><label class="form-label">תאריך לידה</label><input class="form-input" type="date"/></div>
+          </div>
+          <button class="save-btn">שמור שינויים</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div id="password" class="section-content" style="display:none">
+      <div class="content-box">
+        <div class="content-box-head"><div class="content-box-title">שינוי סיסמה</div></div>
+        <div class="content-box-body">
+          <div class="form-grid-2">
+            <div class="form-group full"><label class="form-label">סיסמה נוכחית</label><input class="form-input" type="password" placeholder="••••••••"/></div>
+            <div class="form-group"><label class="form-label">סיסמה חדשה</label><input class="form-input" type="password" placeholder="••••••••"/></div>
+            <div class="form-group"><label class="form-label">אישור סיסמה חדשה</label><input class="form-input" type="password" placeholder="••••••••"/></div>
+          </div>
+          <button class="save-btn">עדכן סיסמה</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="f-bottom"><div class="f-bottom-inner"><span style="color:rgba(255,255,255,.3)">© 2025 בר-אל אופיר בע״מ</span><span style="color:rgba(255,255,255,.3)">🔒 SSL | ✅ רשום</span></div></div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function showSection(id){
+  document.querySelectorAll('.section-content').forEach(s=>s.style.display

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>אודות בר-אל אופיר בע"מ | כלי עבודה מקצועיים</title>
+  <meta name="description" content="בר-אל אופיר בע״מ – מעל 15 שנות ניסיון בייבוא ושיווק כלי עבודה מקצועיים. מחויבים לאיכות, שירות ומחיר הוגן לכל לקוח."/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"אודות בר-אל אופיר בע״מ","url":"https://www.barel-ofir.co.il/about/"}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#c0001a;--red-dark:#8f0013;--red-bg:#fff5f5;--black:#111;--gray-900:#222;--gray-700:#444;--gray-500:#777;--gray-100:#f4f4f4;--gray-50:#fafafa;--white:#fff;--border:#e5e5e5;--radius:8px;--radius-lg:14px;--shadow-sm:0 1px 4px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.1);--shadow-lg:0 8px 32px rgba(0,0,0,.12)}
+    body{background:#fff;color:#222;font-family:'Heebo',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    .topbar{background:var(--red);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 16px}
+    header{position:sticky;top:0;z-index:200;background:#fff;border-bottom:2px solid var(--red);box-shadow:var(--shadow-sm)}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:70px}
+    .logo-text{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:var(--red);letter-spacing:-1px}
+    .logo-sub{font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase}
+    .logo-wrap{display:flex;flex-direction:column}
+    .search-wrap{flex:1;max-width:560px}
+    .search-bar{display:flex;border:2px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .search-bar:focus-within{border-color:var(--red)}
+    .search-bar input{flex:1;border:none;outline:none;padding:10px 14px;font-family:'Heebo',sans-serif;font-size:14px}
+    .search-bar button{background:var(--red);border:none;padding:0 18px;cursor:pointer;color:#fff;font-weight:700;font-family:'Heebo',sans-serif}
+    .nav-acts{display:flex;align-items:center;gap:6px;margin-right:auto}
+    .nav-act{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:6px;font-size:11px;color:var(--gray-700);cursor:pointer;gap:3px}
+    .nav-act:hover{background:var(--gray-100);color:var(--red)}
+    .nav-act .ic{font-size:20px}
+    .cart-btn{display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:var(--radius)}
+    .cart-n{background:#fff;color:var(--red);font-size:11px;font-weight:900;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .breadcrumb{background:var(--gray-50);border-bottom:1px solid var(--border);padding:10px 0}
+    .breadcrumb-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-500)}
+    .breadcrumb a:hover{color:var(--red)}
+
+    /* HERO */
+    .about-hero{background:var(--black);padding:72px 20px;position:relative;overflow:hidden;border-bottom:3px solid var(--red)}
+    .about-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(192,0,26,.12),transparent 60%);pointer-events:none}
+    .about-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .about-hero-text{}
+    .about-hero-tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.08em}
+    .about-hero-title{font-family:'Rubik',sans-serif;font-weight:900;font-size:clamp(28px,3.5vw,44px);color:#fff;line-height:1.15;margin-bottom:16px}
+    .about-hero-title span{color:var(--red)}
+    .about-hero-desc{font-size:16px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:28px}
+    .about-hero-ctas{display:flex;gap:12px}
+    .btn-primary{background:var(--red);color:#fff;font-weight:700;font-size:15px;padding:13px 26px;border-radius:var(--radius);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+    .btn-primary:hover{background:var(--red-dark)}
+    .btn-outline{background:transparent;color:rgba(255,255,255,.85);font-size:15px;font-weight:600;padding:13px 22px;border-radius:var(--radius);border:1.5px solid rgba(255,255,255,.2);cursor:pointer}
+    .btn-outline:hover{border-color:var(--red);color:#fff}
+    .about-hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .hero-stat-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:20px;text-align:center}
+    .hero-stat-num{font-family:'Rubik',sans-serif;font-weight:900;font-size:36px;color:#fff}
+    .hero-stat-num span{color:var(--red)}
+    .hero-stat-label{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
+
+    /* STORY */
+    .story-section{max-width:1280px;margin:60px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+    .story-img{background:linear-gradient(135deg,#1a1a1a,#2a1a1a);border-radius:var(--radius-lg);height:380px;display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden;border:1px solid var(--border)}
+    .story-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red)}
+    .story-label{font-size:11px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+    .story-title{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:#111;margin-bottom:16px;line-height:1.2}
+    .story-text{font-size:14px;color:var(--gray-700);line-height:1.85;margin-bottom:14px}
+
+    /* VALUES */
+    .values-section{background:var(--black);padding:60px 20px;border-top:3px solid var(--red);border-bottom:3px solid var(--red)}
+    .values-inner{max-width:1280px;margin:0 auto}
+    .section-center{text-align:center;margin-bottom:40px}
+    .section-tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.08em}
+    .section-title-lg{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:#fff;margin-bottom:8px}
+    .section-title-lg span{color:var(--red)}
+    .section-sub{font-size:14px;color:rgba(255,255,255,.5)}
+    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .value-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:28px 20px;text-align:center;transition:border-color .2s,transform .2s}
+    .value-card:hover{border-color:var(--red);transform:translateY(-4px)}
+    .value-icon{font-size:40px;margin-bottom:14px}
+    .value-title{font-family:'Rubik',sans-serif;font-weight:800;font-size:16px;color:#fff;margin-bottom:8px}
+    .value-text{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65}
+
+    /* TIMELINE */
+    .timeline-section{max-width:800px;margin:60px auto;padding:0 20px}
+    .timeline-title{font-family:'Rubik',sans-serif;font-weight:900;font-size:26px;color:#111;text-align:center;margin-bottom:8px}
+    .timeline-sub{font-size:14px;color:var(--gray-500);text-align:center;margin-bottom:36px}
+    .timeline{position:relative}
+    .timeline::before{content:'';position:absolute;top:0;bottom:0;right:20px;width:2px;background:var(--border)}
+    .timeline-item{display:flex;gap:28px;margin-bottom:28px;position:relative}
+    .timeline-dot{width:40px;height:40px;background:#fff;border:3px solid var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;position:relative;z-index:1}
+    .timeline-content{flex:1;background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .2s}
+    .timeline-content:hover{border-color:var(--red)}
+    .timeline-year{font-size:11px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+    .timeline-event{font-size:15px;font-weight:700;color:#111;margin-bottom:4px}
+    .timeline-desc{font-size:13px;color:var(--gray-500)}
+
+    /* TEAM */
+    .team-section{background:var(--gray-50);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 20px}
+    .team-inner{max-width:1280px;margin:0 auto}
+    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
+    .team-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;transition:border-color .2s,transform .2s}
+    .team-card:hover{border-color:var(--red);transform:translateY(-3px)}
+    .team-avatar{width:72px;height:72px;border-radius:50%;background:var(--red-bg);border:3px solid var(--red);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 14px}
+    .team-name{font-family:'Rubik',sans-serif;font-weight:800;font-size:16px;color:#111;margin-bottom:4px}
+    .team-role{font-size:12px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+    .team-desc{font-size:12px;color:var(--gray-500);line-height:1.6}
+
+    /* CTA */
+    .cta-section{max-width:1280px;margin:60px auto;padding:0 20px}
+    .cta-box{background:var(--black);border-radius:var(--radius-lg);padding:52px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden}
+    .cta-box::before{content:'';position:absolute;top:0;right:0;width:300px;height:100%;background:linear-gradient(135deg,transparent,rgba(192,0,26,.1));pointer-events:none}
+    .cta-box::after{content:'🔧';position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:100px;opacity:.06}
+    .cta-title{font-family:'Rubik',sans-serif;font-weight:900;font-size:26px;color:#fff;margin-bottom:8px}
+    .cta-title span{color:var(--red)}
+    .cta-sub{font-size:14px;color:rgba(255,255,255,.55)}
+    .cta-btns{display:flex;gap:12px;flex-shrink:0}
+
+    /* BRANDS */
+    .brands-section{background:var(--gray-50);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0}
+    .brands-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none}
+    .brands-inner::-webkit-scrollbar{display:none}
+    .brand-label{font-size:11px;font-weight:700;color:var(--gray-500);white-space:nowrap;text-transform:uppercase;letter-spacing:.1em;padding-left:20px;border-left:3px solid var(--red);margin-left:20px}
+    .brand-item{font-family:'Rubik',sans-serif;font-weight:700;font-size:15px;color:#ccc;white-space:nowrap;padding:8px 18px;border-left:1px solid var(--border);cursor:pointer;transition:color .2s}
+    .brand-item:hover{color:var(--red)}
+
+    footer{background:#222;color:rgba(255,255,255,.6)}
+    .footer-top{max-width:1280px;margin:0 auto;padding:48px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
+    .f-logo{font-family:'Rubik',sans-serif;font-weight:900;font-size:24px;color:#fff;margin-bottom:12px}
+    .f-logo span{color:var(--red)}
+    .f-desc{font-size:13px;line-height:1.7;color:rgba(255,255,255,.45);margin-bottom:16px}
+    .f-col-title{font-size:12px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--red)}
+    .f-links{display:flex;flex-direction:column;gap:9px}
+    .f-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+    .f-links a:hover{color:var(--red)}
+    .f-bottom{border-top:1px solid rgba(255,255,255,.08)}
+    .f-bottom-inner{max-width:1280px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+
+    @media(max-width:900px){
+      .about-hero-inner,.story-section{grid-template-columns:1fr}
+      .values-grid{grid-template-columns:repeat(2,1fr)}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .cta-box{flex-direction:column;padding:36px 28px}
+      .cta-btns{flex-direction:column;width:100%}
+      .footer-top{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:600px){
+      /* ── HEADER FIX ── */
+      .topbar{font-size:11px;padding:6px 10px;line-height:1.4;white-space:normal}
+      header{position:sticky;top:0;z-index:200}
+      .header-inner{
+        height:auto;
+        min-height:56px;
+        padding:10px 12px;
+        gap:10px;
+        flex-wrap:nowrap;
+        display:flex;
+        align-items:center;
+      }
+      .logo-wrap{flex-shrink:0}
+      .logo-text{font-size:20px;letter-spacing:-.5px;white-space:nowrap}
+      .logo-sub{display:block;font-size:8px;white-space:nowrap}
+      /* חיפוש נסתר במובייל */
+      .search-wrap{display:none}
+      .nav-acts{
+        margin-right:auto;
+        gap:4px;
+        flex-shrink:0;
+        display:flex;
+        align-items:center;
+      }
+      .nav-act{padding:4px 6px;font-size:10px;gap:2px;white-space:nowrap}
+      .nav-act .ic{font-size:16px}
+      .cart-btn{padding:8px 12px;font-size:12px;gap:5px;flex-shrink:0;white-space:nowrap}
+      .cart-n{width:16px;height:16px;font-size:9px}
+
+      /* ── HERO ── */
+      .about-hero{padding:40px 16px}
+      .about-hero-inner{gap:28px}
+      .about-hero-title{font-size:28px}
+      .about-hero-desc{font-size:14px}
+      .about-hero-ctas{flex-direction:column;gap:10px}
+      .btn-primary,.btn-outline{width:100%;justify-content:center;padding:13px}
+      .about-hero-stats{grid-template-columns:1fr 1fr;gap:10px}
+      .hero-stat-num{font-size:28px}
+
+      /* ── STORY ── */
+      .story-section{padding:32px 16px;margin:32px auto;gap:24px}
+      .story-img{height:220px;font-size:56px}
+      .story-title{font-size:22px}
+
+      /* ── VALUES ── */
+      .values-grid{grid-template-columns:1fr 1fr;gap:12px}
+      .value-card{padding:20px 14px}
+      .value-icon{font-size:30px;margin-bottom:10px}
+      .value-title{font-size:14px}
+
+      /* ── TIMELINE ── */
+      .timeline-section{padding:0 16px;margin:32px auto}
+      .timeline::before{right:16px}
+      .timeline-dot{width:32px;height:32px;font-size:14px}
+      .timeline-content{padding:14px 16px}
+      .timeline-event{font-size:14px}
+
+      /* ── TEAM ── */
+      .team-grid{grid-template-columns:1fr 1fr;gap:12px}
+      .team-section{padding:40px 16px}
+      .team-card{padding:18px 14px}
+      .team-avatar{width:56px;height:56px;font-size:22px}
+      .team-name{font-size:14px}
+
+      /* ── CTA ── */
+      .cta-section{padding:0 16px;margin:32px auto}
+      .cta-box{padding:28px 20px}
+      .cta-title{font-size:20px}
+      .cta-btns{width:100%;flex-direction:column}
+      .cta-btns .btn-primary,.cta-btns .btn-outline{width:100%;justify-content:center}
+
+      /* ── FOOTER ── */
+      .footer-top{grid-template-columns:1fr;gap:24px;padding:32px 16px 24px}
+      .f-bottom-inner{flex-direction:column;gap:6px;text-align:center;padding:14px 16px;font-size:11px}
+    }
+
+    @media(max-width:480px){
+      .values-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:1fr}
+      .about-hero-stats{grid-template-columns:1fr 1fr}
+    }
+
+    /* ── GLOBAL MOBILE HEADER FIX ── */
+    @media(max-width:600px){
+      .topbar{font-size:11px !important;padding:6px 10px !important;line-height:1.4 !important;white-space:normal !important}
+      .header-inner{height:auto !important;min-height:56px !important;padding:10px 12px !important;gap:10px !important;flex-wrap:nowrap !important;display:flex !important;align-items:center !important;overflow:visible !important}
+      .logo-wrap{flex-shrink:0 !important}
+      .logo-text{font-size:20px !important;letter-spacing:-.5px !important;white-space:nowrap !important}
+      .logo-sub{display:block !important;font-size:8px !important;white-space:nowrap !important}
+      .search-wrap{display:none !important}
+      .nav-acts{margin-right:auto !important;gap:4px !important;flex-shrink:0 !important;display:flex !important;align-items:center !important}
+      .nav-act{padding:4px 6px !important;font-size:10px !important;gap:2px !important;white-space:nowrap !important}
+      .nav-act .ic{font-size:16px !important}
+      .cart-btn{padding:8px 12px !important;font-size:12px !important;gap:5px !important;flex-shrink:0 !important;white-space:nowrap !important}
+      .cart-n{width:16px !important;height:16px !important;font-size:9px !important}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">🚚 משלוח חינם בהזמנות מעל ₪299 &nbsp;|&nbsp; ⏱ אספקה תוך 24–48 שעות</div>
+<header>
+  <div class="header-inner">
+    <a href="/"><div class="logo-wrap"><div class="logo-text">בר-אל</div><div class="logo-sub">אופיר בע״מ</div></div></a>
+    <div class="search-wrap"><div class="search-bar"><button>🔍 חיפוש</button><input type="search" placeholder='חפש מוצר...'/></div></div>
+    <div class="nav-acts">
+      <a href="/my-account/" class="nav-act"><span class="ic">👤</span><span>החשבון</span></a>
+      <a href="/cart/" class="cart-btn">🛒 עגלה<span class="cart-n">0</span></a>
+    </div>
+  </div>
+</header>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">בית</a><span>›</span><strong>אודות</strong></div></div>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <div class="about-hero-text">
+      <div class="about-hero-tag">✦ הסיפור שלנו</div>
+      <h1 class="about-hero-title">מעל 15 שנה של<br/><span>מקצועיות ואמינות</span></h1>
+      <p class="about-hero-desc">בר-אל אופיר בע״מ היא חנות כלי עבודה מקצועיים שהוקמה מתוך אהבה לאיכות ומחויבות לשירות. אנחנו מספקים לאלפי לקוחות – קבלנים, חשמלאים, אינסטלטורים ואנשי DIY – את הכלים הטובים ביותר.</p>
+      <div class="about-hero-ctas">
+        <a href="/shop/" class="btn-primary">🔧 לכל המוצרים</a>
+        <a href="/contact/" class="btn-outline">צור קשר →</a>
+      </div>
+    </div>
+    <div class="about-hero-stats">
+      <div class="hero-stat-box">
+        <div class="hero-stat-num">15<span>+</span></div>
+        <div class="hero-stat-label">שנות ניסיון</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-num">10<span>K+</span></div>
+        <div class="hero-stat-label">מוצרים במלאי</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-num">5<span>K+</span></div>
+        <div class="hero-stat-label">לקוחות מרוצים</div>
+      </div>
+      <div class="hero-stat-box">
+        <div class="hero-stat-num">98<span>%</span></div>
+        <div class="hero-stat-label">שביעות רצון</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="story-img">🏭</div>
+  <div>
+    <div class="story-label">הסיפור שלנו</div>
+    <h2 class="story-title">מחסן קטן לחנות מקוונת מובילה</h2>
+    <p class="story-text">בר-אל אופיר בע״מ נוסדה לפני למעלה מ-15 שנה על ידי בעל מקצוע שהאמין שכלי עבודה איכותיים צריכים להיות נגישים לכולם – לא רק לחברות הגדולות.</p>
+    <p class="story-text">התחלנו עם מחסן קטן וקטלוג של כמה מאות מוצרים. היום אנחנו מציעים מעל 10,000 מוצרים ממותגים מובילים בעולם, עם משלוח לכל פינה בישראל.</p>
+    <p class="story-text">הסוד שלנו? פשוט. אנחנו מתייחסים לכל לקוח כאל שותף. שאלה טכנית? ייעוץ לפני רכישה? בעיה עם מוצר? אנחנו כאן.</p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="section-center">
+      <div class="section-tag">הערכים שלנו</div>
+      <div class="section-title-lg">למה <span>בוחרים</span> בנו?</div>
+      <div class="section-sub">הערכים שמובילים אותנו בכל החלטה ובכל שירות</div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🏆</div>
+        <div class="value-title">איכות ללא פשרות</div>
+        <div class="value-text">אנחנו בוחרים רק מותגים שעמדו במבחן הזמן. כל מוצר עובר בדיקת איכות לפני שנכנס למלאי שלנו.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💰</div>
+        <div class="value-title">מחיר הוגן תמיד</div>
+        <div class="value-text">אנחנו עובדים ישירות עם היצרנים ומוכרים ללא מתווכים מיותרים. החיסכון עובר אליך.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🧑‍🔧</div>
+        <div class="value-title">שירות מקצועי</div>
+        <div class="value-text">הצוות שלנו מורכב מבעלי מקצוע מנוסים. אנחנו לא רק מוכרים – אנחנו מייעצים ומלווים.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🚚</div>
+        <div class="value-title">אמינות ומהירות</div>
+        <div class="value-text">הזמנה שהתקבלה עד 14:00 יוצאת עדיין היום. אנחנו לא מבטיחים מה שלא נוכל לקיים.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-title">המסע שלנו</div>
+  <div class="timeline-sub">מאיפה התחלנו ולאן הגענו</div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">🏁</div>
+      <div class="timeline-content">
+        <div class="timeline-year">2009</div>
+        <div class="timeline-event">הקמת בר-אל אופיר בע״מ</div>
+        <div class="timeline-desc">פתחנו מחסן קטן עם 300 מוצרים ושירות לקוחות אישי לכל לקוח.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">📦</div>
+      <div class="timeline-content">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-event">הרחבת המלאי ל-2,000 מוצרים</div>
+        <div class="timeline-desc">חתמנו על הסכמי הפצה ישירים עם DeWalt ו-Bosch ישראל.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">💻</div>
+      <div class="timeline-content">
+        <div class="timeline-year">2017</div>
+        <div class="timeline-event">השקת החנות המקוונת</div>
+        <div class="timeline-desc">פתחנו את האתר הראשון שלנו ועברנו לשרת לקוחות מכל הארץ.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🚀</div>
+      <div class="timeline-content">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-event">10,000 מוצרים ו-5,000 לקוחות</div>
+        <div class="timeline-desc">הגענו לאבן דרך משמעותית – עם מלאי של 10,000 מוצרים ולקוחות נאמנים מכל הארץ.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">⭐</div>
+      <div class="timeline-content">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-event">אתר חדש, שירות טוב יותר</div>
+        <div class="timeline-desc">השקנו את האתר החדש שלנו עם ממשק משתמש משופר ומערכת לוגיסטיקה מהירה יותר.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="team-inner">
+    <div class="section-center" style="text-align:center;margin-bottom:0">
+      <div class="section-tag" style="background:var(--red)">הצוות שלנו</div>
+      <div class="section-title-lg" style="color:#111">האנשים <span>מאחורי</span> הקלעים</div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👨‍💼</div>
+        <div class="team-name">אופיר בר-אל</div>
+        <div class="team-role">מייסד ומנכ"ל</div>
+        <div class="team-desc">15+ שנות ניסיון בתחום כלי העבודה. חשמלאי מוסמך לשעבר.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨‍🔧</div>
+        <div class="team-name">יוסי כהן</div>
+        <div class="team-role">מנהל מלאי ולוגיסטיקה</div>
+        <div class="team-desc">מוודא שכל הזמנה מגיעה בזמן ובמצב מושלם.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩‍💻</div>
+        <div class="team-name">שרה לוי</div>
+        <div class="team-role">שירות לקוחות</div>
+        <div class="team-desc">כאן לענות על כל שאלה ולפתור כל בעיה – תוך שעות.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨‍🏫</div>
+        <div class="team-name">דוד מזרחי</div>
+        <div class="team-role">יועץ מקצועי</div>
+        <div class="team-desc">קבלן שיפוצים ותיק עם ידע אנציקלופדי בכלי עבודה.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <div class="brands-inner">
+    <div class="brand-label">המותגים שלנו</div>
+    <div class="brand-item">DeWalt</div>
+    <div class="brand-item">Bosch</div>
+    <div class="brand-item">Makita</div>
+    <div class="brand-item">Stanley</div>
+    <div class="brand-item">Milwaukee</div>
+    <div class="brand-item">Hilti</div>
+    <div class="brand-item">Festool</div>
+    <div class="brand-item">Metabo</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-box">
+    <div>
+      <div class="cta-title">מוכן לקנות <span>בחכמה?</span></div>
+      <div class="cta-sub">אלפי כלי עבודה מקצועיים ממתינים לך – במחירים הטובים ביותר</div>
+    </div>
+    <div class="cta-btns">
+      <a href="/shop/" class="btn-primary">🔧 לכל המוצרים</a>
+      <a href="/contact/" class="btn-outline">ייעוץ חינם →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><div class="f-logo">בר-<span>אל</span> אופיר בע״מ</div><p class="f-desc">החנות המקצועית לכלי עבודה בישראל. מחויבים לאיכות, שירות ומחיר הוגן.</p></div>
+    <div><div class="f-col-title">קטגוריות</div><div class="f-links"><a href="#">כלי חשמל</a><a href="#">כלי יד</a><a href="#">מברגות</a><a href="#">מסורים</a><a href="#">מדידה</a></div></div>
+    <div><div class="f-col-title">שירות</div><div class="f-links"><a href="#">צור קשר</a><a href="#">החזרות</a><a href="#">מעקב הזמנה</a><a href="#">FAQ</a></div></div>
+    <div><div class="f-col-title">אודות</div><div class="f-links"><a href="#">אודותינו</a><a href="#">בלוג</a><a href="#">פרטיות</a><a href="#">תנאי שימוש</a></div></div>
+  </div>
+  <div class="f-bottom"><div class="f-bottom-inner"><span style="color:rgba(255,255,255,.3)">© 2025 בר-אל אופיר בע״מ | כל הזכויות שמורות</span><span style="color:rgba(255,255,255,.3)">🔒 SSL | ✅ רשום ברשם החברות | 💳 תשלום מאובטח</span></div></div>
+</footer>
+</body>
+</html>
