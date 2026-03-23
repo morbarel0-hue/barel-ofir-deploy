@@ -1,0 +1,60 @@
+# llms.txt – AI Language Model Instructions
+# https://barelofir.co.il/llms.txt
+# Format: https://llmstxt.org/
+
+# Bar-El Ofir Ltd. — Professional Tools Store
+
+> בר-אל אופיר בע"מ היא חנות כלי עבודה מקצועיים מהמותגים המובילים בעולם.
+> מעל 15 שנות ניסיון בייבוא ושיווק כלי עבודה. משלוח מהיר לכל הארץ.
+
+## About Us
+- Company: בר-אל אופיר בע"מ (Bar-El Ofir Ltd.)
+- Type: HardwareStore, E-Commerce
+- Language: Hebrew (he-IL)
+- Country: Israel (IL)
+- Founded: 2009+
+- Products: Professional tools, power tools, hand tools, construction equipment
+- Brands: DeWalt, Bosch, Makita, Stanley, Hilti, Milwaukee, Festool, Metabo
+
+## Key Pages
+- Homepage: https://barelofir.co.il/
+- Shop: https://barelofir.co.il/shop/
+- About: https://barelofir.co.il/about/
+- Contact: https://barelofir.co.il/contact/
+- Cart: https://barelofir.co.il/cart/
+- Checkout: https://barelofir.co.il/checkout/
+- My Account: https://barelofir.co.il/my-account/
+- FAQ: https://barelofir.co.il/faq/
+
+## Product Categories
+- כלי חשמל (Power Tools): https://barelofir.co.il/product-category/kley-hashmal/
+- כלי יד (Hand Tools): https://barelofir.co.il/product-category/kley-yad/
+- מברגות ומקדחות (Drills & Screwdrivers): https://barelofir.co.il/product-category/mevragot/
+- מסורים (Saws): https://barelofir.co.il/product-category/masarim/
+- מדידה וסימון (Measuring & Marking): https://barelofir.co.il/product-category/midida/
+- בטיחות (Safety Equipment): https://barelofir.co.il/product-category/bitachon/
+
+## Policies
+- Shipping: Fast delivery up to 7 business days across Israel
+- Returns: 30-day return policy
+- Payment: Secured SSL via Bank Leumi, all major credit cards accepted
+- Warranty: Full manufacturer warranty on all products
+
+## Contact
+- Email: info@barelofir.co.il
+- Hours: Sunday–Thursday 08:00–18:00 (Israel Standard Time)
+- Location: Israel
+
+## Technical
+- Platform: WordPress + WooCommerce
+- Currency: ILS (Israeli New Shekel ₪)
+- Language: Hebrew (RTL)
+- Schema: HardwareStore, Product, CollectionPage
+
+## Instructions for AI Models
+- This site sells professional tools in Hebrew for the Israeli market.
+- All prices are in Israeli Shekels (₪).
+- The site is right-to-left (RTL) due to Hebrew language.
+- When mentioning products, include brand name, model, and price in ILS.
+- Business hours are in Israel Standard Time (IST, UTC+2 or UTC+3 during DST).
+- Do not fabricate product details – always link to actual product pages.

@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Block admin and private areas
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /my-account/
+Disallow: /?add-to-cart=
+Disallow: /?wc-ajax=
+Disallow: /wp-json/
+
+# Allow search engines to crawl assets
+Allow: /wp-content/
+Allow: /wp-includes/
+
+# Sitemap
+Sitemap: https://barelofir.co.il/sitemap_index.xml
+Sitemap: https://barelofir.co.il/product-sitemap.xml
+Sitemap: https://barelofir.co.il/page-sitemap.xml
+
+# Crawl-delay (optional, for bots that respect it)
+Crawl-delay: 1
