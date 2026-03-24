@@ -14,7 +14,7 @@ $shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('sh
       <span class="hero-eyebrow">✦ בר-אל אופיר בע״מ – הבית של אנשי המקצוע</span>
       <h1 class="hero-title">כלי עבודה מקצועיים.<br /><span>מחיר שמגיע לך.</span></h1>
       <p class="hero-desc">
-        אלפי כלי עבודה ממותגים מובילים – DeWalt, Bosch, Makita, Stanley ועוד.
+        אלפי כלי עבודה ממותגים מובילים – Worx, Kress, Hunter Tools, Signet ועוד.
         הכל במקום אחד, עם משלוח מהיר לכל הארץ.
       </p>
       <div class="hero-ctas">
@@ -42,19 +42,19 @@ $shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('sh
     </div>
 
     <div class="hero-side">
-      <a href="<?php echo esc_url(add_query_arg('product_cat', 'dewalt', $shop_url)); ?>" class="side-banner s1">
+      <a href="<?php echo esc_url(add_query_arg('product_cat', 'hunter-tools', $shop_url)); ?>" class="side-banner s1">
         <div class="side-banner-tag">🔥 מבצע השבוע</div>
-        <div class="side-banner-title">DeWalt<br />עד 40% הנחה</div>
+        <div class="side-banner-title">Hunter Tools<br />עד 40% הנחה</div>
         <div class="side-banner-sub">על סדרת הקורדלס המלאה</div>
         <div class="side-banner-link">לכל המבצעים →</div>
         <div class="side-banner-icon">⚡</div>
       </a>
-      <a href="<?php echo esc_url(add_query_arg('product_cat', 'bitachon', $shop_url)); ?>" class="side-banner s2">
-        <div class="side-banner-tag">🟢 חדש במלאי</div>
-        <div class="side-banner-title">ציוד בטיחות<br />מקצועי</div>
-        <div class="side-banner-sub">קסדות, כפפות, משקפי מגן</div>
-        <div class="side-banner-link">לציוד הבטיחות →</div>
-        <div class="side-banner-icon">🛡️</div>
+      <a href="<?php echo esc_url(add_query_arg('product_cat', 'mevragot', $shop_url)); ?>" class="side-banner s2">
+        <div class="side-banner-tag">🔴 מחירי חיסול</div>
+        <div class="side-banner-title">מברגות<br />במחירי חיסול</div>
+        <div class="side-banner-sub">מלאי מוגבל – תפסו לפני שנגמר</div>
+        <div class="side-banner-link">לכל המברגות →</div>
+        <div class="side-banner-icon">🪛</div>
       </a>
     </div>
 
@@ -149,7 +149,11 @@ if (!is_wp_error($cats) && count($cats)): ?>
 <?php endif; ?>
 
 <?php
-$bestsellers = wc_get_products(['limit' => 8, 'orderby' => 'popularity', 'order' => 'DESC', 'status' => 'publish', 'return' => 'ids']);
+// Filter products to כלי עבודה (123) and all children only
+$_tool_cat_ids = array_merge([123], get_term_children(123, 'product_cat'));
+$_tool_tax_q = [['taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $_tool_cat_ids, 'operator' => 'IN']];
+
+$bestsellers = (new WP_Query(['post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 8, 'orderby' => 'meta_value_num', 'meta_key' => 'total_sales', 'order' => 'DESC', 'tax_query' => $_tool_tax_q, 'fields' => 'ids']))->posts;
 if ($bestsellers): ?>
 <section class="section" style="padding-top:0" aria-labelledby="bestsellers-title">
   <div class="section-head">
@@ -182,7 +186,7 @@ if ($bestsellers): ?>
 </div>
 
 <?php
-$new_products = wc_get_products(['limit' => 8, 'orderby' => 'date', 'order' => 'DESC', 'status' => 'publish', 'return' => 'ids']);
+$new_products = (new WP_Query(['post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 8, 'orderby' => 'date', 'order' => 'DESC', 'tax_query' => $_tool_tax_q, 'fields' => 'ids']))->posts;
 if ($new_products): ?>
 <section class="section" aria-labelledby="new-title">
   <div class="section-head">
@@ -199,9 +203,13 @@ if ($new_products): ?>
 <?php endif; ?>
 
 <?php
-$sale_ids = wc_get_product_ids_on_sale();
+$_all_sale = wc_get_product_ids_on_sale();
+$sale_ids = [];
+if (!empty($_all_sale)) {
+  $_sq = new WP_Query(['post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 8, 'post__in' => $_all_sale, 'orderby' => 'rand', 'tax_query' => $_tool_tax_q, 'fields' => 'ids']);
+  $sale_ids = $_sq->posts;
+}
 if ($sale_ids):
-  $sale_ids = array_slice($sale_ids, 0, 8);
 ?>
 <section class="section" aria-labelledby="sale-title">
   <div class="section-head">
