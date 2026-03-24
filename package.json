@@ -1,0 +1,9 @@
+{
+  "name": "barel-ofir-site",
+  "version": "1.0.0",
+  "description": "בר אל אופיר - אספקה טכנית",
+  "private": true,
+  "dependencies": {
+    "puppeteer": "^24.40.0"
+  }
+}
