@@ -1046,3 +1046,18 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
   .search-bar{width:100%!important;}
   .custom-logo img,.site-branding img{max-height:52px!important;width:auto!important;}
 }
+
+/* === MOBILE HEADER COMPLETE FIX === */
+/* hide mobile-search-row on desktop */
+.mobile-search-row { display:none; }
+
+@media(max-width:600px){
+  /* row 1 */
+  .header-inner{display:flex!important;align-items:center!important;flex-wrap:nowrap!important;height:62px!important;padding:0 12px!important;gap:8px!important;}
+  .header-inner .search-wrap{display:none!important;}
+  .custom-logo img,.site-branding img,.logo img{max-height:56px!important;min-height:44px!important;width:auto!important;}
+  /* row 2 */
+  .mobile-search-row{display:flex!important;padding:8px 12px!important;background:#fff!important;border-bottom:2px solid #c0001a!important;gap:8px!important;}
+  .mobile-search-row input{flex:1!important;border:1.5px solid #eee!important;border-radius:8px!important;padding:10px 14px!important;font-size:14px!important;outline:none!important;direction:rtl!important;}
+  .mobile-search-row button{background:#c0001a!important;color:#fff!important;border:none!important;border-radius:8px!important;padding:10px 16px!important;font-weight:700!important;white-space:nowrap!important;cursor:pointer!important;}
+}

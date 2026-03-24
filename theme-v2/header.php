@@ -47,5 +47,11 @@
   </div>
 </header>
 
+<!-- MOBILE SEARCH ROW (hidden on desktop via CSS) -->
+<div class="mobile-search-row">
+  <input type="search" placeholder="חפש מוצר, מותג, מק&quot;ט..." name="s" />
+  <button type="submit" onclick="this.closest('div').querySelector('input').form && this.closest('div').querySelector('input').form.submit(); window.location='/?s='+encodeURIComponent(this.previousElementSibling.value)">🔍 חיפוש</button>
+</div>
+
 <!-- CATEGORY NAV -->
 <?php barel_render_cat_nav(); ?>
