@@ -295,7 +295,7 @@ ul{list-style:none}
 .hero-visual{display:flex;justify-content:center;align-items:center}
 .hero-img-wrap{position:relative;width:100%;max-width:460px}
 .hero-img-wrap img{width:100%;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
-.whatsapp-float{position:fixed;bottom:24px;left:24px;z-index:9999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.whatsapp-float{position:fixed;bottom:24px;right:24px;left:auto;z-index:9999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;transition:transform .2s,box-shadow .2s}
 .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(37,211,102,.5)}
 .whatsapp-float svg{width:28px;height:28px;fill:#fff}
 @media(max-width:768px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-visual{display:none}.hero-ctas{justify-content:center}}
@@ -972,7 +972,7 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 
 /* Brands section */
 .brands-section { background:#f8f8f8!important; padding:32px 20px!important; direction:rtl!important }
-.brands-inner { max-width:1280px!important; margin:0 auto!important }
+.brands-inner { max-width:1280px!important; margin:0 auto!important; display:block!important; overflow:hidden!important; }
 .brands-title { font-family:Rubik,sans-serif!important; font-weight:800!important; font-size:16px!important; color:#111!important; text-align:center!important; margin-bottom:20px!important }
 .brands-row { display:flex!important; gap:12px!important; flex-wrap:wrap!important; justify-content:center!important; align-items:center!important }
 .brand-item { padding:10px 20px!important; background:#fff!important; border:1.5px solid #e5e5e5!important; border-radius:8px!important; font-size:14px!important; font-weight:800!important; color:#333!important; transition:border-color .2s!important }
