@@ -1031,3 +1031,10 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
   }
   .whatsapp-float span, .whatsapp-btn span, .whatsapp-float-txt { display:none!important; }
 }
+
+/* hero stats mobile fix */
+@media(max-width:600px){
+  .hero-stats,.hero-proof,.hero-trust{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:4px!important;}
+  .hero-stat-num,.proof-num,.hero-stat-num span{font-size:20px!important;}
+  .hero-stat-label,.proof-label{font-size:9px!important;}
+}
