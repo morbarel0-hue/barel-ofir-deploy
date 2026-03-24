@@ -1016,3 +1016,18 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 .whatsapp-float,a[href*="wa.me"],.whatsapp-btn{position:fixed!important;bottom:20px!important;right:20px!important;left:auto!important;width:52px!important;height:52px!important;border-radius:50%!important;z-index:999!important;box-shadow:0 4px 12px rgba(0,0,0,.2)!important;}
 .whatsapp-float span,.whatsapp-btn span{display:none!important;}
 .whatsapp-float-txt{display:none!important;}
+
+/* === MOBILE ONLY FIXES (max-width:600px) === */
+@media(max-width:600px){
+  /* 1. Search bar - hide in header, show dedicated bar below */
+  .header-inner { flex-wrap:nowrap!important; height:58px!important; }
+  .search-wrap { display:none!important; }
+  .mobile-search-bar { display:flex!important; padding:8px 12px!important; background:#fff!important; border-bottom:1px solid #eee!important; }
+
+  /* 2. WhatsApp - left bottom, 48px, no text */
+  .whatsapp-float, a[href*="wa.me"], .whatsapp-btn, #whatsapp-button {
+    position:fixed!important; bottom:16px!important; left:16px!important; right:auto!important;
+    width:48px!important; height:48px!important; border-radius:50%!important; z-index:999!important;
+  }
+  .whatsapp-float span, .whatsapp-btn span, .whatsapp-float-txt { display:none!important; }
+}
