@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>כלי חשמל | בר-אל אופיר בע"מ</title>
+  <meta name="description" content="כלי חשמל מקצועיים – מברגות, מסורים, גראינדרים ועוד. מותגים מובילים במחירים הטובים ביותר. משלוח מהיר לכל הארץ."/>
+  <meta name="robots" content="index, follow"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"כלי חשמל","description":"כלי חשמל מקצועיים","url":"https://www.barel-ofir.co.il/product-category/kley-hashmal/"}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#c0001a;--red-dark:#8f0013;--red-bg:#fff5f5;--black:#111;--gray-900:#222;--gray-700:#444;--gray-500:#777;--gray-300:#ccc;--gray-100:#f4f4f4;--gray-50:#fafafa;--white:#fff;--border:#e5e5e5;--radius:8px;--radius-lg:14px;--shadow-sm:0 1px 4px rgba(0,0,0,0.08);--shadow-md:0 4px 16px rgba(0,0,0,0.1)}
+    html{scroll-behavior:smooth}
+    body{background:#fff;color:#222;font-family:'Heebo',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+
+    /* TOPBAR */
+    .topbar{background:var(--red);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 16px}
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:200;background:#fff;border-bottom:2px solid var(--red);box-shadow:var(--shadow-sm)}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:70px}
+    .logo-text{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:var(--red);letter-spacing:-1px}
+    .logo-sub{font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase}
+    .logo-wrap{display:flex;flex-direction:column}
+    .search-wrap{flex:1;max-width:560px}
+    .search-bar{display:flex;border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
+    .search-bar:focus-within{border-color:var(--red)}
+    .search-bar input{flex:1;border:none;outline:none;padding:10px 14px;font-family:'Heebo',sans-serif;font-size:14px;color:#111}
+    .search-bar input::placeholder{color:var(--gray-500)}
+    .search-bar button{background:var(--red);border:none;padding:0 18px;cursor:pointer;color:#fff;font-size:14px;font-weight:700;font-family:'Heebo',sans-serif}
+    .nav-acts{display:flex;align-items:center;gap:6px;margin-right:auto}
+    .nav-act{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:6px;font-size:11px;color:var(--gray-700);cursor:pointer;gap:3px}
+    .nav-act:hover{background:var(--gray-100);color:var(--red)}
+    .nav-act .ic{font-size:20px}
+    .cart-btn{display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:var(--radius)}
+    .cart-n{background:#fff;color:var(--red);font-size:11px;font-weight:900;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+    /* CAT NAV */
+    .cat-nav{background:#222}
+    .cat-nav-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;overflow-x:auto;scrollbar-width:none}
+    .cat-nav-inner::-webkit-scrollbar{display:none}
+    .cat-link{padding:12px 18px;font-size:13px;font-weight:600;color:rgba(255,255,255,.7);white-space:nowrap;border-bottom:3px solid transparent}
+    .cat-link:hover,.cat-link.active{color:#fff;border-bottom-color:var(--red)}
+
+    /* BREADCRUMB */
+    .breadcrumb{background:var(--gray-50);border-bottom:1px solid var(--border);padding:10px 0}
+    .breadcrumb-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-500)}
+    .breadcrumb a{color:var(--gray-500);transition:color .2s}
+    .breadcrumb a:hover{color:var(--red)}
+    .breadcrumb span{color:var(--gray-300)}
+    .breadcrumb strong{color:var(--black)}
+
+    /* CATEGORY HEADER */
+    .cat-header{background:var(--black);padding:28px 0;border-bottom:3px solid var(--red)}
+    .cat-header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+    .cat-header h1{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:#fff}
+    .cat-header h1 span{color:var(--red)}
+    .cat-header-meta{font-size:13px;color:rgba(255,255,255,.5);margin-top:4px}
+
+    /* SUB CATS */
+    .sub-cats{max-width:1280px;margin:20px auto 0;padding:0 20px;display:flex;gap:10px;flex-wrap:wrap}
+    .sub-cat{background:#fff;border:1.5px solid var(--border);border-radius:999px;padding:6px 16px;font-size:13px;font-weight:600;color:var(--gray-700);cursor:pointer;transition:all .2s}
+    .sub-cat:hover,.sub-cat.active{background:var(--red);color:#fff;border-color:var(--red)}
+
+    /* MAIN LAYOUT */
+    .shop-layout{max-width:1280px;margin:24px auto 48px;padding:0 20px;display:grid;grid-template-columns:260px 1fr;gap:28px}
+
+    /* SIDEBAR */
+    .sidebar{}
+    .filter-box{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:16px}
+    .filter-head{padding:14px 18px;background:var(--gray-50);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+    .filter-title{font-size:14px;font-weight:700;color:#111}
+    .filter-arrow{font-size:12px;color:var(--gray-500);transition:transform .2s}
+    .filter-body{padding:16px 18px}
+
+    /* Price Range */
+    .price-inputs{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    .price-input{flex:1;border:1.5px solid var(--border);border-radius:var(--radius);padding:8px 10px;font-family:'Heebo',sans-serif;font-size:13px;text-align:center;outline:none}
+    .price-input:focus{border-color:var(--red)}
+    .price-sep{color:var(--gray-500);font-size:13px}
+    .price-range{width:100%;accent-color:var(--red)}
+    .apply-btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:var(--radius);padding:9px;font-family:'Heebo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;margin-top:10px}
+
+    /* Checkbox filters */
+    .filter-options{display:flex;flex-direction:column;gap:10px}
+    .filter-opt{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--gray-700)}
+    .filter-opt input[type=checkbox]{width:16px;height:16px;accent-color:var(--red);cursor:pointer;flex-shrink:0}
+    .filter-opt:hover{color:var(--red)}
+    .filter-count{margin-right:auto;font-size:11px;color:var(--gray-500)}
+
+    /* Star filter */
+    .star-opts{display:flex;flex-direction:column;gap:8px}
+    .star-opt{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--gray-700)}
+    .star-opt input{accent-color:var(--red)}
+    .stars{color:#f5a623}
+
+    /* Active filters */
+    .active-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .active-tag{display:flex;align-items:center;gap:6px;background:var(--red-bg);border:1px solid var(--red);color:var(--red);font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px}
+    .active-tag button{background:none;border:none;cursor:pointer;color:var(--red);font-size:14px;line-height:1;padding:0}
+    .clear-all{font-size:12px;color:var(--gray-500);text-decoration:underline;cursor:pointer;align-self:center}
+
+    /* PRODUCTS AREA */
+    .products-area{}
+    .products-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px}
+    .products-count{font-size:14px;color:var(--gray-700)}
+    .products-count strong{color:#111}
+    .sort-wrap{display:flex;align-items:center;gap:8px}
+    .sort-label{font-size:13px;color:var(--gray-500)}
+    .sort-select{border:1.5px solid var(--border);border-radius:var(--radius);padding:8px 12px;font-family:'Heebo',sans-serif;font-size:13px;color:#111;outline:none;cursor:pointer;background:#fff}
+    .sort-select:focus{border-color:var(--red)}
+    .view-toggle{display:flex;gap:4px}
+    .view-btn{width:34px;height:34px;border:1.5px solid var(--border);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .2s;background:#fff}
+    .view-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+
+    /* GRID */
+    .prods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .prod-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,box-shadow .2s,transform .2s}
+    .prod-card:hover{border-color:var(--red);box-shadow:0 6px 24px rgba(192,0,26,.1);transform:translateY(-3px)}
+    .prod-img{background:var(--gray-50);height:180px;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;border-bottom:1px solid var(--border)}
+    .prod-wishlist{position:absolute;top:10px;left:10px;width:30px;height:30px;background:#fff;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;opacity:0;transition:opacity .2s}
+    .prod-card:hover .prod-wishlist{opacity:1}
+    .badge{position:absolute;top:10px;right:10px;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px}
+    .b-sale{background:var(--red);color:#fff}
+    .b-new{background:#1a7a3a;color:#fff}
+    .b-hot{background:#e65c00;color:#fff}
+    .prod-body{padding:14px 14px 8px;flex:1}
+    .prod-brand{font-size:10px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+    .prod-name{font-size:14px;font-weight:600;color:#111;line-height:1.35;margin-bottom:6px}
+    .prod-stars{font-size:11px;color:#f5a623}
+    .prod-stars span{color:var(--gray-500)}
+    .prod-footer{padding:10px 14px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid var(--gray-100)}
+    .price-main{font-family:'Rubik',sans-serif;font-weight:900;font-size:20px;color:#111}
+    .price-old{font-size:11px;color:var(--gray-500);text-decoration:line-through}
+    .price-save{font-size:10px;color:var(--red);font-weight:700}
+    .add-btn{background:var(--red);color:#fff;border:none;border-radius:var(--radius);padding:9px 14px;font-family:'Heebo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s}
+    .add-btn:hover{background:var(--red-dark)}
+
+    /* PAGINATION */
+    .pagination{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:32px}
+    .page-btn{width:38px;height:38px;border:1.5px solid var(--border);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;cursor:pointer;color:var(--gray-700);background:#fff;transition:all .2s}
+    .page-btn:hover{border-color:var(--red);color:var(--red)}
+    .page-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+    .page-btn.dots{border:none;cursor:default}
+
+    /* SEO TEXT */
+    .seo-text{max-width:1280px;margin:0 auto 48px;padding:0 20px}
+    .seo-box{background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px}
+    .seo-box h2{font-family:'Rubik',sans-serif;font-size:18px;font-weight:800;color:#111;margin-bottom:12px}
+    .seo-box p{font-size:14px;color:var(--gray-700);line-height:1.75}
+
+    /* FOOTER */
+    footer{background:#222;color:rgba(255,255,255,.6)}
+    .footer-top{max-width:1280px;margin:0 auto;padding:48px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px}
+    .f-logo{font-family:'Rubik',sans-serif;font-weight:900;font-size:24px;color:#fff;margin-bottom:12px}
+    .f-logo span{color:var(--red)}
+    .f-desc{font-size:13px;line-height:1.7;color:rgba(255,255,255,.45);margin-bottom:16px}
+    .f-col-title{font-size:12px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--red)}
+    .f-links{display:flex;flex-direction:column;gap:9px}
+    .f-links a{font-size:13px;color:rgba(255,255,255,.45);transition:color .2s}
+    .f-links a:hover{color:var(--red)}
+    .f-bottom{border-top:1px solid rgba(255,255,255,.08)}
+    .f-bottom-inner{max-width:1280px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+    .f-bdg{display:flex;gap:6px}
+    .f-b{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 8px;font-size:10px;color:rgba(255,255,255,.35)}
+
+    @media(max-width:1024px){.shop-layout{grid-template-columns:1fr}.sidebar{display:none}.prods-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.prods-grid{grid-template-columns:1fr}}
+
+    /* ── GLOBAL MOBILE HEADER FIX ── */
+    @media(max-width:600px){
+      .topbar{font-size:11px !important;padding:6px 10px !important;line-height:1.4 !important;white-space:normal !important}
+      .header-inner{height:auto !important;min-height:56px !important;padding:10px 12px !important;gap:10px !important;flex-wrap:nowrap !important;display:flex !important;align-items:center !important;overflow:visible !important}
+      .logo-wrap{flex-shrink:0 !important}
+      .logo-text{font-size:20px !important;letter-spacing:-.5px !important;white-space:nowrap !important}
+      .logo-sub{display:block !important;font-size:8px !important;white-space:nowrap !important}
+      .search-wrap{display:none !important}
+      .nav-acts{margin-right:auto !important;gap:4px !important;flex-shrink:0 !important;display:flex !important;align-items:center !important}
+      .nav-act{padding:4px 6px !important;font-size:10px !important;gap:2px !important;white-space:nowrap !important}
+      .nav-act .ic{font-size:16px !important}
+      .cart-btn{padding:8px 12px !important;font-size:12px !important;gap:5px !important;flex-shrink:0 !important;white-space:nowrap !important}
+      .cart-n{width:16px !important;height:16px !important;font-size:9px !important}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">🚚 משלוח חינם בהזמנות מעל ₪299 &nbsp;|&nbsp; ⏱ אספקה תוך 24–48 שעות</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/"><div class="logo-wrap"><div class="logo-text">בר-אל</div><div class="logo-sub">אופיר בע״מ</div></div></a>
+    <div class="search-wrap"><div class="search-bar"><button>🔍 חיפוש</button><input type="search" placeholder='חפש מוצר, מותג, מק"ט...'/></div></div>
+    <div class="nav-acts">
+      <a href="/my-account/" class="nav-act"><span class="ic">👤</span><span>החשבון</span></a>
+      <a href="/wishlist/" class="nav-act"><span class="ic">❤️</span><span>מועדפים</span></a>
+      <a href="/cart/" class="cart-btn">🛒 עגלה<span class="cart-n">0</span></a>
+    </div>
+  </div>
+</header>
+
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <a href="/" class="cat-link">כל הכלים</a>
+    <a href="/product-category/kley-hashmal/" class="cat-link active">כלי חשמל</a>
+    <a href="/product-category/kley-yad/" class="cat-link">כלי יד</a>
+    <a href="/product-category/mevragot/" class="cat-link">מברגות</a>
+    <a href="/product-category/masarim/" class="cat-link">מסורים</a>
+    <a href="/product-category/midida/" class="cat-link">מדידה</a>
+    <a href="/product-category/bitachon/" class="cat-link">בטיחות</a>
+    <a href="/sale/" class="cat-link" style="color:#f5a623">🔥 מבצעים</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">בית</a>
+    <span>›</span>
+    <strong>כלי חשמל</strong>
+  </div>
+</div>
+
+<div class="cat-header">
+  <div class="cat-header-inner">
+    <div>
+      <h1>כלי <span>חשמל</span> מקצועיים</h1>
+      <div class="cat-header-meta">320 מוצרים | DeWalt, Bosch, Makita, Milwaukee ועוד</div>
+    </div>
+  </div>
+</div>
+
+<div class="sub-cats">
+  <div class="sub-cat active">הכל</div>
+  <div class="sub-cat">מברגות קורדלס</div>
+  <div class="sub-cat">מסורים חשמליים</div>
+  <div class="sub-cat">גראינדרים</div>
+  <div class="sub-cat">פלסים לייזר</div>
+  <div class="sub-cat">מקדחות</div>
+  <div class="sub-cat">ג'יגסו</div>
+  <div class="sub-cat">פטישי הרס</div>
+</div>
+
+<div class="shop-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Active filters -->
+    <div class="active-filters">
+      <div class="active-tag">כלי חשמל <button>✕</button></div>
+      <div class="active-tag">DeWalt <button>✕</button></div>
+      <span class="clear-all">נקה הכל</span>
+    </div>
+
+    <!-- Price -->
+    <div class="filter-box">
+      <div class="filter-head">
+        <span class="filter-title">טווח מחירים</span>
+        <span class="filter-arrow">▼</span>
+      </div>
+      <div class="filter-body">
+        <div class="price-inputs">
+          <input class="price-input" type="number" placeholder="₪0" value="0"/>
+          <span class="price-sep">—</span>
+          <input class="price-input" type="number" placeholder="₪5000" value="5000"/>
+        </div>
+        <input type="range" class="price-range" min="0" max="5000" value="5000"/>
+        <button class="apply-btn">החל</button>
+      </div>
+    </div>
+
+    <!-- Brand -->
+    <div class="filter-box">
+      <div class="filter-head">
+        <span class="filter-title">מותג</span>
+        <span class="filter-arrow">▼</span>
+      </div>
+      <div class="filter-body">
+        <div class="filter-options">
+          <label class="filter-opt"><input type="checkbox" checked/> DeWalt <span class="filter-count">(84)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> Bosch <span class="filter-count">(72)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> Makita <span class="filter-count">(68)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> Milwaukee <span class="filter-count">(45)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> Hilti <span class="filter-count">(31)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> Metabo <span class="filter-count">(20)</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voltage -->
+    <div class="filter-box">
+      <div class="filter-head">
+        <span class="filter-title">מתח</span>
+        <span class="filter-arrow">▼</span>
+      </div>
+      <div class="filter-body">
+        <div class="filter-options">
+          <label class="filter-opt"><input type="checkbox"/> 12V <span class="filter-count">(45)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> 18V <span class="filter-count">(120)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> 20V <span class="filter-count">(38)</span></label>
+          <label class="filter-opt"><input type="checkbox"/> 220V (חשמל) <span class="filter-count">(117)</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating -->
+    <div class="filter-box">
+      <div class="filter-head">
+        <span class="filter-title">דירוג לקוחות</span>
+        <span class="filter-arrow">▼</span>
+      </div>
+      <div class="filter-body">
+        <div class="star-opts">
+          <label class="star-opt"><input type="radio" name="stars"/> <span class="stars">★★★★★</span> ומעלה</label>
+          <label class="star-opt"><input type="radio" name="stars"/> <span class="stars">★★★★</span> ומעלה</label>
+          <label class="star-opt"><input type="radio" name="stars"/> <span class="stars">★★★</span> ומעלה</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Availability -->
+    <div class="filter-box">
+      <div class="filter-head">
+        <span class="filter-title">זמינות</span>
+        <span class="filter-arrow">▼</span>
+      </div>
+      <div class="filter-body">
+        <div class="filter-options">
+          <label class="filter-opt"><input type="checkbox" checked/> במלאי בלבד</label>
+          <label class="filter-opt"><input type="checkbox"/> כולל הזמנה מיוחדת</label>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- PRODUCTS -->
+  <div class="products-area">
+    <div class="products-toolbar">
+      <div class="products-count">מציג <strong>1–12</strong> מתוך <strong>320</strong> מוצרים</div>
+      <div class="sort-wrap">
+        <span class="sort-label">מיון לפי:</span>
+        <select class="sort-select">
+          <option>פופולריות</option>
+          <option>מחיר: נמוך לגבוה</option>
+          <option>מחיר: גבוה לנמוך</option>
+          <option>חדש ביותר</option>
+          <option>דירוג גבוה</option>
+        </select>
+        <div class="view-toggle">
+          <div class="view-btn active">⊞</div>
+          <div class="view-btn">☰</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prods-grid">
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🔧<span class="badge b-sale">-30%</span><button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">DeWalt</div>
+          <h2 class="prod-name" itemprop="name">מקדחה קורדלס 18V DCD776</h2>
+          <div class="prod-stars">★★★★★ <span>(214)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪489</div><div class="price-old">₪699</div><div class="price-save">חיסכון ₪210</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🪚<span class="badge b-new">חדש</span><button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">Bosch</div>
+          <h2 class="prod-name" itemprop="name">מסור עגול GSK 190 Professional</h2>
+          <div class="prod-stars">★★★★☆ <span>(87)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪620</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🪛<span class="badge b-hot">פופולרי</span><button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">Makita</div>
+          <h2 class="prod-name" itemprop="name">מברגה קורדלס DF457DWE 18V</h2>
+          <div class="prod-stars">★★★★★ <span>(301)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪549</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🔨<span class="badge b-sale">-20%</span><button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">Milwaukee</div>
+          <h2 class="prod-name" itemprop="name">פטיש הרס SDS Plus 800W</h2>
+          <div class="prod-stars">★★★★★ <span>(156)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪890</div><div class="price-old">₪1,120</div><div class="price-save">חיסכון ₪230</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">📐<button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">Bosch</div>
+          <h2 class="prod-name" itemprop="name">פלס לייזר GLM 50-27 CG</h2>
+          <div class="prod-stars">★★★★☆ <span>(63)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪780</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🔌<span class="badge b-sale">-15%</span><button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">DeWalt</div>
+          <h2 class="prod-name" itemprop="name">גראינדר זווית 125mm DWE4011</h2>
+          <div class="prod-stars">★★★★★ <span>(98)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪340</div><div class="price-old">₪400</div><div class="price-save">חיסכון ₪60</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🪚<button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">DeWalt</div>
+          <h2 class="prod-name" itemprop="name">מסור סייבר קורדלס DCS387</h2>
+          <div class="prod-stars">★★★★★ <span>(72)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪920</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🔦<span class="badge b-new">חדש</span><button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">Milwaukee</div>
+          <h2 class="prod-name" itemprop="name">פנס LED נטען M18 2000 לומן</h2>
+          <div class="prod-stars">★★★★★ <span>(42)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪340</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+
+      <article class="prod-card" itemscope itemtype="https://schema.org/Product">
+        <div class="prod-img">🪛<span class="badge b-sale">-25%</span><button class="prod-wishlist">♡</button></div>
+        <div class="prod-body">
+          <div class="prod-brand" itemprop="brand">Makita</div>
+          <h2 class="prod-name" itemprop="name">מברגה מקוונת DHP484Z 18V</h2>
+          <div class="prod-stars">★★★★☆ <span>(118)</span></div>
+        </div>
+        <div class="prod-footer">
+          <div><div class="price-main">₪420</div><div class="price-old">₪560</div><div class="price-save">חיסכון ₪140</div></div>
+          <button class="add-btn">+ לעגלה</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <div class="page-btn">‹</div>
+      <div class="page-btn active">1</div>
+      <div class="page-btn">2</div>
+      <div class="page-btn">3</div>
+      <div class="page-btn dots">...</div>
+      <div class="page-btn">27</div>
+      <div class="page-btn">›</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEO TEXT -->
+<div class="seo-text">
+  <div class="seo-box">
+    <h2>כלי חשמל מקצועיים – בר-אל אופיר בע״מ</h2>
+    <p>בר-אל אופיר מציעה מגוון רחב של כלי חשמל מקצועיים למקצוענים ואנשי DIY. מברגות קורדלס, מסורים חשמליים, גראינדרים, פלסי לייזר ועוד – הכל ממותגים מובילים כמו DeWalt, Bosch, Makita ו-Milwaukee. כל המוצרים מגיעים עם אחריות יצרן מלאה ושירות לאחר מכירה. הזמינו היום ותקבלו משלוח מהיר לכל הארץ.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div><div class="f-logo">בר-<span>אל</span> אופיר בע״מ</div><p class="f-desc">החנות המקצועית לכלי עבודה בישראל.</p></div>
+    <div><div class="f-col-title">קטגוריות</div><div class="f-links"><a href="#">כלי חשמל</a><a href="#">כלי יד</a><a href="#">מברגות</a><a href="#">מסורים</a><a href="#">מדידה</a></div></div>
+    <div><div class="f-col-title">שירות</div><div class="f-links"><a href="#">צור קשר</a><a href="#">החזרות</a><a href="#">מעקב הזמנה</a><a href="#">שאלות נפוצות</a></div></div>
+    <div><div class="f-col-title">אודות</div><div class="f-links"><a href="#">אודותינו</a><a href="#">בלוג</a><a href="#">פרטיות</a><a href="#">תנאי שימוש</a></div></div>
+  </div>
+  <div class="f-bottom"><div class="f-bottom-inner"><span style="color:rgba(255,255,255,.3)">© 2025 בר-אל אופיר בע״מ</span><div class="f-bdg"><span class="f-b">🔒 SSL</span><span class="f-b">✅ רשום</span><span class="f-b">💳 מאובטח</span></div></div></div>
+</footer>
+
+</body>
+</html>

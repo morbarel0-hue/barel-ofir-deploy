@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>צור קשר | בר-אל אופיר בע"מ</title>
+  <meta name="description" content="צרו קשר עם בר-אל אופיר – שירות לקוחות, ייעוץ מקצועי, שאלות על מוצרים ומשלוחים. אנחנו כאן לעזור!"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"צור קשר – בר-אל אופיר","url":"https://www.barel-ofir.co.il/contact/"}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--red:#c0001a;--red-bg:#fff5f5;--black:#111;--gray-700:#444;--gray-500:#777;--gray-100:#f4f4f4;--gray-50:#fafafa;--border:#e5e5e5;--radius:8px;--radius-lg:14px;--shadow-sm:0 1px 4px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.1)}
+    body{background:#fff;color:#222;font-family:'Heebo',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    .topbar{background:var(--red);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 16px}
+    header{position:sticky;top:0;z-index:200;background:#fff;border-bottom:2px solid var(--red);box-shadow:var(--shadow-sm)}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:20px;height:70px}
+    .logo-text{font-family:'Rubik',sans-serif;font-weight:900;font-size:28px;color:var(--red);letter-spacing:-1px}
+    .logo-sub{font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase}
+    .logo-wrap{display:flex;flex-direction:column}
+    .search-wrap{flex:1;max-width:560px}
+    .search-bar{display:flex;border:2px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .search-bar input{flex:1;border:none;outline:none;padding:10px 14px;font-family:'Heebo',sans-serif;font-size:14px}
+    .search-bar button{background:var(--red);border:none;padding:0 18px;cursor:pointer;color:#fff;font-weight:700;font-family:'Heebo',sans-serif}
+    .nav-acts{display:flex;align-items:center;gap:6px;margin-right:auto}
+    .nav-act{display:flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:6px;font-size:11px;color:var(--gray-700);cursor:pointer;gap:3px}
+    .nav-act:hover{background:var(--gray-100);color:var(--red)}
+    .nav-act .ic{font-size:20px}
+    .cart-btn{display:flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:var(--radius)}
+    .cart-n{background:#fff;color:var(--red);font-size:11px;font-weight:900;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .breadcrumb{background:var(--gray-50);border-bottom:1px solid var(--border);padding:10px 0}
+    .breadcrumb-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-500)}
+
+    /* HERO */
+    .page-hero{background:var(--black);padding:48px 20px;text-align:center;border-bottom:3px solid var(--red)}
+    .page-hero h1{font-family:'Rubik',sans-serif;font-weight:900;font-size:32px;color:#fff;margin-bottom:8px}
+    .page-hero h1 span{color:var(--red)}
+    .page-hero p{font-size:15px;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto}
+
+    /* CONTACT CARDS */
+    .contact-cards{max-width:1280px;margin:40px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .contact-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:28px 20px;text-align:center;transition:border-color .2s,box-shadow .2s,transform .2s}
+    .contact-card:hover{border-color:var(--red);box-shadow:0 6px 20px rgba(192,0,26,.1);transform:translateY(-3px)}
+    .contact-card-icon{font-size:36px;margin-bottom:12px}
+    .contact-card-title{font-family:'Rubik',sans-serif;font-weight:800;font-size:16px;color:#111;margin-bottom:6px}
+    .contact-card-val{font-size:14px;font-weight:700;color:var(--red);margin-bottom:4px}
+    .contact-card-sub{font-size:12px;color:var(--gray-500)}
+
+    /* MAIN */
+    .contact-main{max-width:1280px;margin:40px auto 56px;padding:0 20px;display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
+
+    /* FORM */
+    .contact-form-box{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:32px}
+    .form-title{font-family:'Rubik',sans-serif;font-weight:800;font-size:20px;color:#111;margin-bottom:4px}
+    .form-sub{font-size:13px;color:var(--gray-500);margin-bottom:24px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group.full{grid-column:1/-1}
+    .form-label{font-size:13px;font-weight:700;color:#111}
+    .form-label span{color:var(--red)}
+    .form-input,.form-select,.form-textarea{border:1.5px solid var(--border);border-radius:var(--radius);padding:11px 14px;font-family:'Heebo',sans-serif;font-size:14px;color:#111;outline:none;transition:border-color .2s;background:#fff;width:100%}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--red)}
+    .form-textarea{height:130px;resize:vertical}
+    .submit-btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:var(--radius);padding:14px;font-family:'Heebo',sans-serif;font-size:16px;font-weight:700;cursor:pointer;margin-top:8px;transition:background .2s}
+    .submit-btn:hover{background:#8f0013}
+    .form-note{font-size:11px;color:var(--gray-500);text-align:center;margin-top:10px}
+
+    /* SIDE INFO */
+    .contact-side{}
+    .side-box{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px}
+    .side-box-title{font-family:'Rubik',sans-serif;font-weight:800;font-size:16px;color:#111;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--red)}
+    .hours-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px}
+    .hours-row span:first-child{color:var(--gray-700)}
+    .hours-row span:last-child{font-weight:700;color:#111}
+    .hours-row.today span{color:var(--red)}
+    .faq-mini{display:flex;flex-direction:column;gap:10px}
+    .faq-mini-item{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .faq-mini-q{padding:12px 14px;font-size:13px;font-weight:700;color:#111;cursor:pointer;background:#fff}
+    .faq-mini-q:hover{background:var(--gray-50)}
+    .faq-mini-a{padding:0 14px 12px;font-size:13px;color:var(--gray-700);line-height:1.65}
+
+    /* MAP placeholder */
+    .map-box{background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:var(--radius-lg);height:200px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-align:center;border:1px solid var(--border);margin-bottom:16px}
+
+    footer{background:#222;color:rgba(255,255,255,.6)}
+    .f-bottom{border-top:1px solid rgba(255,255,255,.08)}
+    .f-bottom-inner{max-width:1280px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px}
+
+    @media(max-width:900px){.contact-main{grid-template-columns:1fr}.contact-cards{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){.contact-cards{grid-template-columns:1fr}}
+
+    /* ── GLOBAL MOBILE HEADER FIX ── */
+    @media(max-width:600px){
+      .topbar{font-size:11px !important;padding:6px 10px !important;line-height:1.4 !important;white-space:normal !important}
+      .header-inner{height:auto !important;min-height:56px !important;padding:10px 12px !important;gap:10px !important;flex-wrap:nowrap !important;display:flex !important;align-items:center !important;overflow:visible !important}
+      .logo-wrap{flex-shrink:0 !important}
+      .logo-text{font-size:20px !important;letter-spacing:-.5px !important;white-space:nowrap !important}
+      .logo-sub{display:block !important;font-size:8px !important;white-space:nowrap !important}
+      .search-wrap{display:none !important}
+      .nav-acts{margin-right:auto !important;gap:4px !important;flex-shrink:0 !important;display:flex !important;align-items:center !important}
+      .nav-act{padding:4px 6px !important;font-size:10px !important;gap:2px !important;white-space:nowrap !important}
+      .nav-act .ic{font-size:16px !important}
+      .cart-btn{padding:8px 12px !important;font-size:12px !important;gap:5px !important;flex-shrink:0 !important;white-space:nowrap !important}
+      .cart-n{width:16px !important;height:16px !important;font-size:9px !important}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">🚚 משלוח חינם בהזמנות מעל ₪299 &nbsp;|&nbsp; ⏱ אספקה תוך 24–48 שעות</div>
+<header>
+  <div class="header-inner">
+    <a href="/"><div class="logo-wrap"><div class="logo-text">בר-אל</div><div class="logo-sub">אופיר בע״מ</div></div></a>
+    <div class="search-wrap"><div class="search-bar"><button>🔍 חיפוש</button><input type="search" placeholder='חפש מוצר...'/></div></div>
+    <div class="nav-acts">
+      <a href="/my-account/" class="nav-act"><span class="ic">👤</span><span>החשבון</span></a>
+      <a href="/cart/" class="cart-btn">🛒 עגלה<span class="cart-n">0</span></a>
+    </div>
+  </div>
+</header>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">בית</a><span>›</span><strong>צור קשר</strong></div></div>
+
+<div class="page-hero">
+  <h1>צור <span>קשר</span> איתנו</h1>
+  <p>שאלות? ייעוץ? בעיה עם הזמנה? אנחנו כאן לעזור – מהר ובמקצועיות</p>
+</div>
+
+<div class="contact-cards">
+  <div class="contact-card">
+    <div class="contact-card-icon">📞</div>
+    <div class="contact-card-title">טלפון</div>
+    <div class="contact-card-val">03-XXX-XXXX</div>
+    <div class="contact-card-sub">א'–ה' 08:00–18:00</div>
+  </div>
+  <div class="contact-card">
+    <div class="contact-card-icon">📧</div>
+    <div class="contact-card-title">אימייל</div>
+    <div class="contact-card-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad3d4dcd5fad8dbc8dfd697d5dcd3c894d9d594d3d6">[email&#160;protected]</a></div>
+    <div class="contact-card-sub">מענה תוך 2–4 שעות</div>
+  </div>
+  <div class="contact-card">
+    <div class="contact-card-icon">💬</div>
+    <div class="contact-card-title">וואטסאפ</div>
+    <div class="contact-card-val">050-XXX-XXXX</div>
+    <div class="contact-card-sub">זמין בשעות העסקים</div>
+  </div>
+  <div class="contact-card">
+    <div class="contact-card-icon">📍</div>
+    <div class="contact-card-title">כתובת</div>
+    <div class="contact-card-val">רחוב ...</div>
+    <div class="contact-card-sub">ישראל</div>
+  </div>
+</div>
+
+<div class="contact-main">
+  <div class="contact-form-box">
+    <div class="form-title">שלח לנו הודעה</div>
+    <div class="form-sub">נחזור אליך תוך שעות ספורות בימי עסקים</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">שם מלא <span>*</span></label>
+        <input class="form-input" type="text" placeholder="ישראל ישראלי"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">טלפון <span>*</span></label>
+        <input class="form-input" type="tel" placeholder="05X-XXX-XXXX"/>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">אימייל <span>*</span></label>
+        <input class="form-input" type="email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">נושא הפנייה</label>
+        <select class="form-select">
+          <option>שאלה לפני רכישה</option>
+          <option>מעקב הזמנה</option>
+          <option>החזרה / החלפה</option>
+          <option>בעיה טכנית</option>
+          <option>אחריות</option>
+          <option>אחר</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">תוכן ההודעה <span>*</span></label>
+        <textarea class="form-textarea" placeholder="ספר לנו כיצד נוכל לעזור..."></textarea>
+      </div>
+    </div>
+    <button class="submit-btn">📨 שלח הודעה</button>
+    <div class="form-note">🔒 הפרטים שלך מוגנים ולא יועברו לצד שלישי</div>
+  </div>
+
+  <div class="contact-side">
+    <div class="map-box">
+      🗺️<br/><br/>
+      <span style="opacity:.7;font-size:13px">מפת גוגל תופיע כאן<br/>לאחר הגדרת הכתובת</span>
+    </div>
+
+    <div class="side-box">
+      <div class="side-box-title">שעות פעילות</div>
+      <div class="hours-row today"><span>ראשון</span><span>08:00–18:00</span></div>
+      <div class="hours-row today"><span>שני</span><span>08:00–18:00</span></div>
+      <div class="hours-row today"><span>שלישי</span><span>08:00–18:00</span></div>
+      <div class="hours-row today"><span>רביעי</span><span>08:00–18:00</span></div>
+      <div class="hours-row today"><span>חמישי</span><span>08:00–18:00</span></div>
+      <div class="hours-row"><span>שישי</span><span>08:00–13:00</span></div>
+      <div class="hours-row"><span>שבת</span><span style="color:#e53935">סגור</span></div>
+    </div>
+
+    <div class="side-box">
+      <div class="side-box-title">שאלות נפוצות</div>
+      <div class="faq-mini">
+        <div class="faq-mini-item">
+          <div class="faq-mini-q">כמה זמן לוקח המשלוח?</div>
+          <div class="faq-mini-a">הזמנות שהתקבלו עד 14:00 מסופקות למחרת. בפריפריה עד 48 שעות.</div>
+        </div>
+        <div class="faq-mini-item">
+          <div class="faq-mini-q">איך מחזירים מוצר?</div>
+          <div class="faq-mini-a">שולחים אימייל עם מספר הזמנה ואנחנו מסדרים את כל הבירוקרטיה.</div>
+        </div>
+        <div class="faq-mini-item">
+          <div class="faq-mini-q">האם יש איסוף עצמי?</div>
+          <div class="faq-mini-a">כן, ניתן לאסוף מהמחסן בתיאום מראש בטלפון.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-bottom"><div class="f-bottom-inner"><span style="color:rgba(255,255,255,.3)">© 2025 בר-אל אופיר בע״מ</span><span 
