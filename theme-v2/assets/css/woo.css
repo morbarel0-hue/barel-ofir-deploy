@@ -996,3 +996,27 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 .brand-item:hover { border-color:#c0001a!important; color:#c0001a!important }
 
 @media(max-width:768px){ .promo-banners { grid-template-columns:1fr!important } }
+
+
+/* Mobile logo fix */
+@media(max-width:600px){
+  .custom-logo { display:block!important; max-height:48px!important; width:auto!important; }
+  .logo img, .custom-logo-link img { display:block!important; max-height:48px!important; width:auto!important; }
+  .logo-text-wrap { display:block!important; }
+}
+
+/* === Mobile fixes === */
+@media(max-width:600px){
+  .trust-item { font-size:11px!important; padding:10px 6px!important; }
+  .trust-title { font-size:12px!important; line-height:1.3!important; }
+  .trust-sub { font-size:10px!important; }
+  .brands-row { display:grid!important; grid-template-columns:1fr 1fr!important; gap:10px!important; }
+  .hero-trust { display:grid!important; grid-template-columns:repeat(2,1fr)!important; }
+  .whatsapp-btn { left:auto!important; right:16px!important; }
+}
+
+/* brands title overflow fix on mobile */
+@media(max-width:600px){
+  .brands-inner { display:block!important; overflow:hidden!important; }
+  .brands-title { display:block!important; width:100%!important; }
+}
