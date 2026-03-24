@@ -919,3 +919,80 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
   .prod-price{font-size:28px!important}
   .prod-trust{grid-template-columns:1fr 1fr!important}
 }
+
+/* ===== FINAL QA FIXES ===== */
+
+/* Hero - more compact like original */
+.hero { min-height:auto!important }
+.hero-inner { padding:24px 20px!important; min-height:320px!important }
+.hero-main { min-height:280px!important; padding:36px 32px!important }
+
+/* Category cards - add colored icon circle */
+.cat-icon {
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:52px!important;
+  height:52px!important;
+  border-radius:50%!important;
+  background:linear-gradient(135deg,#fff5f5,#ffe5e5)!important;
+  margin:0 auto 6px!important;
+  font-size:24px!important;
+  border:1.5px solid #ffd0d0!important;
+}
+
+/* Trust bar */
+.trust-inner { display:grid!important; grid-template-columns:repeat(4,1fr)!important; max-width:1280px!important; margin:0 auto!important; padding:12px 20px!important }
+.trust-item { justify-content:center!important }
+.trust-ic { font-size:22px!important }
+.trust-title { font-weight:700!important; font-size:13px!important }
+.trust-sub { font-size:11px!important; color:#777!important }
+
+/* Section headers */
+.section-head { display:flex!important; align-items:flex-end!important; justify-content:space-between!important; margin-bottom:20px!important; direction:rtl!important }
+.section-title { font-family:Rubik,sans-serif!important; font-weight:900!important; font-size:22px!important; color:#111!important }
+.section-sub { font-size:13px!important; color:#777!important; margin-top:2px!important }
+.see-all { font-size:13px!important; font-weight:700!important; color:#c0001a!important; white-space:nowrap!important }
+
+/* Products grid - 4 columns on homepage */
+.products-grid { display:grid!important; grid-template-columns:repeat(4,1fr)!important; gap:16px!important; direction:rtl!important }
+@media(max-width:1024px){ .products-grid { grid-template-columns:repeat(3,1fr)!important } }
+@media(max-width:768px){ .products-grid { grid-template-columns:repeat(2,1fr)!important } }
+
+/* Product card */
+.prod-card { display:flex!important; flex-direction:column!important; border:1.5px solid #e5e5e5!important; border-radius:12px!important; overflow:hidden!important; background:#fff!important; transition:border-color .2s,box-shadow .2s,transform .2s!important; position:relative!important; direction:rtl!important }
+.prod-card:hover { border-color:#c0001a!important; box-shadow:0 4px 16px rgba(192,0,26,.1)!important; transform:translateY(-2px)!important }
+.prod-img { height:170px!important; background:#fafafa!important; display:flex!important; align-items:center!important; justify-content:center!important; overflow:hidden!important; border-bottom:1px solid #f0f0f0!important }
+.prod-img img { width:100%!important; height:100%!important; object-fit:contain!important; padding:8px!important }
+.prod-body { padding:10px 12px 4px!important; flex:1!important }
+.prod-brand { font-size:10px!important; font-weight:800!important; color:#c0001a!important; text-transform:uppercase!important; margin-bottom:3px!important }
+.prod-name { font-size:12px!important; font-weight:600!important; color:#111!important; line-height:1.35!important; margin-bottom:4px!important }
+.prod-name a { color:inherit!important; text-decoration:none!important }
+.prod-footer { display:flex!important; align-items:center!important; justify-content:space-between!important; padding:8px 12px 10px!important; border-top:1px solid #f5f5f5!important; margin-top:auto!important }
+.price-main { font-family:Rubik,sans-serif!important; font-weight:900!important; font-size:16px!important; color:#111!important }
+.price-old { font-size:11px!important; color:#bbb!important; text-decoration:line-through!important }
+.prod-atc { background:#c0001a!important; color:#fff!important; border:none!important; border-radius:6px!important; padding:7px 12px!important; font-size:12px!important; font-weight:700!important; cursor:pointer!important; font-family:Heebo,sans-serif!important; white-space:nowrap!important; transition:background .2s!important }
+.prod-atc:hover { background:#8f0013!important }
+.badge { position:absolute!important; top:8px!important; right:8px!important; z-index:2!important; border-radius:4px!important; padding:3px 8px!important; font-size:11px!important; font-weight:800!important }
+.b-sale { background:#c0001a!important; color:#fff!important }
+.b-new { background:#1a7a3a!important; color:#fff!important }
+
+/* Promo banners */
+.promo-banners { max-width:1280px!important; margin:0 auto!important; padding:0 20px 32px!important; display:grid!important; grid-template-columns:1fr 1fr!important; gap:20px!important; direction:rtl!important }
+.promo-banner { border-radius:14px!important; padding:32px 28px!important; position:relative!important; overflow:hidden!important; text-decoration:none!important; display:block!important; min-height:160px!important }
+.b1 { background:linear-gradient(135deg,#1a0a0a,#3a0010)!important }
+.b2 { background:linear-gradient(135deg,#111,#2a1a00)!important }
+.promo-tag { font-size:11px!important; font-weight:800!important; color:rgba(255,255,255,.7)!important; text-transform:uppercase!important; margin-bottom:8px!important }
+.promo-title { font-family:Rubik,sans-serif!important; font-weight:900!important; font-size:22px!important; color:#fff!important; margin-bottom:8px!important; line-height:1.2!important }
+.promo-sub { font-size:13px!important; color:rgba(255,255,255,.65)!important; margin-bottom:16px!important }
+.promo-cta { display:inline-block!important; background:#c0001a!important; color:#fff!important; padding:8px 18px!important; border-radius:6px!important; font-size:13px!important; font-weight:700!important }
+
+/* Brands section */
+.brands-section { background:#f8f8f8!important; padding:32px 20px!important; direction:rtl!important }
+.brands-inner { max-width:1280px!important; margin:0 auto!important }
+.brands-title { font-family:Rubik,sans-serif!important; font-weight:800!important; font-size:16px!important; color:#111!important; text-align:center!important; margin-bottom:20px!important }
+.brands-row { display:flex!important; gap:12px!important; flex-wrap:wrap!important; justify-content:center!important; align-items:center!important }
+.brand-item { padding:10px 20px!important; background:#fff!important; border:1.5px solid #e5e5e5!important; border-radius:8px!important; font-size:14px!important; font-weight:800!important; color:#333!important; transition:border-color .2s!important }
+.brand-item:hover { border-color:#c0001a!important; color:#c0001a!important }
+
+@media(max-width:768px){ .promo-banners { grid-template-columns:1fr!important } }
