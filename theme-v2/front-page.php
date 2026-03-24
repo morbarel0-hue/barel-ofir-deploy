@@ -96,11 +96,29 @@ $shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('sh
 </div>
 
 <?php
-$cats = get_terms(['taxonomy' => 'product_cat', 'hide_empty' => true, 'parent' => 0, 'number' => 8, 'orderby' => 'count', 'order' => 'DESC']);
+// Show most-populated sub-categories (exclude root containers + uncategorized)
+$_top = get_terms(['taxonomy'=>'product_cat','hide_empty'=>true,'parent'=>0,'fields'=>'ids']);
+$_exclude = array_merge($_top, [1424]);
+$cats = get_terms(['taxonomy' => 'product_cat', 'hide_empty' => true, 'number' => 8, 'orderby' => 'count', 'order' => 'DESC', 'exclude' => $_exclude, 'depth' => 1]);
+if (is_wp_error($cats) || count($cats) < 2) {
+  // fallback: show any top categories
+  $cats = get_terms(['taxonomy' => 'product_cat', 'hide_empty' => true, 'number' => 8, 'orderby' => 'count', 'order' => 'DESC', 'exclude' => [1424]]);
+}
 $cat_icons = [
-  'כלי חשמל' => '🔌', 'חשמל' => '⚡', 'מברגות' => '🪛', 'כלי יד' => '🔨',
-  'מסור' => '🪚', 'מסורים' => '🪚', 'מדידה' => '📐', 'בטיחות' => '🦺',
-  'גינון' => '🌿', 'ברגים' => '🔩', 'צבע' => '🎨', 'בנייה' => '🏗️',
+  'כלי עבודה ידניים' => '🔨', 'כלי יד' => '🔨', 'ידניים' => '🔨',
+  'כלי עבודה חשמליים' => '🔌', 'חשמליים' => '🔌', 'חשמל' => '⚡', 'אלקטרוניקה' => '⚡',
+  'כלי מדידה' => '📐', 'מדידה' => '📐',
+  'גינון' => '🌿', 'גן' => '🌿',
+  'אינסטלציה' => '🚿', 'ברזים' => '🚿', 'אמבטיה' => '🛁',
+  'בטיחות' => '🦺', 'ציוד מגן' => '🦺',
+  'מסורים' => '🪚', 'מסור' => '🪚',
+  'מברגות' => '🪛', 'ברגים' => '🔩',
+  'צביעה' => '🎨', 'צבע' => '🎨',
+  'ניקיון' => '🧹', 'ניקוי' => '🧹',
+  'דבקים' => '🔗', 'הדברה' => '🐛',
+  'אחסון' => '🧰', 'ארגזים' => '🧰',
+  'תאורה' => '💡', 'נורות' => '💡',
+  'כבלים' => '🔋', 'מאריכים' => '🔋',
 ];
 if (!is_wp_error($cats) && count($cats)): ?>
 <section class="section" aria-labelledby="cats-title">

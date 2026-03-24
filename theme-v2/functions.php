@@ -1,394 +1,226 @@
 <?php
-/**
- * בר-אל אופיר v2 — functions.php
- */
+defined('ABSPATH') || exit;
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-/* =========================================================
-   1. THEME SETUP
-   ========================================================= */
+add_action('after_setup_theme', 'barel_setup');
 function barel_setup() {
-    load_theme_textdomain( 'barel-v2', get_template_directory() . '/languages' );
-
-    add_theme_support( 'title-tag' );
-    add_theme_support( 'post-thumbnails' );
-    add_theme_support( 'html5', [ 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'script', 'style' ] );
-    add_theme_support( 'custom-logo', [
-        'height'      => 80,
-        'width'       => 220,
-        'flex-height' => true,
-        'flex-width'  => true,
-    ] );
-    add_theme_support( 'woocommerce', [
-        'thumbnail_image_width' => 600,
-        'gallery_thumbnail_image_width' => 100,
-        'single_image_width'    => 800,
-    ] );
-    add_theme_support( 'wc-product-gallery-zoom' );
-    add_theme_support( 'wc-product-gallery-lightbox' );
-    add_theme_support( 'wc-product-gallery-slider' );
-
-    register_nav_menus( [
-        'primary'   => 'תפריט ראשי',
-        'cat-nav'   => 'תפריט קטגוריות',
-        'footer-1'  => 'פוטר — קישורים 1',
-        'footer-2'  => 'פוטר — קישורים 2',
-        'footer-3'  => 'פוטר — קישורים 3',
-    ] );
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
+    add_theme_support('custom-logo', ['height' => 80, 'width' => 200, 'flex-height' => true, 'flex-width' => true]);
+    add_theme_support('html5', ['search-form','comment-form','comment-list','gallery','caption','script','style']);
 }
-add_action( 'after_setup_theme', 'barel_setup' );
 
-/* =========================================================
-   2. ENQUEUE ASSETS
-   ========================================================= */
-function barel_enqueue_assets() {
-    // Google Fonts
-    wp_enqueue_style(
-        'barel-fonts',
-        'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Heebo:wght@300;400;500;600;700&display=swap',
-        [],
-        null
-    );
-
-    // Main CSS
-    wp_enqueue_style(
-        'barel-main',
-        get_template_directory_uri() . '/assets/css/main.css',
-        [ 'barel-fonts' ],
-        '2.0.0'
-    );
-
-    // WooCommerce styles
-    if ( class_exists( 'WooCommerce' ) ) {
-        wp_enqueue_style( 'woocommerce-general' );
-        wp_enqueue_style( 'woocommerce-layout' );
-        wp_enqueue_style( 'woocommerce-smallscreen' );
+add_action('wp_enqueue_scripts', 'barel_enqueue');
+function barel_enqueue() {
+    wp_enqueue_style('barel-fonts',
+        'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap',
+        [], null);
+    wp_enqueue_style('barel-main', get_template_directory_uri() . '/assets/css/main.css', ['barel-fonts'], '2.0.5');
+    if (class_exists('WooCommerce')) {
+        wp_enqueue_style('barel-woo', get_template_directory_uri() . '/assets/css/woo.css', ['barel-main'], '2.0.5');
     }
-
-    // Main JS
-    wp_enqueue_script(
-        'barel-main',
-        get_template_directory_uri() . '/assets/js/main.js',
-        [ 'jquery' ],
-        '2.0.0',
-        true
-    );
-
-    // Localize for AJAX
-    wp_localize_script( 'barel-main', 'barelAjax', [
-        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-        'nonce'   => wp_create_nonce( 'barel_nonce' ),
-    ] );
-}
-add_action( 'wp_enqueue_scripts', 'barel_enqueue_assets' );
-
-/* =========================================================
-   3. SIDEBARS
-   ========================================================= */
-function barel_widgets_init() {
-    register_sidebar( [
-        'name'          => 'ספריית חנות',
-        'id'            => 'shop-sidebar',
-        'description'   => 'ווידג\'טים לספריית החנות',
-        'before_widget' => '<div id="%1$s" class="sidebar-widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
-    ] );
-
-    register_sidebar( [
-        'name'          => 'פוטר — ווידג\'טים',
-        'id'            => 'footer-widgets',
-        'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h4 class="footer-widget-title">',
-        'after_title'   => '</h4>',
-    ] );
-}
-add_action( 'widgets_init', 'barel_widgets_init' );
-
-/* =========================================================
-   4. CUSTOM SEARCH FORM
-   ========================================================= */
-function barel_search_form( $form ) {
-    $action = esc_url( home_url( '/' ) );
-    $value  = get_search_query();
-    $form   = '<form role="search" method="get" class="barel-search-form" action="' . $action . '">
-        <input type="search" class="search-field" placeholder="חיפוש מוצרים..." value="' . esc_attr( $value ) . '" name="s" />
-        <button type="submit" class="search-submit" aria-label="חיפוש">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
-    </form>';
-    return $form;
-}
-add_filter( 'get_search_form', 'barel_search_form' );
-
-/* =========================================================
-   5. CART FRAGMENT AJAX
-   ========================================================= */
-function barel_cart_fragment( $fragments ) {
-    ob_start();
-    $count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
-    ?>
-    <span class="cart-count" data-count="<?php echo esc_attr( $count ); ?>"><?php echo esc_html( $count ); ?></span>
-    <?php
-    $fragments['.cart-count'] = ob_get_clean();
-    return $fragments;
-}
-add_filter( 'woocommerce_add_to_cart_fragments', 'barel_cart_fragment' );
-
-/* =========================================================
-   6. SCHEMA.ORG — ORGANIZATION
-   ========================================================= */
-function barel_schema_organization() {
-    $schema = [
-        '@context'  => 'https://schema.org',
-        '@type'     => 'HardwareStore',
-        'name'      => 'בר-אל אופיר אספקה טכנית בע"מ',
-        'url'       => home_url(),
-        'logo'      => get_template_directory_uri() . '/assets/images/logo.png',
-        'telephone' => '+972-52-422-2910',
-        'address'   => [
-            '@type'           => 'PostalAddress',
-            'addressCountry'  => 'IL',
-            'addressLocality' => 'ישראל',
-        ],
-        'sameAs' => [
-            'https://wa.me/972524222910',
-        ],
-    ];
-    echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
-}
-add_action( 'wp_head', 'barel_schema_organization' );
-
-/* =========================================================
-   7. SCHEMA.ORG — PRODUCT PAGE
-   ========================================================= */
-function barel_schema_product() {
-    if ( ! is_singular( 'product' ) ) return;
-    global $product;
-    if ( ! $product ) $product = wc_get_product( get_the_ID() );
-    if ( ! $product ) return;
-
-    $schema = [
-        '@context'    => 'https://schema.org',
-        '@type'       => 'Product',
-        'name'        => $product->get_name(),
-        'description' => wp_strip_all_tags( $product->get_short_description() ?: $product->get_description() ),
-        'sku'         => $product->get_sku(),
-        'image'       => wp_get_attachment_url( $product->get_image_id() ),
-        'brand'       => [
-            '@type' => 'Brand',
-            'name'  => get_post_meta( get_the_ID(), '_brand', true ) ?: 'בר-אל אופיר',
-        ],
-        'offers' => [
-            '@type'         => 'Offer',
-            'price'         => $product->get_price(),
-            'priceCurrency' => get_woocommerce_currency(),
-            'availability'  => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-            'url'           => get_permalink(),
-            'seller'        => [
-                '@type' => 'Organization',
-                'name'  => 'בר-אל אופיר',
-            ],
-        ],
-    ];
-
-    if ( $product->get_rating_count() > 0 ) {
-        $schema['aggregateRating'] = [
-            '@type'       => 'AggregateRating',
-            'ratingValue' => $product->get_average_rating(),
-            'reviewCount' => $product->get_rating_count(),
-        ];
+    wp_enqueue_script('barel-main', get_template_directory_uri() . '/assets/js/main.js', ['jquery'], '2.0.5', true);
+    wp_enqueue_script('barel-search', get_template_directory_uri() . '/assets/js/barel-search.js', ['barel-main'], '2.0.5', true);
+    if (function_exists('is_shop') && (is_shop() || is_product_category() || is_product_tag())) {
+        wp_enqueue_script('barel-infinite', get_template_directory_uri() . '/assets/js/infinite-scroll.js', ['jquery'], '2.0.5', true);
+        global $wp_query;
+        wp_localize_script('barel-infinite', 'BarelInfinite', [
+            'ajaxUrl'  => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('barel_infinite'),
+            'maxPages' => (int)$wp_query->max_num_pages,
+            'currPage' => max(1, get_query_var('paged')),
+        ]);
     }
-
-    echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
-}
-add_action( 'wp_head', 'barel_schema_product' );
-
-/* =========================================================
-   8. SCHEMA.ORG — CATEGORY / COLLECTION PAGE
-   ========================================================= */
-function barel_schema_collection() {
-    if ( ! is_product_category() ) return;
-    $term = get_queried_object();
-    $schema = [
-        '@context'    => 'https://schema.org',
-        '@type'       => 'CollectionPage',
-        'name'        => $term->name,
-        'description' => $term->description ?: 'מוצרים בקטגוריה ' . $term->name,
-        'url'         => get_term_link( $term ),
-    ];
-    echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
-}
-add_action( 'wp_head', 'barel_schema_collection' );
-
-/* =========================================================
-   9. LLMS.TXT META LINK
-   ========================================================= */
-function barel_llms_meta() {
-    echo '<link rel="ai-content-declaration" href="' . esc_url( home_url( '/llms.txt' ) ) . '" />' . "\n";
-}
-add_action( 'wp_head', 'barel_llms_meta' );
-
-/* =========================================================
-   10. WOOCOMMERCE — CUSTOM BREADCRUMB
-   ========================================================= */
-remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
-add_action( 'woocommerce_before_main_content', 'barel_breadcrumb_wrapper', 5 );
-
-function barel_breadcrumb_wrapper() {
-    echo '<div class="barel-breadcrumb-wrap">';
-    barel_render_breadcrumb();
-    echo '</div>';
+    wp_localize_script('barel-main', 'BarelData', [
+        'ajaxUrl'    => admin_url('admin-ajax.php'),
+        'nonce'      => wp_create_nonce('barel_nonce'),
+        'homeUrl'    => home_url('/'),
+        'currency'   => get_woocommerce_currency_symbol(),
+        'cartUrl'    => function_exists('wc_get_cart_url') ? wc_get_cart_url() : home_url('/cart/'),
+        'accountUrl' => function_exists('wc_get_page_permalink') ? wc_get_page_permalink('myaccount') : home_url('/my-account/'),
+    ]);
 }
 
-function barel_render_breadcrumb() {
-    $args = [
-        'delimiter'   => '<span class="bc-sep">›</span>',
-        'wrap_before' => '<nav class="barel-breadcrumb" aria-label="breadcrumb"><ol>',
-        'wrap_after'  => '</ol></nav>',
-        'before'      => '<li>',
-        'after'       => '</li>',
-        'home'        => 'ראשי',
-    ];
-    woocommerce_breadcrumb( $args );
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'wp_shortlink_wp_head');
+add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+add_action('woocommerce_before_main_content', function() { echo '<main class="barel-woo-main">'; }, 10);
+add_action('woocommerce_after_main_content', function() { echo '</main>'; }, 10);
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+
+add_filter('get_search_form', 'barel_search_form');
+function barel_search_form($form) {
+    $q = get_search_query();
+    return '<form role="search" method="get" class="search-bar" action="' . esc_url(home_url('/')) . '">' .
+      '<input type="hidden" name="post_type" value="product" />' .
+      '<input type="search" name="s" id="searchInput" placeholder="חפש מוצר, מותג, מקט..." value="' . esc_attr($q) . '" autocomplete="off" />' .
+      '<button type="submit" id="searchSubmit">🔍 חיפוש</button>' .
+      '<div id="searchDropdown" class="search-dropdown" aria-live="polite"></div>' .
+      '</form>';
 }
 
-/* =========================================================
-   11. PRODUCTS PER PAGE
-   ========================================================= */
-add_filter( 'loop_shop_per_page', function() { return 24; }, 20 );
-
-/* =========================================================
-   12. PRODUCT THUMBNAIL OVERRIDE
-   ========================================================= */
-function barel_loop_product_thumbnail() {
-    echo woocommerce_get_product_thumbnail( 'woocommerce_thumbnail' );
+add_action('wp_ajax_barel_search', 'barel_ajax_search');
+add_action('wp_ajax_nopriv_barel_search', 'barel_ajax_search');
+function barel_ajax_search() {
+    check_ajax_referer('barel_nonce', 'nonce');
+    $q = sanitize_text_field(wp_unslash($_GET['q'] ?? ''));
+    if (strlen($q) < 2) { wp_send_json_success([]); }
+    $qr = new WP_Query(['post_type' => 'product', 'post_status' => 'publish', 'posts_per_page' => 8, 's' => $q]);
+    $results = [];
+    if ($qr->have_posts()) {
+        while ($qr->have_posts()) {
+            $qr->the_post();
+            $p = wc_get_product(get_the_ID());
+            if (!$p) continue;
+            $results[] = ['id' => get_the_ID(), 'name' => get_the_title(), 'url' => get_permalink(), 'img' => get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'), 'price' => strip_tags($p->get_price_html()), 'sku' => $p->get_sku()];
+        }
+        wp_reset_postdata();
+    }
+    $cats = get_terms(['taxonomy' => 'product_cat', 'name__like' => $q, 'number' => 3, 'hide_empty' => true]);
+    $cr = [];
+    if (!is_wp_error($cats)) { foreach ($cats as $c) { $cr[] = ['name' => $c->name, 'url' => get_term_link($c), 'count' => $c->count]; } }
+    wp_send_json_success(['products' => $results, 'categories' => $cr]);
 }
-remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
-add_action( 'woocommerce_before_shop_loop_item_title', 'barel_loop_product_thumbnail', 10 );
-
-/* =========================================================
-   13. HELPER: barel_is_hebrew()
-   ========================================================= */
-function barel_is_hebrew( $string = '' ) {
-    return preg_match( '/[\x{0590}-\x{05FF}]/u', $string );
+add_action('wp_ajax_barel_add_to_cart', 'barel_ajax_add_to_cart');
+add_action('wp_ajax_nopriv_barel_add_to_cart', 'barel_ajax_add_to_cart');
+function barel_ajax_add_to_cart() {
+    check_ajax_referer('barel_nonce', 'nonce');
+    $pid = absint($_POST['product_id'] ?? 0);
+    $qty = max(1, absint($_POST['quantity'] ?? 1));
+    if (!$pid) { wp_send_json_error('Invalid product'); }
+    $ok = WC()->cart->add_to_cart($pid, $qty);
+    if ($ok) { wp_send_json_success(['count' => WC()->cart->get_cart_contents_count(), 'message' => 'המוצר נוסף לעגלה!']); }
+    else { wp_send_json_error('Could not add to cart'); }
 }
-
-/* =========================================================
-   14. HELPER: barel_get_top_cats()
-   ========================================================= */
-function barel_get_top_cats( $limit = 8 ) {
-    $args = [
-        'taxonomy'   => 'product_cat',
-        'parent'     => 0,
-        'number'     => $limit,
-        'orderby'    => 'count',
-        'order'      => 'DESC',
-        'hide_empty' => true,
-        'exclude'    => [ get_option( 'default_product_cat' ) ],
-    ];
-    return get_terms( $args );
+add_filter('woocommerce_add_to_cart_fragments', 'barel_cart_fragment');
+function barel_cart_fragment($f) {
+    if (!function_exists('WC') || !WC()->cart) return $f;
+    $f['.cart-n'] = '<span class="cart-n">' . WC()->cart->get_cart_contents_count() . '</span>';
+    return $f;
 }
-
-/* =========================================================
-   15. HELPER: barel_render_cat_nav()
-   ========================================================= */
+function barel_get_delivery_date($business_days = 7) {
+    $date = new DateTime('now', new DateTimeZone('Asia/Jerusalem'));
+    $added = 0;
+    while ($added < $business_days) {
+        $date->modify('+1 day');
+        $dow = (int)$date->format('N');
+        if ($dow === 6 || $dow === 7) continue;
+        $added++;
+    }
+    $days_he   = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+    $months_he = ['','ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+    return 'יום ' . $days_he[(int)$date->format('w')] . ', ' . $date->format('j') . ' ב' . $months_he[(int)$date->format('n')];
+}
 function barel_render_cat_nav() {
-    $cats = barel_get_top_cats( 12 );
-    if ( empty( $cats ) || is_wp_error( $cats ) ) return;
-
-    echo '<nav class="cat-nav" aria-label="קטגוריות">';
-    echo '<ul class="cat-nav__list">';
-
-    foreach ( $cats as $cat ) {
-        $url   = get_term_link( $cat );
-        $name  = esc_html( $cat->name );
-        $count = absint( $cat->count );
-        $active = ( is_product_category( $cat->slug ) ) ? ' class="active"' : '';
-        echo '<li' . $active . '><a href="' . esc_url( $url ) . '">' . $name . '</a></li>';
-    }
-
-    echo '</ul>';
-    echo '</nav>';
-}
-
-/* =========================================================
-   16. SEO DESCRIPTION AFTER SHOP LOOP
-   ========================================================= */
-function barel_shop_seo_text() {
-    if ( is_product_category() ) {
-        $term = get_queried_object();
-        if ( $term && ! empty( $term->description ) ) {
-            echo '<div class="shop-seo-text"><div class="container">' . wpautop( wp_kses_post( $term->description ) ) . '</div></div>';
+    $shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : home_url('/shop/');
+    $cats = get_terms(['taxonomy' => 'product_cat', 'hide_empty' => true, 'parent' => 0, 'number' => 10, 'orderby' => 'count', 'order' => 'DESC']);
+    $is_sp = function_exists('is_shop') && is_shop();
+    echo '<nav class="cat-nav" aria-label="קטגוריות ראשיות"><div class="cat-nav-inner">';
+    echo '<div class="nav-item"><a href="' . esc_url($shop_url) . '" class="cat-link' . ($is_sp && !is_product_category() ? ' active' : '') . '">כל הכלים</a></div>';
+    if (!is_wp_error($cats)) {
+        foreach ($cats as $cat) {
+            if ($cat->slug === 'uncategorized') continue;
+            $children = get_terms(['taxonomy' => 'product_cat', 'parent' => $cat->term_id, 'hide_empty' => true]);
+            $active   = (function_exists('is_product_category') && is_product_category($cat->slug)) ? ' active' : '';
+            $has_kids = !is_wp_error($children) && count($children) > 0;
+            echo '<div class="nav-item"><a href="' . esc_url(get_term_link($cat)) . '" class="cat-link' . $active . '">' . esc_html($cat->name) . ($has_kids ? ' <span class="arrow">&#9662;</span>' : '') . '</a>';
+            if ($has_kids) {
+                echo '<div class="dropdown"><div class="dropdown-header">' . esc_html($cat->name) . '</div>';
+                foreach ($children as $child) { echo '<a href="' . esc_url(get_term_link($child)) . '" class="dropdown-link">' . esc_html($child->name) . '</a>'; }
+                echo '</div>';
+            }
+            echo '</div>';
         }
     }
+    echo '<div class="nav-item"><a href="' . esc_url(add_query_arg('orderby', 'date', $shop_url)) . '" class="cat-link" style="color:#f5a623;">🔥 מבצעים</a></div>';
+    echo '</div></nav>';
 }
-add_action( 'woocommerce_after_main_content', 'barel_shop_seo_text', 5 );
-
-/* =========================================================
-   17. REMOVE WOODMART HOOKS (CLEAN SLATE)
-   ========================================================= */
-function barel_remove_woodmart_hooks() {
-    if ( function_exists( 'woodmart_setup' ) ) {
-        remove_action( 'woocommerce_before_main_content', 'woodmart_before_main_content', 10 );
-        remove_action( 'woocommerce_after_main_content', 'woodmart_after_main_content', 10 );
-        remove_action( 'woocommerce_sidebar', 'woodmart_get_sidebar', 10 );
-    }
+function barel_render_product_card($product_id) {
+    $product = wc_get_product($product_id);
+    if (!$product) return;
+    $is_sale  = $product->is_on_sale();
+    $price    = $product->get_price();
+    $reg      = $product->get_regular_price();
+    $sale     = $product->get_sale_price();
+    $img_url  = get_the_post_thumbnail_url($product_id, 'woocommerce_thumbnail');
+    $rating   = $product->get_average_rating();
+    $rev      = $product->get_review_count();
+    $brand    = get_post_meta($product_id, '_brand', true);
+    $discount = ($is_sale && $reg > 0 && $sale > 0) ? round((1 - $sale / $reg) * 100) : 0;
+    $link     = get_permalink($product_id);
+    echo '<div class="prod-card" data-product-id="' . $product_id . '">';
+    echo '<a href="' . esc_url($link) . '" class="prod-img-link">';
+    if ($img_url) { echo '<div class="prod-img"><img src="' . esc_url($img_url) . '" alt="' . esc_attr($product->get_name()) . '" loading="lazy" /></div>'; }
+    else { echo '<div class="prod-img" style="min-height:180px;display:flex;align-items:center;justify-content:center;font-size:48px">🔧</div>'; }
+    echo '</a>';
+    if ($discount) echo '<span class="badge b-sale">-' . $discount . '%</span>';
+    elseif ($product->is_featured()) echo '<span class="badge b-new">חדש</span>';
+    echo '<button class="prod-wishlist" data-id="' . $product_id . '" aria-label="מועדפים">&#9825;</button>';
+    echo '<div class="prod-body">';
+    if ($brand) echo '<div class="prod-brand">' . esc_html($brand) . '</div>';
+    echo '<div class="prod-name"><a href="' . esc_url($link) . '">' . esc_html($product->get_name()) . '</a></div>';
+    if ($rating > 0) { echo '<div class="prod-stars">' . str_repeat('★', round($rating)) . str_repeat('☆', 5 - round($rating)) . ' <span>(' . $rev . ')</span></div>'; }
+    echo '</div><div class="prod-footer"><div>';
+    echo '<div class="price-main">' . wc_price($price) . '</div>';
+    if ($is_sale && $reg) echo '<div class="price-old">' . wc_price($reg) . '</div>';
+    echo '</div>';
+    if ($product->is_in_stock()) { echo '<button class="prod-atc" data-product-id="' . $product_id . '" data-nonce="' . wp_create_nonce('barel_nonce') . '">+ עגלה</button>'; }
+    else { echo '<span class="prod-oos">אזל</span>'; }
+    echo '</div></div>';
 }
-add_action( 'after_setup_theme', 'barel_remove_woodmart_hooks', 99 );
-
-/* =========================================================
-   18. WOOCOMMERCE WRAPPER
-   ========================================================= */
-function barel_woocommerce_wrapper_before() {
-    echo '<main id="main-content" class="site-main woo-main"><div class="container">';
+add_action('wp_head', 'barel_schema_org', 5);
+function barel_schema_org() {
+    if (is_product() || is_product_category()) return;
+    echo '<script type="application/ld+json">' . json_encode(['@context' => 'https://schema.org', '@type' => 'HardwareStore', 'name' => 'בר-אל אופיר בע"מ', 'url' => home_url(), 'telephone' => '+972524222910', 'openingHours' => 'Su-Th 08:00-18:00'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>';
 }
-function barel_woocommerce_wrapper_after() {
-    echo '</div></main>';
+add_action('wp_head', 'barel_product_schema', 6);
+function barel_product_schema() {
+    if (!is_product()) return;
+    global $product;
+    if (!$product instanceof WC_Product) $product = wc_get_product(get_the_ID());
+    if (!$product) return;
+    $s = ['@context' => 'https://schema.org', '@type' => 'Product', 'name' => $product->get_name(), 'sku' => $product->get_sku(), 'offers' => ['@type' => 'Offer', 'price' => $product->get_price(), 'priceCurrency' => get_woocommerce_currency(), 'availability' => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock', 'url' => get_permalink()]];
+    if ($product->get_review_count() > 0) { $s['aggregateRating'] = ['@type' => 'AggregateRating', 'ratingValue' => $product->get_average_rating(), 'reviewCount' => $product->get_review_count()]; }
+    echo '<script type="application/ld+json">' . json_encode($s, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . '</script>';
 }
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-add_action( 'woocommerce_before_main_content', 'barel_woocommerce_wrapper_before', 10 );
-add_action( 'woocommerce_after_main_content', 'barel_woocommerce_wrapper_after', 10 );
-
-/* =========================================================
-   19. CUSTOM WOOCOMMERCE SIDEBAR
-   ========================================================= */
-function barel_woocommerce_sidebar() {
-    if ( is_active_sidebar( 'shop-sidebar' ) ) {
-        echo '<aside class="shop-sidebar"><div class="sidebar-inner">';
-        dynamic_sidebar( 'shop-sidebar' );
-        echo '</div></aside>';
-    }
+add_filter('loop_shop_per_page', function() { return 24; });
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+add_action('wp_ajax_barel_toggle_wishlist', 'barel_toggle_wishlist');
+add_action('wp_ajax_nopriv_barel_toggle_wishlist', 'barel_toggle_wishlist');
+function barel_toggle_wishlist() {
+    check_ajax_referer('barel_nonce', 'nonce');
+    $pid = absint($_POST['product_id'] ?? 0);
+    $wl  = WC()->session ? (WC()->session->get('barel_wishlist') ?: []) : [];
+    if (in_array($pid, $wl)) { $wl = array_diff($wl, [$pid]); $added = false; }
+    else { $wl[] = $pid; $added = true; }
+    if (WC()->session) WC()->session->set('barel_wishlist', $wl);
+    wp_send_json_success(['added' => $added, 'count' => count($wl)]);
 }
-remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
-add_action( 'woocommerce_sidebar', 'barel_woocommerce_sidebar', 10 );
-
-/* =========================================================
-   20. BODY CLASS
-   ========================================================= */
-add_filter( 'body_class', function( $classes ) {
-    $classes[] = 'barel-theme';
-    if ( is_rtl() ) $classes[] = 'rtl';
-    return $classes;
-} );
-
-/* =========================================================
-   21. DOCUMENT TITLE SEPARATOR
-   ========================================================= */
-add_filter( 'document_title_separator', function() { return '|'; } );
-
-/* =========================================================
-   22. EXCERPT LENGTH
-   ========================================================= */
-add_filter( 'excerpt_length', function() { return 20; } );
-
-/* =========================================================
-   23. WP HEAD CLEANUP
-   ========================================================= */
-remove_action( 'wp_head', 'wp_generator' );
-remove_action( 'wp_head', 'wlwmanifest_link' );
-remove_action( 'wp_head', 'rsd_link' );
+// Category style helper
+function barel_cat_style($name, $slug) {
+    $n = mb_strtolower($name);
+    if (strpos($n,'חשמל')!==false||strpos($slug,'hashmal')!==false)
+        return ['grad'=>'linear-gradient(135deg,#ff6b35,#f7931e)','icon'=>'⚡'];
+    if (strpos($n,'ידני')!==false||strpos($slug,'yadani')!==false)
+        return ['grad'=>'linear-gradient(135deg,#c0001a,#8f0013)','icon'=>'🔧'];
+    if (strpos($n,'גינ')!==false||strpos($slug,'ginun')!==false||strpos($slug,'gina')!==false)
+        return ['grad'=>'linear-gradient(135deg,#1a7a3a,#2da84f)','icon'=>'🌿'];
+    if (strpos($n,'אינסטל')!==false||strpos($n,'וולט')!==false||strpos($slug,'volt')!==false)
+        return ['grad'=>'linear-gradient(135deg,#1565c0,#1976d2)','icon'=>'💧'];
+    if (strpos($n,'בנ')!==false||strpos($n,'בניה')!==false)
+        return ['grad'=>'linear-gradient(135deg,#5d4037,#795548)','icon'=>'🏗️'];
+    if (strpos($n,'צבע')!==false||strpos($slug,'tseva')!==false)
+        return ['grad'=>'linear-gradient(135deg,#7b1fa2,#9c27b0)','icon'=>'🎨'];
+    if (strpos($n,'אביזר')!==false||strpos($slug,'avizar')!==false)
+        return ['grad'=>'linear-gradient(135deg,#37474f,#546e7a)','icon'=>'🔩'];
+    if (strpos($n,'לגינה')!==false||strpos($slug,'lagina')!==false)
+        return ['grad'=>'linear-gradient(135deg,#1a7a3a,#2da84f)','icon'=>'🌿'];
+    return ['grad'=>'linear-gradient(135deg,#c0001a,#e8001f)','icon'=>'🛠️'];
+}
