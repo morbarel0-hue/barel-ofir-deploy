@@ -649,3 +649,15 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 .continue-shopping:hover{color:#c0001a}
 .cart-trust{background:#fff;border:1.5px solid #e5e5e5;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;font-size:13px;color:#555}
 @media(max-width:768px){.cart-layout{grid-template-columns:1fr}.cart-table-head{display:none}.cart-item{grid-template-columns:1fr auto auto}.checkout-steps{display:none}}
+
+
+/* ===== PRODUCTS TOOLBAR: visible on desktop ===== */
+.mobile-toolbar{display:flex!important;justify-content:space-between;align-items:center;margin-bottom:16px;padding:10px 14px;background:#fff;border:1.5px solid #e5e5e5;border-radius:10px;gap:12px}
+.filter-toggle-btn{background:none;border:1.5px solid #e5e5e5;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Heebo',sans-serif;color:#444}
+.filter-toggle-btn:hover{border-color:#c0001a;color:#c0001a}
+@media(min-width:901px){.filter-toggle-btn{display:none!important}}
+.mobile-sort{border:1.5px solid #e5e5e5;border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Heebo',sans-serif;color:#444;cursor:pointer;background:#fff}
+.mobile-sort:hover{border-color:#c0001a}
+
+/* Products count in archive header */
+.cat-header-inner .cat-count{font-size:13px;color:rgba(255,255,255,.6)}
