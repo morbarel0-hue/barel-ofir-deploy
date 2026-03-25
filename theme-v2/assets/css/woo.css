@@ -1218,3 +1218,69 @@ a.cart-contents {
 .logo-sub {
   color: #ffffff !important;
 }
+
+/* === CTA BANNER FIXES === */
+
+/* user selectors */
+.cta-section,
+.help-section,
+section.red-bg {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.cta-section h2,.cta-section p,
+.help-section h2,.help-section p {
+  color: #ffffff !important;
+}
+.cta-section .btn,.cta-section a.button,
+.help-section a,.cta-btn {
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  background: transparent !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.cta-section .btn:hover,.help-section a:hover {
+  background: #ffffff !important;
+  color: #c0001a !important;
+}
+
+/* actual theme classes (.cta-banner) */
+.cta-banner {
+  text-align: center !important;
+}
+.cta-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.cta-banner h2,
+.cta-banner p {
+  color: #ffffff !important;
+}
+.cta-banner .btn-outline {
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  background: transparent !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  text-decoration: none !important;
+}
+.cta-banner .btn-outline:hover {
+  background: #ffffff !important;
+  color: #c0001a !important;
+}
