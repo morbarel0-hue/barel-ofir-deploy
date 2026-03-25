@@ -1077,3 +1077,6 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 /* 4. Hero overlay - darken bg for readability */
 .hero::before,.hero-bg::before{content:""!important;position:absolute!important;inset:0!important;background:rgba(0,0,0,.55)!important;z-index:1!important;}
 .hero-content,.hero-inner{position:relative!important;z-index:2!important;}
+
+/* hero text white + readable */
+.hero-desc,.hero-sub,.hero p,.hero-content p{color:#fff!important;text-shadow:0 1px 4px rgba(0,0,0,.8)!important;font-weight:500!important;}
