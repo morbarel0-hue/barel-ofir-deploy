@@ -1080,3 +1080,93 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 
 /* hero text white + readable */
 .hero-desc,.hero-sub,.hero p,.hero-content p{color:#fff!important;text-shadow:0 1px 4px rgba(0,0,0,.8)!important;font-weight:500!important;}
+
+/* logo desktop/mobile switch */
+.logo-mobile { display:none; }
+.logo-desktop { height:60px; width:auto; display:block; }
+@media(max-width:600px){
+  .logo-desktop { display:none!important; }
+  .logo-mobile { display:block!important; height:52px!important; width:auto!important; }
+}
+
+/* Fix mobile double-logo - higher specificity override */
+@media(max-width:600px){
+  #site-header .logo .logo-desktop { display:none!important; }
+  #site-header .logo .logo-mobile { display:block!important; height:52px!important; width:auto!important; }
+}
+
+/* === HEADER LAYOUT + LOGO FIX === */
+
+/* 1. Logo size */
+.logo img,
+.logo-desktop,
+.custom-logo img {
+  height: 70px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+/* 2. Logo margin */
+.logo,
+.site-branding,
+.custom-logo {
+  margin-left: 24px !important;
+  margin-right: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* 3. Header single row */
+.header-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 80px !important;
+  padding: 0 24px !important;
+  gap: 16px !important;
+}
+
+/* icons - left side */
+.nav-acts {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  order: 1 !important;
+}
+
+/* search - center */
+.search-wrap {
+  flex: 1 !important;
+  max-width: 500px !important;
+  order: 2 !important;
+}
+
+/* logo - right side */
+.logo, .site-branding {
+  order: 3 !important;
+}
+
+/* === HEADER MOBILE RESTORE (overrides desktop fix above) === */
+@media(max-width:600px){
+  .header-inner {
+    height: auto !important;
+    flex-wrap: wrap !important;
+    padding: 8px 12px !important;
+    gap: 6px !important;
+  }
+  .logo, .site-branding {
+    order: 1 !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .logo-desktop { height: 44px !important; }
+  .search-wrap {
+    order: 99 !important;
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .nav-acts {
+    order: 2 !important;
+    margin-right: auto !important;
+  }
+}
