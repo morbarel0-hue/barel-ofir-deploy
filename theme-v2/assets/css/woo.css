@@ -1184,3 +1184,37 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
     margin-left: 0 !important;
   }
 }
+
+/* === HEADER DESKTOP FIXES (min-width:601px only) === */
+
+/* 1. Center search bar */
+@media(min-width:601px){
+  .search-wrap {
+    flex: 1 !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+  }
+  .header-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+}
+
+/* 2. Cart text white */
+.cart-btn,
+.cart-btn span,
+.cart-contents,
+a.cart-contents {
+  color: #ffffff !important;
+}
+.cart-btn .cart-n,
+.cart-count {
+  color: #c0001a !important;
+  background: #fff !important;
+}
+
+/* 3. logo-sub white text */
+.logo-sub {
+  color: #ffffff !important;
+}
