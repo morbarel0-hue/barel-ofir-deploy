@@ -2958,3 +2958,37 @@ input,select{font-family:'Heebo',sans-serif}
 @media(max-width: 600px) {
   .mobile-search-bar { display: flex !important; }
 }
+
+/* ── BAREL LOGO (pure CSS) ── */
+.barel-logo { text-decoration: none; flex-shrink: 0; }
+.barel-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.barel-logo-main {
+  font-family: 'Rubik', 'Heebo', sans-serif;
+  font-weight: 900;
+  font-size: 38px;
+  color: #c0001a;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.barel-logo-dash { color: #c0001a; }
+.barel-logo-sub {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: #fff;
+  background: #222;
+  padding: 2px 7px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+  display: block;
+  text-align: center;
+}
+@media(max-width:600px){
+  .barel-logo-main { font-size: 26px; letter-spacing: -1px; }
+  .barel-logo-sub  { font-size: 9px; padding: 1px 5px; }
+}

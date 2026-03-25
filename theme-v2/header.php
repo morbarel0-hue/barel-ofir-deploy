@@ -21,10 +21,10 @@
   <div class="header-inner">
 
     <!-- לוגו - ימין -->
-    <a href="<?php echo home_url('/'); ?>" class="logo" aria-label="בר-אל אופיר בע״מ">
-      <div class="logo-wrap">
-        <span class="logo-text">בר-<span style="color:#c0001a">אל</span></span>
-        <span class="logo-sub">אופיר בע״מ</span>
+    <a href="<?php echo home_url('/'); ?>" class="barel-logo" aria-label="בר-אל אופיר">
+      <div class="barel-logo-wrap">
+        <span class="barel-logo-main">בר-<span class="barel-logo-dash">אל</span></span>
+        <span class="barel-logo-sub">אופיר בע״מ</span>
       </div>
     </a>
 
