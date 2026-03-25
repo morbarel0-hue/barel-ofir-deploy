@@ -2992,3 +2992,39 @@ input,select{font-family:'Heebo',sans-serif}
   .barel-logo-main { font-size: 26px; letter-spacing: -1px; }
   .barel-logo-sub  { font-size: 9px; padding: 1px 5px; }
 }
+
+/* ════ DARK HEADER v4 (header.html) ════ */
+:root{--red:#D62B2B;--red-dark:#A81F1F;--red-light:#FF3B3B;--hdr-bg:#1A1A1A;--hdr-input:#2E2E2E;--hdr-border:#3D3D3D;--hdr-white:#F5F5F5;--hdr-muted:#9A9A9A;}
+.topbar{background:var(--red)!important;text-align:center!important;padding:8px 16px!important;font-size:13px!important;font-weight:600!important;letter-spacing:.5px!important;color:#fff!important;white-space:nowrap!important;overflow:hidden!important;}
+.topbar a{color:#fff!important;text-decoration:none!important;}
+#site-header{background:var(--hdr-bg)!important;border-bottom:3px solid var(--red)!important;position:sticky!important;top:0!important;z-index:200!important;box-shadow:none!important;}
+.header-inner{max-width:1280px!important;margin:auto!important;padding:0 24px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;height:72px!important;flex-wrap:nowrap!important;}
+.logo-wrap{flex-shrink:0!important;text-decoration:none!important;display:block!important;}
+.logo-wrap img{height:48px!important;object-fit:contain!important;display:block!important;}
+.logo-css{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.logo-css-main{font-family:'Rubik',sans-serif;font-weight:900;font-size:34px;color:var(--hdr-white);letter-spacing:-1px;line-height:1;}
+.logo-css-red{color:var(--red);}
+.logo-css-sub{font-size:10px;font-weight:700;color:var(--hdr-muted);letter-spacing:.5px;}
+#site-header .search-bar{flex:1!important;max-width:520px!important;min-width:0!important;display:flex!important;height:auto!important;border:none!important;border-radius:0!important;overflow:visible!important;}
+#site-header .search-bar input{flex:1!important;min-width:0!important;background:var(--hdr-input)!important;border:2px solid var(--hdr-border)!important;border-left:none!important;border-radius:0 6px 6px 0!important;padding:10px 14px!important;color:var(--hdr-white)!important;font-family:'Heebo',sans-serif!important;font-size:14px!important;outline:none!important;height:46px!important;}
+#site-header .search-bar input:focus{border-color:var(--red)!important;}
+#site-header .search-bar input::placeholder{color:var(--hdr-muted)!important;}
+#site-header .search-bar button{background:var(--red)!important;border:none!important;border-radius:6px 0 0 6px!important;padding:0 18px!important;color:#fff!important;font-size:17px!important;cursor:pointer!important;flex-shrink:0!important;height:46px!important;order:-1!important;}
+#site-header .search-bar button:hover{background:var(--red-light)!important;}
+.header-actions{display:flex!important;gap:8px!important;flex-shrink:0!important;}
+.action-btn{background:var(--hdr-input)!important;border:2px solid var(--hdr-border)!important;border-radius:8px!important;color:var(--hdr-white)!important;padding:8px 14px!important;font-size:13px!important;font-family:'Heebo',sans-serif!important;font-weight:600!important;cursor:pointer!important;display:flex!important;align-items:center!important;gap:6px!important;white-space:nowrap!important;text-decoration:none!important;}
+.action-btn:hover{border-color:var(--red)!important;color:var(--red)!important;}
+.action-btn.cart{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important;}
+.action-btn.cart:hover{background:var(--red-light)!important;border-color:var(--red-light)!important;}
+.cart-count{background:#0A0A0A!important;color:var(--red)!important;border-radius:50%!important;width:20px!important;height:20px!important;font-size:11px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;}
+@media(max-width:768px){
+  .topbar{font-size:11px!important;padding:6px 12px!important;}
+  .header-inner{height:auto!important;padding:10px 12px!important;gap:10px!important;}
+  .logo-wrap img{height:36px!important;}
+  #site-header .search-bar input{padding:8px 10px!important;font-size:12px!important;}
+  #site-header .search-bar button{padding:0 12px!important;font-size:14px!important;}
+  .action-btn.login .btn-text{display:none!important;}
+  .action-btn.cart .btn-text{display:none!important;}
+  .action-btn.cart{padding:8px 10px!important;}
+}
+.mobile-search-bar{display:none!important;}

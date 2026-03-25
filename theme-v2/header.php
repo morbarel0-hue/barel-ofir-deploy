@@ -9,65 +9,58 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<!-- TOPBAR -->
+<!-- ══ TOPBAR ══ -->
 <div class="topbar">
-  🚚 משלוחים מהירים עד 7 ימי עסקים &nbsp;|&nbsp;
-  🔒 תשלום מאובטח SSL ע"י בנק לאומי &nbsp;|&nbsp;
-  📞 <a href="tel:052-422-2910">052-422-2910</a>
+  🚚 משלוח חינם בקנייה מעל ₪500 &nbsp;|&nbsp; 🔧 כלי עבודה מקצועיים &nbsp;|&nbsp; 📞 <a href="tel:052-422-2910">052-422-2910</a>
 </div>
 
-<!-- HEADER -->
+<!-- ══ HEADER ══ -->
 <header id="site-header">
   <div class="header-inner">
 
-    <!-- לוגו - ימין -->
-    <a href="<?php echo home_url('/'); ?>" class="barel-logo" aria-label="בר-אל אופיר">
-      <div class="barel-logo-wrap">
-        <span class="barel-logo-main">בר-<span class="barel-logo-dash">אל</span></span>
-        <span class="barel-logo-sub">אופיר בע״מ</span>
-      </div>
+    <!-- לוגו -->
+    <a href="<?php echo home_url('/'); ?>" class="logo-wrap" aria-label="בר-אל אופיר בע״מ">
+      <?php
+      $logo_id = get_theme_mod('custom_logo');
+      if ($logo_id) :
+        $logo_url = wp_get_attachment_image_url($logo_id, 'full');
+      ?>
+        <img src="<?php echo esc_url($logo_url); ?>" alt='בר-אל אופיר בע"מ' />
+      <?php else : ?>
+        <div class="logo-css">
+          <span class="logo-css-main">בר-<span class="logo-css-red">אל</span></span>
+          <span class="logo-css-sub">אופיר בע״מ</span>
+        </div>
+      <?php endif; ?>
     </a>
 
-    <!-- חיפוש - אמצע -->
-    <div class="search-wrap" id="searchWrap">
-      <div class="search-bar">
-        <button class="search-btn" type="button" id="searchSubmit">🔍 חיפוש</button>
-        <input type="search" id="searchInput"
-          placeholder='חפש מוצר, מותג, מק"ט...'
-          autocomplete="off"/>
-        <button class="search-clear" id="searchClear" type="button">✕</button>
-      </div>
-      <div class="search-dropdown" id="searchDropdown"></div>
+    <!-- חיפוש -->
+    <div class="search-bar" id="searchWrap">
+      <input type="search" id="searchInput"
+        placeholder="חפש מוצרים, מותגים, קטגוריות..."
+        autocomplete="off" />
+      <button type="button" id="searchSubmit" aria-label="חיפוש">🔍</button>
     </div>
-    <div class="search-overlay" id="searchOverlay"></div>
 
-    <!-- אייקונים - שמאל -->
-    <div class="nav-actions">
-      <?php if (class_exists('WooCommerce')): ?>
+    <!-- כפתורי פעולה -->
+    <?php if (class_exists('WooCommerce')) : ?>
+    <div class="header-actions">
       <a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>"
-         class="nav-action" aria-label="החשבון שלי">
-        <span class="icon">👤</span>
-        <span><?php echo is_user_logged_in() ? 'החשבון' : 'כניסה'; ?></span>
+         class="action-btn login" aria-label="החשבון שלי">
+        👤 <span class="btn-text"><?php echo is_user_logged_in() ? 'החשבון' : 'כניסה'; ?></span>
       </a>
       <a href="<?php echo esc_url(wc_get_cart_url()); ?>"
-         class="cart-btn" aria-label="עגלת קניות">
-        🛒 עגלה
+         class="action-btn cart" aria-label="עגלת קניות">
+        🛒 <span class="btn-text">סל קניות</span>
         <span class="cart-count">
           <?php echo WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?>
         </span>
       </a>
-      <?php endif; ?>
     </div>
+    <?php endif; ?>
 
   </div>
 </header>
 
-<!-- שורת חיפוש מובייל -->
-<div class="mobile-search-bar">
-  <div class="search-bar" style="width:100%">
-    <button class="search-btn" type="button">🔍</button>
-    <input type="search" placeholder='חפש מוצר, מותג...' autocomplete="off"/>
-  </div>
-</div>
-
+<!-- ══ NAV קטגוריות ══ -->
 <?php barel_render_cat_nav(); ?>
