@@ -23,9 +23,11 @@
 <!-- HEADER -->
 <header id="site-header">
   <div class="header-inner">
-    <a href="<?php echo esc_url(home_url('/')); ?>" class="logo" aria-label="בר-אל אופיר בע״מ - דף הבית">
-      <img src="https://barelofir.co.il/wp-content/uploads/2026/03/logo_desktop.png" alt="בר-אל אופיר בע״מ" class="logo-desktop" />
-      <img src="https://barelofir.co.il/wp-content/uploads/2026/03/logo_mobile.png"  alt="בר-אל אופיר בע״מ" class="logo-mobile" />
+    <a href="<?php echo home_url(); ?>" class="site-logo" aria-label="בר-אל אופיר בע״מ">
+      <div class="logo-wrap">
+        <span class="logo-main">בר<span class="logo-dash">-</span>אל</span>
+        <span class="logo-sub">אופיר בע״מ</span>
+      </div>
     </a>
     <div class="search-wrap">
       <?php get_search_form(); ?>
