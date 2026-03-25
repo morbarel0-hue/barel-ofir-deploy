@@ -10,8 +10,14 @@
 <?php wp_body_open(); ?>
 
 <!-- TOPBAR -->
-<div class="topbar">
-  ✈ משלוח חינם בקנייה מעל ₪299 &nbsp;|&nbsp; ⏱ משלוח מהיר תוך 3-5 ימים &nbsp;|&nbsp; 📞 <a href="tel:052-422-2910">052-422-2910</a>
+<div class="topbar" style="background:#c0001a;color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 0;width:100%;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:nowrap;">
+    <span>📞 052-422-2910</span>
+    <span>|</span>
+    <span>🚚 משלוח מהיר תוך 3-5 ימים</span>
+    <span>|</span>
+    <span>✈️ משלוח חינם בקנייה מעל ₪299</span>
+  </div>
 </div>
 
 <!-- HEADER -->
@@ -46,12 +52,6 @@
     </nav>
   </div>
 </header>
-
-<!-- MOBILE SEARCH ROW (hidden on desktop via CSS) -->
-<div class="mobile-search-row">
-  <input type="search" placeholder="חפש מוצר, מותג, מק&quot;ט..." name="s" />
-  <button type="submit" onclick="this.closest('div').querySelector('input').form && this.closest('div').querySelector('input').form.submit(); window.location='/?s='+encodeURIComponent(this.previousElementSibling.value)">🔍 חיפוש</button>
-</div>
 
 <!-- CATEGORY NAV -->
 <?php barel_render_cat_nav(); ?>
