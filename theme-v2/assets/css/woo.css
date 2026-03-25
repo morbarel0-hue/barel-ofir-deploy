@@ -1412,3 +1412,30 @@ section.red-bg {
   .nav-act:hover { color:#c0001a !important; }
   .nav-act .ic { font-size:20px !important; }
 }
+
+/* === CTA SECTION VERTICAL CENTER (desktop only) === */
+@media(min-width:601px){
+  .cta-section,
+  .help-section,
+  .cta-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    padding: 48px 20px !important;
+    text-align: center !important;
+  }
+  .cta-section h2,.help-section h2,.cta-banner h2 { margin:0 !important; padding:0 !important; }
+  .cta-section p,.help-section p,.cta-banner p { margin:0 !important; padding:0 !important; }
+  .cta-section .btn,.help-section a,.cta-banner .cta-btns { margin:0 !important; }
+  .cta-inner { display:contents !important; }
+}
+
+/* === MOBILE: hide .search-wrap, show only .mobile-search-bar === */
+@media(max-width:600px){
+  #site-header .search-wrap,
+  .header-inner .search-wrap,
+  .search-wrap { display:none!important; }
+  .mobile-search-bar { display:flex!important; }
+}
