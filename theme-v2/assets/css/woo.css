@@ -1439,3 +1439,101 @@ section.red-bg {
   .search-wrap { display:none!important; }
   .mobile-search-bar { display:flex!important; }
 }
+
+/* ============================================================
+   BAREL HEADER v5 — white theme, #c0001a accents
+   ============================================================ */
+
+/* hide all old header classes */
+.topbar,.logo-wrap,.search-wrap,.nav-actions,.action-btn,
+.header-inner,.mobile-search-bar,#site-header { display:none!important; }
+
+/* topbar */
+.barel-topbar {
+  background:#c0001a; color:#fff; font-size:13px; font-weight:600;
+  padding:7px 0; text-align:center; direction:rtl;
+}
+.barel-topbar-inner { display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
+.barel-topbar a { color:#fff; text-decoration:none; }
+.barel-sep { opacity:.5; }
+
+/* main header */
+#barel-header {
+  background:#fff;
+  border-bottom:3px solid #c0001a;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  position:sticky; top:0; z-index:200;
+}
+.barel-hdr-inner {
+  max-width:1280px; margin:0 auto; padding:0 24px;
+  height:78px; display:flex; align-items:center; gap:16px; direction:rtl;
+}
+
+/* logo */
+.barel-logo { text-decoration:none; flex-shrink:0; }
+.barel-logo-main {
+  font-family:Heebo,sans-serif; font-weight:900; font-size:34px;
+  line-height:1; letter-spacing:-1px;
+}
+.bl-black { color:#111; }
+.bl-red   { color:#c0001a; }
+.barel-logo-sub { font-size:12px; color:#666; font-weight:400; margin-top:2px; white-space:nowrap; }
+
+/* search */
+.barel-search-wrap { flex:1; min-width:0; }
+.barel-search-box  { display:flex; align-items:center; gap:0; }
+.barel-search-box input[type=search] {
+  flex:1; border:2px solid #e0e0e0; border-left:none; border-radius:0 8px 8px 0;
+  padding:10px 16px; font-size:15px; outline:none; direction:rtl;
+  font-family:Heebo,sans-serif;
+}
+.barel-search-box input[type=search]:focus { border-color:#c0001a; }
+.barel-search-btn {
+  background:#c0001a; color:#fff; border:none; cursor:pointer;
+  padding:10px 20px; font-size:15px; font-weight:700; border-radius:8px 0 0 8px;
+  font-family:Heebo,sans-serif; white-space:nowrap;
+}
+.barel-search-btn:hover { background:#8f0013; }
+.barel-search-dropdown {
+  position:absolute; top:100%; right:0; left:0; background:#fff;
+  border:1px solid #e0e0e0; border-top:none; border-radius:0 0 8px 8px;
+  box-shadow:0 8px 24px rgba(0,0,0,.12); z-index:300; max-height:400px; overflow-y:auto;
+}
+
+/* action icons */
+.barel-acts { display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.barel-act {
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  text-decoration:none; color:#444; font-size:11px; padding:4px 8px;
+  border-radius:6px; transition:color .2s;
+}
+.barel-act:hover { color:#c0001a; }
+.barel-act-ic  { font-size:20px; line-height:1; }
+.barel-act-lbl { font-size:11px; font-weight:600; }
+.barel-cart {
+  display:flex; align-items:center; gap:8px;
+  background:#c0001a; color:#fff!important; text-decoration:none;
+  padding:10px 16px; border-radius:8px; font-weight:700; font-size:15px;
+  font-family:Heebo,sans-serif; transition:background .2s;
+}
+.barel-cart:hover { background:#8f0013; }
+.barel-cart-b {
+  background:#fff; color:#c0001a; font-size:12px; font-weight:900;
+  width:22px; height:22px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* mobile search bar (below header row) */
+.barel-mob-search { display:none; padding:8px 16px 12px; background:#fff; }
+.barel-mob-search .barel-search-box input[type=search] { border-radius:0 8px 8px 0; }
+
+/* responsive */
+@media(max-width:600px){
+  .barel-search-wrap { display:none!important; }
+  .barel-mob-search  { display:block!important; }
+  .barel-hdr-inner   { height:60px; padding:0 12px; gap:8px; }
+  .barel-logo-main   { font-size:26px; }
+  .barel-logo-sub    { font-size:11px; }
+  .barel-act-lbl     { font-size:10px; }
+  .barel-cart        { padding:8px 12px; font-size:13px; }
+}
