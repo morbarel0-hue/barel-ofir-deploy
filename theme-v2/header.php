@@ -26,7 +26,7 @@
       <div class="barel-logo-main">
         <span class="bl-black">בר-אל </span><span class="bl-red">אופיר</span>
       </div>
-      <div class="barel-logo-sub">בע״מ &nbsp;·&nbsp; כלי עבודה מקצועיים</div>
+      <span class="barel-logo-sub">בע״מ · כלי עבודה מקצועיים</span>
     </a>
 
     <div class="barel-search-wrap" id="searchWrap">
