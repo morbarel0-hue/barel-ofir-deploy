@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 master_thvvwruhre@188.166.162.20 \"cd /home/master/applications/yeyvzdmqqk/public_html && wp --info 2>&1 | head -5\")",
+      "Bash(sshpass -p 'jg2ySmwx' ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=password -o PubkeyAuthentication=no master_thvvwruhre@188.166.162.20 \"echo connected\")",
+      "Bash(ssh -o StrictHostKeyChecking=no -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no master_thvvwruhre@188.166.162.20 \"echo connected && pwd\")"
+    ]
+  }
+}
