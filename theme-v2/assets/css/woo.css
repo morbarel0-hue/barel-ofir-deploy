@@ -566,6 +566,7 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 
 /* Shop sidebar */
 .shop-layout{grid-template-columns:260px 1fr!important;margin:24px auto 48px!important;gap:28px!important}
+@media(max-width:900px){.shop-layout{grid-template-columns:1fr!important}}
 
 /* Filter groups */
 .filter-group{background:#fff;border:1.5px solid #e5e5e5;border-radius:14px;overflow:hidden;margin-bottom:16px;padding:0}
