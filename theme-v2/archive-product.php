@@ -13,8 +13,7 @@ global $wp_query; ?>
   <strong><?php echo esc_html($title); ?></strong>
 </div></div>
 <div class="cat-header"><div class="cat-header-inner">
-  <div><h1 class="cat-title"><?php echo esc_html($title); ?></h1>
-  <?php if($term&&$term->description): ?><p class="cat-desc"><?php echo wp_kses_post($term->description); ?></p><?php endif; ?></div>
+  <div><h1 class="cat-title"><?php echo esc_html($title); ?></h1></div>
   <span class="cat-count"><?php echo $wp_query->found_posts; ?> מוצרים</span>
 </div></div>
 <?php $subcats=$term?get_terms(['taxonomy'=>'product_cat','parent'=>$term->term_id,'hide_empty'=>true]):get_terms(['taxonomy'=>'product_cat','parent'=>0,'hide_empty'=>true,'number'=>12,'orderby'=>'count','order'=>'DESC']);
@@ -87,6 +86,11 @@ if(!is_wp_error($subcats)&&count($subcats)>0): ?>
     <div class="no-products"><div class="no-products-icon">&#128269;</div><h2>לא נמצאו מוצרים</h2><a href="<?php echo esc_url($shop_url); ?>" class="btn-primary">לכל המוצרים</a></div>
   <?php endif; ?>
 </div></div>
+<?php if($term&&$term->description): ?>
+<div class="cat-description-bottom">
+  <div class="seo-box"><?php echo wp_kses_post($term->description); ?></div>
+</div>
+<?php endif; ?>
 <script>
 function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarOverlay').classList.add('show');document.body.style.overflow='hidden';}
 function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('show');document.body.style.overflow='';}
