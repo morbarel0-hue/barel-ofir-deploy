@@ -777,7 +777,7 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 .section:last-of-type{padding-bottom:40px}
 
 /* ===== HERO OVERLAY: ensure text is readable over photo ===== */
-.hero-main::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.4) 60%,rgba(0,0,0,.2) 100%);border-radius:14px;pointer-events:none;z-index:0}
+.hero-main::before{display:none!important}
 .hero-main > *{position:relative;z-index:1}
 
 /* ===== PRODUCT CARD: ensure consistent height ===== */
@@ -1075,7 +1075,7 @@ table.shop_table td{padding:14px 16px;border-bottom:1px solid #f0f0f0;vertical-a
 .custom-logo img{max-height:65px!important;width:auto!important;}
 
 /* 4. Hero overlay - darken bg for readability */
-.hero::before,.hero-bg::before{content:""!important;position:absolute!important;inset:0!important;background:rgba(0,0,0,.55)!important;z-index:1!important;}
+.hero::before,.hero-bg::before{display:none!important}
 .hero-content,.hero-inner{position:relative!important;z-index:2!important;}
 
 /* hero text white + readable */
