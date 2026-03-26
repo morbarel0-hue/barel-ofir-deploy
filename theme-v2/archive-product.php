@@ -19,15 +19,15 @@ global $wp_query; ?>
 <?php $subcats=$term?get_terms(['taxonomy'=>'product_cat','parent'=>$term->term_id,'hide_empty'=>true]):get_terms(['taxonomy'=>'product_cat','parent'=>0,'hide_empty'=>true,'number'=>12,'orderby'=>'count','order'=>'DESC']);
 if(!is_wp_error($subcats)&&count($subcats)>0): ?>
 <div class="subcats-section"><div class="subcats-inner">
-  <div class="subcats-title">תתי קטגוריות</div>
+  <div class="subcats-label">קטגוריות</div>
   <div class="subcats-row">
   <?php foreach($subcats as $sub): if($sub->slug==='uncategorized') continue;
     $tu=($tid=get_term_meta($sub->term_id,'thumbnail_id',true))?wp_get_attachment_image_url($tid,'thumbnail'):'';
     $act=($term&&$term->term_id===$sub->term_id)?' active':'';
     $sub_emoji_map = ['kley-avoda-hashmaliyim'=>'⚡','kley-avoda-yadaniyim'=>'🔧','kley-ginun-hashmaliyim'=>'🌿','kley-ginun-yadaniyim'=>'🪴','avizarim'=>'🔩','tamboria'=>'🪣','mevragot'=>'🪛','masarim-hashmal'=>'🪚','mekonot-shetifa'=>'💦'];
     $sub_emoji = $sub_emoji_map[$sub->slug] ?? '🔧'; ?>
-    <a href="<?php echo esc_url(get_term_link($sub)); ?>" class="subcat-card<?php echo $act; ?>">
-      <div class="subcat-icon"><?php if($tu): ?><img src="<?php echo esc_url($tu); ?>" alt="<?php echo esc_attr($sub->name); ?>" loading="lazy" /><?php else: ?><?php echo $sub_emoji; ?><?php endif; ?></div>
+    <a href="<?php echo esc_url(get_term_link($sub)); ?>" class="subcat-item<?php echo $act; ?>">
+      <div class="subcat-img-wrap"><?php if($tu): ?><img src="<?php echo esc_url($tu); ?>" alt="<?php echo esc_attr($sub->name); ?>" loading="lazy" /><?php else: ?><span class="subcat-emoji"><?php echo $sub_emoji; ?></span><?php endif; ?></div>
       <div class="subcat-name"><?php echo esc_html($sub->name); ?></div>
       <div class="subcat-count"><?php echo $sub->count; ?></div>
     </a>
