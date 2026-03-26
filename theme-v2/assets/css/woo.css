@@ -1546,3 +1546,15 @@ section.red-bg {
   .barel-act-lbl     { font-size:10px; }
   .barel-cart        { padding:8px 12px; font-size:13px; }
 }
+
+/* === HERO OVERLAY ONLY === */
+section.hero { position:relative!important; }
+section.hero::before {
+  content:''!important;
+  position:absolute!important;
+  inset:0!important;
+  background:rgba(0,0,0,0.45)!important;
+  z-index:1!important;
+  pointer-events:none!important;
+}
+section.hero > * { position:relative!important; z-index:2!important; }
