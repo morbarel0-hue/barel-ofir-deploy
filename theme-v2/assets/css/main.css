@@ -3173,3 +3173,25 @@ input,select{font-family:'Heebo',sans-serif}
   .subcat-img-wrap { width: 64px !important; height: 64px !important; }
   .subcat-name { font-size: 10px !important; }
 }
+
+/* ══ PRODUCT IMAGE FIX — centered & contained ══ */
+.woocommerce ul.products li.product .woocommerce-loop-product__thumbnail {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 180px !important;
+  overflow: hidden !important;
+  background: #f9f9f9 !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+.woocommerce ul.products li.product .woocommerce-loop-product__thumbnail img,
+.woocommerce ul.products li.product a img,
+.woocommerce ul.products li.product img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  background: #f9f9f9 !important;
+  padding: 16px !important;
+}
