@@ -1669,3 +1669,6 @@ section.red-bg {
   .subcat-icon  { width:64px!important; height:64px!important; }
   .subcat-name  { font-size:10px!important; }
 }
+
+/* trust bar — remove last border */
+.trust-item:last-child { border-left:none!important; }

@@ -70,8 +70,8 @@ $shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('sh
     <div class="trust-item">
       <div class="trust-ic">🏆</div>
       <div>
-        <div class="trust-title">15+ שנות ניסיון</div>
-        <div class="trust-sub">אלפי לקוחות מרוצים</div>
+        <div class="trust-title">30+ שנות ניסיון</div>
+        <div class="trust-sub">פעילים מאז 1995</div>
       </div>
     </div>
   </div>
