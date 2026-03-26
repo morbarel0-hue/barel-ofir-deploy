@@ -1568,17 +1568,17 @@ section.red-bg {
   .barel-cart        { padding:8px 12px; font-size:13px; }
 }
 
-/* === HERO OVERLAY ONLY === */
-section.hero { position:relative!important; }
-section.hero::before {
+/* === HERO OVERLAY === */
+.hero, .hero-section, .home-hero { position:relative!important; }
+.hero::before, .hero-section::before, .home-hero::before {
   content:''!important;
   position:absolute!important;
   inset:0!important;
-  background:rgba(0,0,0,0.45)!important;
+  background:rgba(0,0,0,0.5)!important;
   z-index:1!important;
   pointer-events:none!important;
 }
-section.hero > * { position:relative!important; z-index:2!important; }
+.hero *, .hero-section *, .home-hero * { position:relative!important; z-index:2!important; }
 
 /* === PRODUCT CARD IMAGES — desktop only === */
 @media(min-width:601px){

@@ -21,24 +21,6 @@ $shop_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('sh
         <a href="<?php echo esc_url($shop_url); ?>" class="btn-primary">🔧 לכל המוצרים</a>
         <a href="<?php echo esc_url(add_query_arg('orderby', 'sale', $shop_url)); ?>" class="btn-ghost">מבצעי השבוע →</a>
       </div>
-      <div class="hero-trust">
-        <div>
-          <div class="hero-stat-num">10<span>K+</span></div>
-          <div class="hero-stat-label">מוצרים במלאי</div>
-        </div>
-        <div>
-          <div class="hero-stat-num">98<span>%</span></div>
-          <div class="hero-stat-label">לקוחות מרוצים</div>
-        </div>
-        <div>
-          <div class="hero-stat-num">24<span>ש'</span></div>
-          <div class="hero-stat-label">זמן משלוח</div>
-        </div>
-        <div>
-          <div class="hero-stat-num">15<span>+</span></div>
-          <div class="hero-stat-label">שנות ניסיון</div>
-        </div>
-      </div>
     </div>
 
     <div class="hero-side">
