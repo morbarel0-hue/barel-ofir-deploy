@@ -1558,3 +1558,28 @@ section.hero::before {
   pointer-events:none!important;
 }
 section.hero > * { position:relative!important; z-index:2!important; }
+
+/* === PRODUCT CARD IMAGES — desktop only === */
+@media(min-width:601px){
+  .woocommerce ul.products li.product .woocommerce-loop-product__thumbnail,
+  .product-card .prod-img,
+  .woocommerce-LoopProduct-link img {
+    width:100%!important;
+    height:200px!important;
+    overflow:hidden!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    background:#f9f9f9!important;
+  }
+  .woocommerce ul.products li.product .woocommerce-loop-product__thumbnail img,
+  .woocommerce ul.products li.product img,
+  .product-card img,
+  .prod-img img {
+    width:100%!important;
+    height:200px!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    display:block!important;
+  }
+}
