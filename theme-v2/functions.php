@@ -18,7 +18,7 @@ function barel_enqueue() {
     wp_enqueue_style('barel-fonts',
         'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap',
         [], null);
-    wp_enqueue_style('barel-main', get_template_directory_uri() . '/assets/css/main.css', ['barel-fonts'], '2.0.7');
+    wp_enqueue_style('barel-main', get_template_directory_uri() . '/assets/css/main.css', ['barel-fonts'], '2.0.8');
     if (class_exists('WooCommerce')) {
         wp_enqueue_style('barel-woo', get_template_directory_uri() . '/assets/css/woo.css', ['barel-main'], '2.0.5');
     }
@@ -238,6 +238,16 @@ function barel_cat_style($name, $slug) {
         return ['grad'=>'linear-gradient(135deg,#1a7a3a,#2da84f)','icon'=>'🌿'];
     return ['grad'=>'linear-gradient(135deg,#c0001a,#e8001f)','icon'=>'🛠️'];
 }
+
+// checkout page section order
+add_action('woocommerce_checkout_before_order_review_heading', function() {
+    echo '<style>
+    .woocommerce-checkout form.checkout > * { width: 100% !important; float: none !important; }
+    .woocommerce-checkout .col2-set { order: 1; }
+    .woocommerce-checkout #order_review_heading { order: 2; }
+    .woocommerce-checkout #order_review { order: 3; }
+    </style>';
+});
 
 // buy now button (for standard WooCommerce product forms)
 add_action('woocommerce_after_add_to_cart_button', function() {
