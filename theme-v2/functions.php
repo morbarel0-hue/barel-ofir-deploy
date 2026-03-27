@@ -18,7 +18,7 @@ function barel_enqueue() {
     wp_enqueue_style('barel-fonts',
         'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap',
         [], null);
-    wp_enqueue_style('barel-main', get_template_directory_uri() . '/assets/css/main.css', ['barel-fonts'], '2.0.8');
+    wp_enqueue_style('barel-main', get_template_directory_uri() . '/assets/css/main.css', ['barel-fonts'], '2.1.0');
     if (class_exists('WooCommerce')) {
         wp_enqueue_style('barel-woo', get_template_directory_uri() . '/assets/css/woo.css', ['barel-main'], '2.0.5');
     }
@@ -137,23 +137,28 @@ function barel_render_cat_nav() {
     $cats = get_terms(['taxonomy' => 'product_cat', 'hide_empty' => true, 'parent' => 0, 'number' => 10, 'orderby' => 'count', 'order' => 'DESC']);
     $is_sp = function_exists('is_shop') && is_shop();
     echo '<nav class="cat-nav" aria-label="קטגוריות ראשיות"><div class="cat-nav-inner">';
-    echo '<div class="nav-item"><a href="' . esc_url($shop_url) . '" class="cat-link' . ($is_sp && !is_product_category() ? ' active' : '') . '">כל הכלים</a></div>';
+    echo '<div class="nav-item"><a href="' . esc_url($shop_url) . '" class="cat-link' . ($is_sp && !is_product_category() ? ' active' : '') . '"><span class="cat-icon">🔧</span> כל הכלים</a></div>';
     if (!is_wp_error($cats)) {
         foreach ($cats as $cat) {
             if ($cat->slug === 'uncategorized') continue;
             $children = get_terms(['taxonomy' => 'product_cat', 'parent' => $cat->term_id, 'hide_empty' => true]);
             $active   = (function_exists('is_product_category') && is_product_category($cat->slug)) ? ' active' : '';
             $has_kids = !is_wp_error($children) && count($children) > 0;
-            echo '<div class="nav-item"><a href="' . esc_url(get_term_link($cat)) . '" class="cat-link' . $active . '">' . esc_html($cat->name) . ($has_kids ? ' <span class="arrow">&#9662;</span>' : '') . '</a>';
+            echo '<div class="nav-item"><a href="' . esc_url(get_term_link($cat)) . '" class="cat-link' . $active . '">' . esc_html($cat->name) . ($has_kids ? ' <span class="arrow">▾</span>' : '') . '</a>';
             if ($has_kids) {
-                echo '<div class="dropdown"><div class="dropdown-header">' . esc_html($cat->name) . '</div>';
-                foreach ($children as $child) { echo '<a href="' . esc_url(get_term_link($child)) . '" class="dropdown-link">' . esc_html($child->name) . '</a>'; }
+                echo '<div class="cat-dropdown">';
+                foreach ($children as $child) {
+                    echo '<a href="' . esc_url(get_term_link($child)) . '" class="cat-dd-item">'
+                       . esc_html($child->name)
+                       . '<span class="cnt">' . (int)$child->count . '</span></a>';
+                }
+                echo '<a href="' . esc_url(get_term_link($cat)) . '" class="cat-dd-see-all">← לכל ' . esc_html($cat->name) . '</a>';
                 echo '</div>';
             }
             echo '</div>';
         }
     }
-    echo '<div class="nav-item"><a href="' . esc_url(add_query_arg('orderby', 'date', $shop_url)) . '" class="cat-link" style="color:#f5a623;">🔥 מבצעים</a></div>';
+    echo '<div class="nav-item"><a href="' . esc_url(add_query_arg('orderby', 'date', $shop_url)) . '" class="cat-link sale">🔥 מבצעים</a></div>';
     echo '</div></nav>';
 }
 function barel_render_product_card($product_id) {
@@ -260,6 +265,30 @@ add_action('woocommerce_after_add_to_cart_button', function() {
     ], wc_get_checkout_url());
     echo '<a href="' . esc_url($checkout_url) . '" class="barel-buy-now">⚡ קנה עכשיו</a>';
 });
+
+add_action('wp_footer', function() { ?>
+<script>
+(function() {
+  var ham = document.getElementById('mobHam');
+  var drawer = document.getElementById('mobDrawer');
+  var overlay = document.getElementById('mobOverlay');
+  var close = document.getElementById('mobClose');
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('show'); document.body.style.overflow = 'hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('show'); document.body.style.overflow = ''; }
+  if(ham) ham.addEventListener('click', openDrawer);
+  if(close) close.addEventListener('click', closeDrawer);
+  if(overlay) overlay.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.mob-menu-item .mob-menu-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      var item = this.closest('.mob-menu-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.mob-menu-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+<?php }, 99);
 
 add_action('wp_footer', function() {
     ?>

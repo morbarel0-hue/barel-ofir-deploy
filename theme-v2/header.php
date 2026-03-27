@@ -57,6 +57,11 @@
       <?php endif; ?>
     </div>
 
+    <!-- המבורגר - מובייל בלבד -->
+    <button class="mob-hamburger" id="mobHam" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+
   </div>
 
   <div class="barel-mob-search">
@@ -67,5 +72,62 @@
   </div>
 
 </header>
+
+<div class="mob-drawer-overlay" id="mobOverlay"></div>
+<div class="mob-drawer" id="mobDrawer">
+  <div class="mob-drawer-hd">
+    <span class="mob-drawer-title">תפריט ניווט</span>
+    <button class="mob-drawer-close" id="mobClose">✕</button>
+  </div>
+
+  <div class="mob-menu-item" data-mob="m1">
+    <div class="mob-menu-link">
+      <span>🔧 כל הכלים</span><span class="mob-arr">›</span>
+    </div>
+    <div class="mob-sub-menu">
+      <?php
+      $all_cats = get_terms(['taxonomy'=>'product_cat','hide_empty'=>true,'parent'=>0,'orderby'=>'count','order'=>'DESC','number'=>20]);
+      if (!is_wp_error($all_cats)) foreach($all_cats as $cat) {
+        if ($cat->slug === 'uncategorized') continue;
+        echo '<a href="'.esc_url(get_term_link($cat)).'" class="mob-sub-link">'.esc_html($cat->name).' <span style="font-size:10px;color:#bbb;margin-right:auto">'.$cat->count.'</span></a>';
+      }
+      ?>
+      <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="mob-sub-see-all">← לכל הכלים</a>
+    </div>
+  </div>
+
+  <?php
+  $main_cats = [
+    ['name'=>'כלי עבודה חשמליים', 'icon'=>'⚡', 'slug'=>'kley-avoda-hashmaliyim'],
+    ['name'=>'כלי עבודה ידניים',  'icon'=>'🔨', 'slug'=>'kley-avoda-yadaniyim'],
+    ['name'=>'הטמבוריה',           'icon'=>'🏪', 'slug'=>'tamboria'],
+  ];
+  foreach($main_cats as $i => $mc):
+    $term = get_term_by('slug', $mc['slug'], 'product_cat');
+    $children = $term ? get_terms(['taxonomy'=>'product_cat','parent'=>$term->term_id,'hide_empty'=>true]) : [];
+    if (!$term) continue;
+  ?>
+  <div class="mob-menu-item" data-mob="m<?php echo $i+2; ?>">
+    <div class="mob-menu-link">
+      <span><?php echo $mc['icon'].' '.esc_html($mc['name']); ?></span><span class="mob-arr">›</span>
+    </div>
+    <div class="mob-sub-menu">
+      <?php foreach((array)$children as $child): if (is_wp_error($child)) continue; ?>
+        <a href="<?php echo esc_url(get_term_link($child)); ?>" class="mob-sub-link">
+          <?php echo esc_html($child->name); ?>
+          <span style="font-size:10px;color:#bbb;margin-right:auto"><?php echo $child->count; ?></span>
+        </a>
+      <?php endforeach; ?>
+      <a href="<?php echo esc_url(get_term_link($term)); ?>" class="mob-sub-see-all">← לכל <?php echo esc_html($mc['name']); ?></a>
+    </div>
+  </div>
+  <?php endforeach; ?>
+
+  <div class="mob-menu-item">
+    <a href="<?php echo esc_url(add_query_arg('orderby','date',get_permalink(wc_get_page_id('shop')))); ?>" class="mob-menu-link sale">
+      <span>🔥 מבצעים</span>
+    </a>
+  </div>
+</div>
 
 <?php barel_render_cat_nav(); ?>
