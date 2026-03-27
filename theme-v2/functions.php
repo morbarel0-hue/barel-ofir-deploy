@@ -18,7 +18,7 @@ function barel_enqueue() {
     wp_enqueue_style('barel-fonts',
         'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;700;900&display=swap',
         [], null);
-    wp_enqueue_style('barel-main', get_template_directory_uri() . '/assets/css/main.css', ['barel-fonts'], '2.0.5');
+    wp_enqueue_style('barel-main', get_template_directory_uri() . '/assets/css/main.css', ['barel-fonts'], '2.0.7');
     if (class_exists('WooCommerce')) {
         wp_enqueue_style('barel-woo', get_template_directory_uri() . '/assets/css/woo.css', ['barel-main'], '2.0.5');
     }
@@ -238,6 +238,18 @@ function barel_cat_style($name, $slug) {
         return ['grad'=>'linear-gradient(135deg,#1a7a3a,#2da84f)','icon'=>'🌿'];
     return ['grad'=>'linear-gradient(135deg,#c0001a,#e8001f)','icon'=>'🛠️'];
 }
+
+// buy now button (for standard WooCommerce product forms)
+add_action('woocommerce_after_add_to_cart_button', function() {
+    global $product;
+    if (!$product) return;
+    $product_id = $product->get_id();
+    $checkout_url = add_query_arg([
+        'add-to-cart' => $product_id,
+        'quantity'    => 1,
+    ], wc_get_checkout_url());
+    echo '<a href="' . esc_url($checkout_url) . '" class="barel-buy-now">⚡ קנה עכשיו</a>';
+});
 
 add_action('wp_footer', function() {
     ?>

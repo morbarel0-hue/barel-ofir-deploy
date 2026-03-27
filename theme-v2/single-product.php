@@ -50,13 +50,41 @@ $delivery=barel_get_delivery_date(7); ?>
 <button class="atc-btn" id="addToCartBtn" data-product-id="<?php echo $pid; ?>" data-nonce="<?php echo wp_create_nonce('barel_nonce'); ?>">&#128722; הוסף לעגלה</button>
 </div>
 <div class="atc-feedback" id="atcFeedback" style="display:none;"></div>
+<?php
+$checkout_url = add_query_arg(['add-to-cart' => $pid, 'quantity' => 1], wc_get_checkout_url());
+echo '<a href="' . esc_url($checkout_url) . '" class="barel-buy-now">⚡ קנה עכשיו</a>';
+?>
 <?php else: ?><div class="prod-oos-msg">המוצר אינו זמין כרגע</div><?php endif; ?>
-<div class="delivery-info">
-<div class="delivery-row">&#128666; <strong>משלוח מהיר:</strong> מגיע עד <?php echo esc_html($delivery); ?></div>
-<div class="delivery-row">&#8617;&#65039; <strong>החזרה:</strong> תוך 30 יום</div>
-<div class="delivery-row">&#128274; <strong>תשלום מאובטח</strong></div>
+<div class="product-trust">
+  <div class="product-trust-item">
+    <span class="product-trust-icon">🚚</span>
+    <div>
+      <div class="product-trust-title">משלוח מהיר</div>
+      <div class="product-trust-sub">עד 7 ימי עסקים</div>
+    </div>
+  </div>
+  <div class="product-trust-item">
+    <span class="product-trust-icon">↩️</span>
+    <div>
+      <div class="product-trust-title">החזרה</div>
+      <div class="product-trust-sub">תוך 30 יום</div>
+    </div>
+  </div>
+  <div class="product-trust-item">
+    <span class="product-trust-icon">🔒</span>
+    <div>
+      <div class="product-trust-title">תשלום מאובטח</div>
+      <div class="product-trust-sub">SSL מוגן</div>
+    </div>
+  </div>
+  <div class="product-trust-item">
+    <span class="product-trust-icon">🏆</span>
+    <div>
+      <div class="product-trust-title">+30 שנות ניסיון</div>
+      <div class="product-trust-sub">פעילים מאז 1995</div>
+    </div>
+  </div>
 </div>
-<div class="prod-trust"><div class="prod-trust-item">&#128666; משלוח מהיר לכל הארץ</div><div class="prod-trust-item">&#8617;&#65039; החזרה תוך 30 יום</div><div class="prod-trust-item">&#128274; תשלום מאובטח 100%</div><div class="prod-trust-item">&#127942; אחריות יצרן מלאה</div></div>
 </div></div>
 <div class="product-tabs">
 <div class="tabs-header"><button class="tab-btn active" onclick="showTab('desc',this)">תיאור מוצר</button><button class="tab-btn" onclick="showTab('specs',this)">מפרט טכני</button><?php if($rev_count>0): ?><button class="tab-btn" onclick="showTab('reviews',this)">חוות דעת (<?php echo $rev_count; ?>)</button><?php endif; ?></div>
