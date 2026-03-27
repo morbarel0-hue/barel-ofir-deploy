@@ -24,6 +24,11 @@ function barel_enqueue() {
     }
     wp_enqueue_script('barel-main', get_template_directory_uri() . '/assets/js/main.js', ['jquery'], '2.0.5', true);
     wp_enqueue_script('barel-search', get_template_directory_uri() . '/assets/js/barel-search.js', ['barel-main'], '2.0.5', true);
+    if (function_exists('WC')) {
+        wp_enqueue_script('wc-add-to-cart');
+        wp_enqueue_script('woocommerce');
+        wp_enqueue_script('wc-cart-fragments');
+    }
     if (function_exists('is_shop') && (is_shop() || is_product_category() || is_product_tag())) {
         wp_enqueue_script('barel-infinite', get_template_directory_uri() . '/assets/js/infinite-scroll.js', ['jquery'], '2.0.5', true);
         global $wp_query;
@@ -102,9 +107,17 @@ function barel_ajax_add_to_cart() {
 add_filter('woocommerce_add_to_cart_fragments', 'barel_cart_fragment');
 function barel_cart_fragment($f) {
     if (!function_exists('WC') || !WC()->cart) return $f;
-    $f['.cart-n'] = '<span class="cart-n">' . WC()->cart->get_cart_contents_count() . '</span>';
+    $count = WC()->cart->get_cart_contents_count();
+    $f['.cart-n'] = '<span class="cart-n">' . $count . '</span>';
+    $f['.barel-cart-b'] = '<span class="barel-cart-b">' . $count . '</span>';
+    $f['.barel-cart-count'] = '<span class="barel-cart-count">' . $count . '</span>';
     return $f;
 }
+
+add_filter('woocommerce_loop_add_to_cart_args', function($args) {
+    $args['class'] = (isset($args['class']) ? $args['class'] . ' ' : '') . 'ajax_add_to_cart';
+    return $args;
+});
 function barel_get_delivery_date($business_days = 7) {
     $date = new DateTime('now', new DateTimeZone('Asia/Jerusalem'));
     $added = 0;
@@ -224,3 +237,15 @@ function barel_cat_style($name, $slug) {
         return ['grad'=>'linear-gradient(135deg,#1a7a3a,#2da84f)','icon'=>'🌿'];
     return ['grad'=>'linear-gradient(135deg,#c0001a,#e8001f)','icon'=>'🛠️'];
 }
+
+add_action('wp_footer', function() {
+    ?>
+    <script>
+    if (typeof wc_add_to_cart_params === 'undefined') {
+        var wc_add_to_cart_params = {};
+    }
+    wc_add_to_cart_params.ajax_url = '<?php echo esc_url(admin_url('admin-ajax.php')); ?>';
+    wc_add_to_cart_params.wc_ajax_url = '<?php echo esc_url(WC_AJAX::get_endpoint('%%endpoint%%')); ?>';
+    </script>
+    <?php
+});
