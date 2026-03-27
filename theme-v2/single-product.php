@@ -81,7 +81,7 @@ btn.addEventListener('click',function(){
   jQuery.post(BarelData.ajaxUrl,{action:'barel_add_to_cart',product_id:pid,quantity:qty,nonce:nonce},function(r){
     btn.disabled=false; btn.textContent='הוסף לעגלה';
     if(r.success){
-      document.querySelectorAll('.cart-n').forEach(function(e){e.textContent=r.data.count;});
+      document.querySelectorAll('.cart-n,.barel-cart-b,.barel-cart-count,.cart-count').forEach(function(e){e.textContent=r.data.count;});
       if(fb){fb.textContent=r.data.message;fb.style.display='block';setTimeout(function(){fb.style.display='none';},3000);}
     }
   });

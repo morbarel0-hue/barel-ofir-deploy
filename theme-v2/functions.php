@@ -24,6 +24,7 @@ function barel_enqueue() {
     }
     wp_enqueue_script('barel-main', get_template_directory_uri() . '/assets/js/main.js', ['jquery'], '2.0.5', true);
     wp_enqueue_script('barel-search', get_template_directory_uri() . '/assets/js/barel-search.js', ['barel-main'], '2.0.5', true);
+    wp_enqueue_script('barel-cart', get_template_directory_uri() . '/assets/js/barel-cart.js', ['jquery'], '2.0.6', true);
     if (function_exists('WC')) {
         wp_enqueue_script('wc-add-to-cart');
         wp_enqueue_script('woocommerce');
