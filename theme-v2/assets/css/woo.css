@@ -1672,3 +1672,25 @@ section.red-bg {
 
 /* trust bar — remove last border */
 .trust-item:last-child { border-left:none!important; }
+
+/* === PRODUCT IMAGES DESKTOP === */
+@media(min-width:601px){
+  .woocommerce ul.products li.product .woocommerce-loop-product__thumbnail {
+    height:220px!important;
+    overflow:hidden!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    background:#f9f9f9!important;
+    border-bottom:1px solid #f0f0f0!important;
+  }
+  .woocommerce ul.products li.product img,
+  .woocommerce ul.products li.product .woocommerce-loop-product__thumbnail img {
+    height:220px!important;
+    width:100%!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    padding:16px!important;
+    background:#f9f9f9!important;
+  }
+}
