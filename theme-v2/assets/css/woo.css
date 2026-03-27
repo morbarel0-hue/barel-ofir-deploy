@@ -1566,6 +1566,12 @@ section.red-bg {
   .barel-logo-sub    { font-size:9px!important; padding:2px 8px!important; margin-top:3px!important; }
   .barel-act-lbl     { font-size:10px; }
   .barel-cart        { padding:8px 12px; font-size:13px; }
+  /* hide כניסה/מועדפים on mobile to make room for hamburger */
+  .barel-act         { display:none!important; }
+  .barel-cart        { display:flex!important; }
+}
+@media(max-width:768px){
+  .barel-hdr-inner { overflow:visible!important; }
 }
 
 /* === HERO OVERLAY === */

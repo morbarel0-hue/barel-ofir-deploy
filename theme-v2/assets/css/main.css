@@ -181,14 +181,13 @@
 
     /* ─── CATEGORY NAV ─── */
     /* ══ CAT NAV - DESKTOP ══ */
-    .cat-nav { background: #111 !important; }
+    .cat-nav { background: #111 !important; position: relative !important; z-index: 200 !important; overflow: visible !important; }
     .cat-nav-inner {
       max-width: 1280px !important; margin: 0 auto !important;
       padding: 0 20px !important; display: flex !important;
       direction: rtl !important; align-items: center !important;
-      overflow-x: auto !important; scrollbar-width: none !important;
+      overflow: visible !important;
     }
-    .cat-nav-inner::-webkit-scrollbar { display: none !important; }
     .cat-link {
       padding: 11px 14px !important; font-size: 13px !important;
       font-weight: 700 !important; color: rgba(255,255,255,.6) !important;
@@ -270,13 +269,15 @@
       justify-content: center;
     }
 
-    /* Red diagonal accent */
-    .hero-main::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to left, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.88) 100%);
-      pointer-events: none;
+    /* Hero overlay - removed */
+    .hero::before,
+    .hero-main::before,
+    .hero-section::before,
+    .home-hero::before,
+    [class*="hero"]::before {
+      display: none !important;
+      background: none !important;
+      content: none !important;
     }
     .hero-main::after {
       content: '';
