@@ -607,26 +607,40 @@ function barel_render_sidebar_filters() {
 }
 
 /* ── BRAND LOGO on single product ──────────────────────────────────── */
-add_action('woocommerce_single_product_summary', 'barel_show_brand_logo', 3);
+add_action('woocommerce_single_product_summary', 'barel_show_brand_logo', 6);
 
 function barel_show_brand_logo() {
     global $product;
-    $brands = wc_get_product_terms($product->get_id(), 'pa_brand', ['fields'=>'all']);
+    if (!$product) return;
+
+    // קבל מותג מ-product_brand, אם אין - נסה pa_brand
+    $brands = wc_get_product_terms($product->get_id(), 'product_brand', ['fields'=>'all']);
+    if (empty($brands)) {
+        $brands = wc_get_product_terms($product->get_id(), 'pa_brand', ['fields'=>'all']);
+        $taxonomy = 'pa_brand';
+    } else {
+        $taxonomy = 'product_brand';
+    }
     if (empty($brands)) return;
 
-    $brand   = $brands[0];
-    $logo_id = get_term_meta($brand->term_id, 'brand_logo_id', true);
+    $brand     = $brands[0];
+    $brand_url = get_term_link($brand->term_id, $taxonomy);
+    $logo_id   = get_term_meta($brand->term_id, 'thumbnail_id', true);
+    if (!$logo_id) $logo_id = get_term_meta($brand->term_id, 'brand_image', true);
 
     echo '<div class="barel-brand-wrap">';
+    echo '<a href="' . esc_url($brand_url) . '" class="barel-brand-box">';
     if ($logo_id) {
-        echo '<a href="'.esc_url(get_term_link($brand)).'" class="barel-brand-logo-link">';
-        echo wp_get_attachment_image($logo_id, 'thumbnail', false, ['class'=>'barel-brand-logo']);
-        echo '</a>';
+        echo wp_get_attachment_image($logo_id, 'medium', false, [
+            'class' => 'barel-brand-logo',
+            'alt'   => esc_attr($brand->name),
+        ]);
     } else {
-        echo '<a href="'.esc_url(get_term_link($brand)).'" class="barel-brand-name-link">';
-        echo '<span class="barel-brand-name">'.esc_html($brand->name).'</span>';
-        echo '</a>';
+        echo '<span class="barel-brand-text">' . esc_html($brand->name) . '</span>';
     }
+    echo '<span class="barel-brand-label">' . esc_html($brand->name) . '</span>';
+    echo '<span class="barel-brand-link">← לדף המותג</span>';
+    echo '</a>';
     echo '</div>';
 }
 

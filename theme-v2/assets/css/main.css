@@ -3645,3 +3645,58 @@ form.woocommerce-ordering {
   .barel-filter-chips::-webkit-scrollbar { display: none !important; }
   .barel-chip { flex-shrink: 0 !important; }
 }
+
+/* ══ BRAND LOGO - PRODUCT PAGE ══ */
+.barel-brand-wrap {
+  margin-bottom: 14px !important;
+}
+.barel-brand-box {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 14px !important;
+  background: #f9f9f9 !important;
+  border: 1.5px solid #eee !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  transition: all .2s !important;
+  max-width: 100% !important;
+}
+.barel-brand-box:hover {
+  border-color: #c0001a !important;
+  background: #fff5f5 !important;
+}
+.barel-brand-logo {
+  height: 32px !important;
+  width: auto !important;
+  max-width: 100px !important;
+  object-fit: contain !important;
+}
+.barel-brand-text {
+  font-family: 'Arial Black', Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 18px !important;
+  color: #111 !important;
+  letter-spacing: 1px !important;
+}
+.barel-brand-label {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #555 !important;
+}
+.barel-brand-link {
+  font-size: 11px !important;
+  color: #c0001a !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+
+@media(max-width: 600px) {
+  .barel-brand-box {
+    padding: 6px 10px !important;
+  }
+  .barel-brand-logo { height: 26px !important; }
+  .barel-brand-text { font-size: 15px !important; }
+  .barel-brand-label { font-size: 12px !important; }
+  .barel-brand-link { display: none !important; }
+}
