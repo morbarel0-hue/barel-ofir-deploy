@@ -3700,3 +3700,82 @@ form.woocommerce-ordering {
   .barel-brand-label { font-size: 12px !important; }
   .barel-brand-link { display: none !important; }
 }
+
+/* ══ MOBILE FIXES ══ */
+@media(max-width: 768px) {
+  /* שורת חיפוש */
+  .barel-mob-search {
+    padding: 8px 12px !important;
+    background: #fff !important;
+    border-bottom: 1px solid #eee !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* קופסת חיפוש */
+  .barel-mob-search .barel-search-box {
+    display: flex !important;
+    width: 100% !important;
+    height: 42px !important;
+    border: 1.5px solid #e5e5e5 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  /* שדה טקסט */
+  .barel-mob-search input[type="search"],
+  .barel-mob-search input[type="text"] {
+    flex: 1 !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 12px !important;
+    font-size: 14px !important;
+    direction: rtl !important;
+    font-family: 'Heebo', sans-serif !important;
+    color: #111 !important;
+    background: #fff !important;
+    width: 100% !important;
+  }
+  .barel-mob-search input::placeholder {
+    color: #bbb !important;
+    font-size: 13px !important;
+  }
+
+  /* כפתור חיפוש */
+  .barel-mob-search .barel-search-btn {
+    background: #c0001a !important;
+    border: none !important;
+    padding: 0 14px !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    height: 100% !important;
+  }
+
+  /* אייקון כניסה מובייל */
+  .barel-act.login-act {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2px !important;
+    padding: 3px 6px !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+  }
+  .barel-act.login-act .barel-act-ic {
+    font-size: 20px !important;
+    display: block !important;
+    line-height: 1 !important;
+  }
+  .barel-act.login-act .barel-act-lbl {
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    color: #555 !important;
+    display: block !important;
+    white-space: nowrap !important;
+  }
+}
