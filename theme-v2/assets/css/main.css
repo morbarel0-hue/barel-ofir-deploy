@@ -3551,3 +3551,97 @@ form.woocommerce-ordering {
 [class*="hero"] p {
   color: #ffffff !important;
 }
+
+/* ══ BRAND FILTER BAR ══ */
+.barel-filter-bar {
+  background: #fff !important;
+  border-radius: 10px !important;
+  border: 1px solid #eee !important;
+  padding: 14px 16px !important;
+  margin-bottom: 16px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  align-items: flex-start !important;
+}
+.barel-filter-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+}
+.barel-filter-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #888 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .07em !important;
+}
+.barel-filter-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+}
+.barel-chip {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 5px 12px !important;
+  background: #f5f5f5 !important;
+  border: 1.5px solid #eee !important;
+  border-radius: 20px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: all .15s !important;
+}
+.barel-chip:hover {
+  border-color: #c0001a !important;
+  color: #c0001a !important;
+  background: #fff5f5 !important;
+}
+.barel-chip.active {
+  background: #c0001a !important;
+  color: #fff !important;
+  border-color: #c0001a !important;
+}
+.barel-chip-cnt {
+  font-size: 10px !important;
+  background: rgba(0,0,0,.08) !important;
+  border-radius: 10px !important;
+  padding: 1px 6px !important;
+}
+.barel-chip.active .barel-chip-cnt {
+  background: rgba(255,255,255,.3) !important;
+}
+.barel-filter-reset {
+  display: flex !important;
+  align-items: center !important;
+  padding: 5px 12px !important;
+  background: #fff5f5 !important;
+  border: 1.5px solid #ffcccc !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #c0001a !important;
+  text-decoration: none !important;
+  align-self: flex-end !important;
+}
+
+@media(max-width: 768px) {
+  .barel-filter-bar {
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+  .barel-filter-chips {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    padding-bottom: 4px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .barel-filter-chips::-webkit-scrollbar { display: none !important; }
+  .barel-chip { flex-shrink: 0 !important; }
+}
