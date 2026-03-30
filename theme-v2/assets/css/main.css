@@ -3800,3 +3800,51 @@ form.woocommerce-ordering {
     white-space: nowrap !important;
   }
 }
+
+/* ══ SEARCH Z-INDEX + MOBILE HEIGHT FIX ══ */
+
+/* header מעל cat-nav תמיד */
+#barel-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 400 !important;
+}
+
+/* cat-nav מתחת ל-header */
+.cat-nav {
+  z-index: 100 !important;
+}
+.cat-dropdown,
+.dropdown {
+  z-index: 150 !important;
+}
+
+/* search dropdown מעל הכל */
+#searchDropdown,
+#mobSearchDropdown,
+.barel-search-dropdown {
+  z-index: 9999 !important;
+}
+
+/* barel-search-wrap - position relative לdropdown */
+.barel-search-wrap,
+.barel-mob-search {
+  position: relative !important;
+}
+
+/* מובייל input גובה תקין */
+@media(max-width: 768px) {
+  .barel-mob-search .barel-search-box {
+    height: 42px !important;
+    align-items: stretch !important;
+  }
+  .barel-mob-search input[type="search"],
+  .barel-mob-search input[type="text"] {
+    height: 42px !important;
+    line-height: 42px !important;
+  }
+  .barel-mob-search .barel-search-btn {
+    height: 42px !important;
+    line-height: 42px !important;
+  }
+}
