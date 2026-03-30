@@ -76,7 +76,7 @@ if(!is_wp_error($subcats)&&count($subcats)>0): ?>
       <?php foreach($sorts as $v=>$l){$u=$v?add_query_arg('orderby',$v):remove_query_arg('orderby');$sel=($curr===$v)?' selected':'';echo '<option value="'.esc_url($u).'"'.$sel.'>'.esc_html($l).'</option>';} ?>
     </select>
   </div>
-  <?php if(have_posts()): ?>
+  <?php barel_brand_filter(); if(have_posts()): ?>
     <div class="products-grid" id="productsGrid">
       <?php while(have_posts()):the_post();barel_render_product_card(get_the_ID());endwhile; ?>
     </div>
