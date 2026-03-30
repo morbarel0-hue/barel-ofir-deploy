@@ -3634,16 +3634,37 @@ form.woocommerce-ordering {
     flex-direction: column !important;
     gap: 10px !important;
     padding: 12px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .barel-filter-section {
+    width: 100% !important;
+    overflow: hidden !important;
   }
   .barel-filter-chips {
+    display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
+    overflow-y: hidden !important;
     scrollbar-width: none !important;
-    padding-bottom: 4px !important;
     -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 6px !important;
+    gap: 6px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .barel-filter-chips::-webkit-scrollbar { display: none !important; }
-  .barel-chip { flex-shrink: 0 !important; }
+  .barel-chip {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 12px !important;
+    padding: 5px 11px !important;
+  }
+  .barel-filter-reset {
+    align-self: flex-start !important;
+    font-size: 11px !important;
+  }
 }
 
 /* ══ BRAND LOGO - PRODUCT PAGE ══ */
